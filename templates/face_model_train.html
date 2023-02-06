@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+  <!--ICON-->
+  <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+  <!--Bootstrap Table-->
+  <link rel="stylesheet" href="../static/bootstrap-table-master/dist/bootstrap-table.min.css">
+  <!-- jquery-smartwizard -->
+  <link rel="stylesheet" href="../static/jquery-smartwizard-master/dist/css/smart_wizard_all.min.css">
+  </script>
+  <!-- Sweet Alert -->
+  <script src="../static/sweetalert-master/sweetalert.min.js"></script>
+  <!-- Loading CSS -->
+  <link rel="stylesheet" href="/static/csspin-round.css">
+  <link rel="stylesheet" href="/static/temp/w3.css">
+  <link rel="stylesheet" href="/static/temp/masterpage.css">
+
+
+  <title>管制口登入系統－模型訓練</title>
+
+  <style>
+    body {
+      /* background-color: #1b1533; */
+      font-family: 'Muli', 'Noto Sans TC', '微軟正黑體';
+    }
+
+    #main-left {
+      background-repeat: no-repeat;
+      background-image: url('../static/img/bg1.png');
+      background-size: cover;
+      background-position: right;
+
+    }
+
+    .btn-circle.btn-sm {
+      width: 65px;
+      height: 65px;
+      padding: 7px 10px;
+      border-radius: 35px;
+      font-size: 20px;
+      text-align: center;
+      position: fixed;
+      right: 20px;
+      top: 8px;
+      z-index: 15;
+    }
+
+    .bootstrap-table .fixed-table-container .table tbody tr.selected td {
+      background-color: lightcyan;
+    }
+
+    #user_pic {
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+    }
+
+    #user_pic:hover {
+      -webkit-transform: scale(1.5);
+      -moz-transform: scale(1.5);
+      -o-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+      transform: scale(1.5);
+    }
+
+    @media screen and (min-width:1025px){
+      .bootstrap-table .fixed-table-container .table #user_col {
+        padding: 12px 0px 12px 25%;
+      }
+    }
+    @media screen and (min-width:768px) and (max-width:1024px){ 
+      .bootstrap-table .fixed-table-container .table #user_col {
+        padding: 12px 0px 12px 5%;
+      }  
+    }
+    
+    .bootstrap-table .fixed-table-container .table th {
+      color: white;
+      /* background-color: #6c757d; */
+    }
+
+    #loading {
+      position: absolute;
+      left: 0px;
+      top: 85%;
+      width: 100%;
+      height: 100%;
+      z-index: 99;
+    }
+
+    .fixed-table-header {
+      border-right: solid 1px #ddd;
+      border-top: solid 1px #ddd;
+      background: #6c757d;
+    }
+    .fixed-table-header table  {
+      border-top: solid 0px #ddd !important;
+      margin-top:-1px;
+    }
+
+  </style>
+
+</head>
+
+<body class=" bg-light">
+  <header class="row text-left" style="padding-bottom: 75px;">
+    <div class="col-12">
+        <nav class="navbar navbar-master">
+            <span class="navbar-brand text-center">
+                <img src="../static/img/VG_LOGO2.png" width="45" class="d-inline-block align-center mb-1">
+                <nav class="navbar-text mx-2">
+                  <ol class="breadcrumb p-0 d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                    <li class="breadcrumb-item"><a href="/face/index">人臉管制系統</a></li>
+                    <li class="breadcrumb-item active">權限管理後台</li>
+                  </ol>
+                </nav>
+            </span>
+            <ul class="nav mr-auto" id="nav_items_list">
+              <li class="nav-item">
+                <a class="nav-link" href="/face/login">辨識登入(UI控制)</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/face/io_login">辨識登入(外部IO)</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/face/register">新用戶註冊</a>
+              </li>
+            </ul>
+            <ul class="nav" id="nav-btn-top">
+              <a href="/">
+                <li class="nav-item  navbar-btn" data-toggle="tooltip" data-placement="bottom" title="首頁">
+                    <i class="fas fa-home"></i>
+                </li>
+              </a>
+              <li class="nav-item navbar-btn" id="logout_Btn" data-toggle="tooltip" data-placement="bottom" title="登出">
+                  <i class="fas fa-sign-out-alt"></i>
+              </li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+  <div class="container-fluid">
+    <div class="row text-center justify-content-center justify-content-evenly px-5">
+      <div class="col-sm-12 col-md-5 mb-3" id="train">
+        <form id="form2">
+          <h1 class="h2 mb-3 fw-bold">模型訓練<i class="bi bi-person-bounding-box ml-2"></i></h1>
+          <h1 class="h6 mb-1 text-black-50">請先移除不需要的人員後，<label class="w3-text-pink">系統會依篩選後所留下的檔案進行模型訓練</label>。</h1>
+          <div class="accordion my-3" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="my-0">
+                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    待訓練名單<i class="bi bi-caret-down-fill ml-1"></i>
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <!-- <button class="btn btn-danger" id="updateBtn" onclick="delRow(this)">
+                    <i class="bi bi-trash mr-1"></i>刪除
+                  </button> -->
+                <div class="card-body p-3 m-0" id="select_list" style="height:600px;">
+
+                  <table id="bs-table-train" data-toggle="table" data-click-to-select="true" data-height="580">
+                    <thead>
+                      <tr>
+                        <th data-field="state" data-checkbox="true"></th>
+                        <th data-field="id" scope="col">New User</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-left">
+                      {% for v in train_js %}
+                      <tr>
+                        <td></td>
+                        <td id="user_col" onclick="editContent(this)" name="id" style="padding:12px 20%;">
+                          <img id="user_pic" loading='lazy' src='/show_photo?sys=face&path=face_train/{{v.id}}.jpg' class='rounded-circle mx-3' width='60'
+                            height='60'>{{v.id}}
+                        </td>
+                      </tr>
+                      {% endfor %}
+                  </table>
+                </div>
+              </div>
+              <div>
+                <div id="loading" class="text-center">
+                  <div class="cp-spinner cp-round"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button id="preStrpBtn" class=" btn btn-lg btn-dark mx-2" type="button"><i
+              class="bi bi-arrow-left mr-1"></i>上一步</button>
+          <button id="trainBtn" class="btn btn-lg btn-danger my-3" type="button" onclick="train()"><i
+              class="bi bi-lightning-fill mr-1"></i>訓練模型</button>
+        </form>
+        <div class="my-3">
+          <button id="delBtn" class=" btn btn-lg btn-primary "><i class="bi bi-trash2 mr-1"></i>刪除檔案</button>
+          <button id="passDelBtn" class=" btn btn-lg btn-dark mx-2"><i
+              class="bi bi-arrow-return-right mr-1"></i>直接訓練</button>
+        </div>
+
+      </div>
+      <div class="w-auto"></div>
+      <div class="col-sm-12 col-md-5 mb-3" id="train">
+        <h1 class="h2 mb-3 fw-bold">管理人員名單<i class="far fa-address-book ml-2"></i></h1>
+        <h1 class="h6 mb-1 text-black-50">以下為所有已建檔訓練完成之同仁，您可<label class="w3-text-pink">勾選人員給予出入權限或管理</label>。</h1>
+        <div class="accordion my-3" id="accordion2">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="my-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                  data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                  允許進出人員名單<i class="bi bi-caret-down-fill ml-1"></i>
+                </button>
+              </h2>
+            </div>
+
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion2">
+              <div class="card-body p-3 m-0" id="select_list" style="height:600px;">
+                <table id="bs-table-base" data-toggle="table" data-click-to-select="true" data-height="580"
+                  data-pagination="true" data-page-size="All" data-pagination-parts='[pageInfoShort]'>
+                  <thead>
+                    <tr>
+                      <th class="bg-danger text-center" data-field="del" data-click-to-select="false" data-width="5" data-width-unit="%">
+                        <button class="btn btn-sm" onclick="del_AllUser()" data-toggle="tooltip" data-placement="top" title="點我全部刪除">
+                          <i class="far fa-trash-alt text-white mr-1" ></i>
+                        </button>
+                      </th>
+                      <th class="text-center" data-field="state" data-checkbox="true"  data-title-tooltip="權限設定"></th>
+                      <th data-field="user" scope="col">User</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-left">
+                    {% for v in base_js %}
+                    <tr>
+                      <td class="text-center"><input type="checkbox" id="{{v.id}}"></td>
+                      <td></td>
+                      <td id="user_col" onclick="editContent(this)" name="id">
+                        <img id="user_pic" loading='lazy' src='/show_photo?sys=face&path=face_base/{{v.id}}.jpg' class='rounded-circle mx-3' width='60'
+                          height='60'>{{v.id}}
+                      </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class=" btn btn-lg btn-danger mx-1" onclick="del_user()"><i
+            class="fas fa-user-slash mr-1"></i>刪除人員</button>
+        <button class=" btn btn-lg btn-primary mx-1" onclick="updList()"><i
+            class="bi bi-lightning-fill mr-1"></i>設定權限</button>
+        <div class="col-12 text-center  fixed-bottom" style="opacity: 65%;z-index: -10;bottom: 0;">
+          <p class="mt-5 mb-3 text-muted fixed-bottom">Service Window MAMCA1 8656-7390.|8656-1233.|8656-5267.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  </div>
+
+
+
+
+
+
+  <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+  <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+  <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+
+
+  <script>
+    
+    $("#loading").hide();
+    $(document).ready(function () {
+      is_start = false
+      $('[data-toggle="tooltip"]').tooltip();
+      $('#bs-table-train').bootstrapTable({
+        height: 100,
+      });
+      $('#bs-table-base').bootstrapTable({
+        height: 100,
+      });
+      $('.bootstrap-table').addClass('mb-4');
+      $('#main-left').width(screen.width);
+      $('#main-left').height(screen.height);
+      // $('.navbar').hide();
+      // $('#main2-right').hide();
+
+
+      $('.navbar').show();
+      $('#main2-right').show();
+      $('#main-right').hide();
+      $('#main-left').hide();
+      $('#trainBtn').hide();
+      $('#preStrpBtn').hide();
+
+      {% if enter_data == '' %}
+      {% else %}
+      load_enter_list();
+      {% endif %}
+
+      // {% if picNum == 0 %}
+      // {% else %}
+      // $('#bs-table-train').bootstrapTable('removeAll');
+      // $('#bs-table-base').bootstrapTable('refresh');
+      // swal("訓練完成", "訓練張數：{{picNum}} 張 ,共耗時 {{sec}} sec", "success");
+      // window.location.replace(location.href);
+      // {% endif %}
+
+    });
+   
+    // $(window).scroll(function() {
+    //   if ( $(this).scrollTop() < 55 ){
+    //     $('#home_Btn').fadeIn(222);
+    //     $('#logout_Btn').fadeIn(222);
+    //   } 
+    //   else {
+    //     $('#home_Btn').stop().fadeOut(222);
+    //     $('#logout_Btn').stop().fadeOut(222);
+    //   }
+    // }).scroll();
+
+    function load_enter_list() {
+      var user = "{{enter_data}}";
+      var user_list = user.split(',')
+      var rows = document.getElementById('bs-table-base').rows;
+      user_list.forEach(name => {
+        for (var i = 1; i < rows.length; i++) {
+          if (rows[i].innerHTML.indexOf(name) > 0) {
+            index = i - 1;
+            $('#bs-table-base').bootstrapTable('check', index);
+            break;
+          }
+        }
+      });
+    }
+
+    function indexFormatter(value, row, index) {
+      return index + 1;
+    }
+
+    function login() {
+      id = $('#input_account').val();
+      pw = $('#input_password').val();
+      $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/id_verify",
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify(id + ',' + pw),
+        success: function (result) {
+          if (result == 'True') {
+            swal({
+              title: "登入成功",
+              text: "更新模型不是件困難的事～",
+              icon: "success",
+              buttons: false,
+              timer: 1200,
+            });
+
+            // // $('.navbar').show();
+            // // $('#main2-right').show();
+            // // $('#main-right').hide();
+            // // $('#main-left').hide();
+
+            $('.navbar').show();
+            $('#main2-right').show();
+            $('#main-right').hide();
+            $('#main-left').hide();
+            $('#trainBtn').hide();
+            $('#preStrpBtn').hide();
+
+          }
+          else {
+            swal("登入失敗", "您並未擁有權限，如有需求，請聯絡窗口申請。", "error");
+          }
+
+
+        },
+        error: function (errorInfo) {
+          swal("失敗, error:" + errorInfo.message);
+        }
+      });
+
+    }
+
+    function train() {
+      if($('#bs-table-train tbody tr').not('.no-records-found').length == 0)
+      {
+        swal({text:"無訓練資料，請先建檔。"});
+        return false
+      }
+      else{
+        is_start = true
+        $("#loading").show();
+        timer_get_train_result = setInterval(get_train_result, 500);
+        $.ajax({
+          type: 'POST',
+          url: "/face/model_train",
+          success: function (res){
+            console.log(res)
+          },
+          error: function(res){
+            console.log(res)
+          }
+        });
+        return true
+      }
+    }
+
+    function get_train_result(){
+      $.ajax({
+        type: 'GET',
+        url: "/face/train_result",
+        success: function (res) {
+          console.log(res)
+          if(res.train_img_num != null){
+            if (is_start){
+              clearInterval(timer_get_train_result);
+              is_start = false
+            }
+            $("#loading").hide();
+            swal("訓練完成", `訓練張數："${res.train_img_num}" 張 ,共耗時 "${res.train_time}" sec`, "success");
+            $('#bs-table-train').bootstrapTable('removeAll');
+            $('#bs-table-base').bootstrapTable('refresh');
+            setTimeout("window.location.replace(location.href)",2000);
+          }
+        },
+        error: function(res){
+          console.log(res)
+        }
+      });
+    }
+
+    var $del_button = $('#delBtn');
+    $(function () {
+      $del_button.click(function () {
+        var ids = $.map($('#bs-table-train').bootstrapTable('getSelections'), function (row) {
+          return row.id
+        })
+
+        var name_str = '';
+        ids.forEach(s => {
+          s = s.substring(s.indexOf('>') + 1, s.length)
+          name_str += s + ','
+        });
+        name_str = name_str.substring(0, name_str.length - 1);
+
+        swal({
+          title: "刪除影像檔案",
+          text: "確定要刪除這些檔案?",
+          icon: "warning",
+          buttons: true,
+        })
+          .then((setName) => {
+            if (setName) {
+              $.ajax({
+                type: 'POST',
+                async: false,
+                url: "/face/del_train_user",
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify(name_str),
+                success: function (result) {
+                  swal("刪除成功", "已刪除「" + result + "」的照片", "success");
+                  $('#bs-table-train').bootstrapTable('remove', {
+                    field: 'id',
+                    values: ids
+                  })
+                  $('#delBtn').hide();
+                  $('#passDelBtn').hide();
+                  $('#trainBtn').show();
+                  $('#preStrpBtn').show();
+                  // location.reload();
+                },
+                error: function (errorInfo) {
+                  swal("刪除失敗, error:" + errorInfo.message);
+                  flag = 0;
+                }
+              });
+
+            }
+
+          });
+
+      })
+    });
+
+    $('#passDelBtn').click(function () {
+      $del_button.hide();
+      $('#passDelBtn').hide();
+      $('#trainBtn').show();
+      $('#preStrpBtn').show();
+    });
+
+    $('#preStrpBtn').click(function () {
+      $('#delBtn').show();
+      $('#passDelBtn').show();
+      $('#trainBtn').hide();
+      $('#preStrpBtn').hide();
+    });
+
+
+    $('#logout_Btn').click(function () {
+      $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/logout",
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify('1'),
+        success: function (result) {
+          swal({
+            title: "登出成功",
+            text: "保持良好的登出習慣~",
+            icon: "success",
+            buttons: false,
+            timer: 1200,
+          });
+          setTimeout(function () {
+            location.replace(document.referrer);
+          }, 1500);
+        },
+        error: function (errorInfo) {
+          swal("登出失敗, 異常error:請聯絡系統開發窗口協助");
+        }
+
+      });
+
+    });
+
+    function del_user() {
+      var name_str = ''; var del_item_list =[];
+      $('#bs-table-base tbody tr input:checkbox').each(function() {
+          if (this.checked) {
+              if(this.id !=""){
+                name_str += this.id + ','
+                del_item_list.push(`<input type="checkbox" id="${this.id}">`);
+              }
+          }
+      });
+      // var ids = $.map($('#bs-table-base').bootstrapTable('getSelections'), function (row) {
+      //   return row.user
+      // })
+      // ids.forEach(s => {
+      //   s = s.substring(s.indexOf('>') + 1, s.length)
+      //   name_str += s + ','
+      // });
+      name_str = name_str.substring(0, name_str.length - 1);
+
+      swal({
+        title: "刪除人員",
+        text: "此動作將會刪除該人員資料，確定要刪除?",
+        icon: "warning",
+        buttons: true,
+      })
+        .then((setName) => {
+          if (setName) {
+            $.ajax({
+              type: 'POST',
+              async: false,
+              url: "/face/del_base_user",
+              contentType: 'application/json; charset=UTF-8',
+              data: JSON.stringify(name_str),
+              success: function (result) {
+                swal("刪除成功", "已刪除人員資料檔", "success");
+                $('#bs-table-base').bootstrapTable('remove', {
+                  field: 'del',
+                  values: del_item_list
+                })
+                // location.reload();
+              },
+              error: function (errorInfo) {
+                swal("刪除失敗, error:" + errorInfo.message);
+                flag = 0;
+              }
+            });
+          }
+        });
+    }
+
+    function updList() {
+      var index = '';
+      var ids = $.map($('#bs-table-base').bootstrapTable('getSelections'), function (row) {
+        return row.user
+      })
+
+      var name_str = '';
+      ids.forEach(s => {
+        s = s.substring(s.indexOf('>') + 1, s.length)
+        name_str += s + ','
+      });
+      name_str = name_str.substring(0, name_str.length - 1);
+      $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/face/upd_enter_list",
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify(name_str),
+        success: function (result) {
+          swal("更新成功", "已完成權限開通，並更新人員進出名單！", "success");
+          // location.reload();
+        },
+        error: function (errorInfo) {
+          swal("更新失敗, error:" + errorInfo.message);
+        }
+      });
+    }
+
+    //刪除權限名單所有人員
+    function del_AllUser(){
+      var index = '';
+      var ids = $.map($('#bs-table-base').bootstrapTable('getData'), function (row) {
+        return row.user
+      })
+
+      var name_str = '';
+      ids.forEach(s => {
+        s = s.substring(s.indexOf('>') + 1, s.length)
+        name_str += s + ','
+      });
+      name_str = name_str.substring(0, name_str.length - 1);
+
+      swal({
+        title: "確定刪除所有？",
+        text: "此動作將會刪除所有人員資料，確定要刪除?",
+        icon: "warning",
+        buttons: true,
+      })
+        .then((confirms) => {
+          if (confirms) {
+            $.ajax({
+              type: 'POST',
+              async: false,
+              url: "/face/del_base_user",
+              contentType: 'application/json; charset=UTF-8',
+              data: JSON.stringify(name_str),
+              success: function (result) {
+                swal("刪除成功", "已刪除人員資料檔", "success");
+                $('#bs-table-base').bootstrapTable('removeAll');
+                // location.reload();
+              },
+              error: function (errorInfo) {
+                swal("刪除失敗, error:" + errorInfo.message);
+                flag = 0;
+              }
+            });
+          }
+        });
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>

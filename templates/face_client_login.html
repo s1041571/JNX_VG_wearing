@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+  <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--ICON-->
+  <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+
+  <!-- Sweet Alert -->
+  <script src="../static/sweetalert-master/sweetalert.min.js"></script>
+
+
+  <title>管制口登入系統</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Oswald:500");
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
+
+    body {
+      /* background-color: #1b1533; */
+      font-family: 'Muli', 'Noto Sans TC', '微軟正黑體';
+    }
+
+    #main-left {
+      /* background-repeat:no-repeat;
+          background-image: url('../static/img/5239.jpg');
+          background-size: cover;
+          background-position: 65% 50%; */
+      z-index: 99;
+
+    }
+
+    .btn-circle.btn-sm {
+      width: 65px;
+      height: 65px;
+      padding: 7px 10px;
+      border-radius: 35px;
+      font-size: 20px;
+      text-align: center;
+      position: fixed;
+      right: 20px;
+      top: 8px;
+      z-index: 15;
+    }
+
+    .form-signin {
+      width: 100%;
+      max-width: 350px;
+      padding: 15px;
+      margin: auto;
+      text-align: center;
+      z-index: 99;
+    }
+
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .bootstrap-table .fixed-table-container .table tbody tr.selected td {
+      background-color: lightcyan;
+    }
+
+    #user_pic {
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      transition: all 0.5s ease-in-out;
+
+    }
+
+    #user_pic:hover {
+      -webkit-transform: scale(1.5);
+      -moz-transform: scale(1.5);
+      -o-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+      transform: scale(1.5);
+    }
+
+    .bootstrap-table .fixed-table-container .table #user_col {
+      padding: 12px 0px 12px 35%;
+    }
+
+    .bootstrap-table .fixed-table-container .table th {
+      color: white;
+      background-color: #6c757d;
+    }
+
+    #loading {
+      position: absolute;
+      left: 0px;
+      top: 85%;
+      width: 100%;
+      height: 100%;
+      z-index: 99;
+    }
+  </style>
+
+</head>
+
+<body class="overflow-hidden bg-light">
+  <div class="container-fluid">
+    <div class="row  bg-white">
+
+      <a href="/"><button class="btn btn-light btn-circle btn-sm float-right"><i
+            class="fas fa-home text-secondary"></i></button></a>
+      <div class="col-7  align-middle d-flex" id="main-left">
+        <div class="frame">
+          <img src="../static/img/5239.jpg" width="115%" height="100%">
+        </div>
+      </div>
+      <div class="col-5 bg-white form-signin" id="main-right">
+        <div id="login">
+          <img class="mb-4" src="../static/img/KHAIT_LOGO(bg-b)-02.png" alt="" width="90" height="90">
+          <h1 class="h4 text-black-50 mb-2 fw-bold">Client Login</h1>
+          <h1 class="h3 mb-3 fw-bold">用戶端登入系統</h1>
+          <form method="POST">
+            <div class="form-floating">
+              <input type="text" class="form-control" name="account" id="account" placeholder="Administrator">
+              <label for="floatingInput">Account</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary my-3" type="button" onclick="login()">登入</button>
+          </form>
+          <p class="mt-5 mb-3 text-muted">Service Window MAMCA1 8656-7390.|8656-1233.|8656-5267.</p>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+  <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+  <script src="../static/bootstrap-5.0.0-beta3-dist/js/bootstrap.min.js"></script>
+  <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+    integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#main-left').width(screen.width);
+      $('#main-left').height(screen.height);
+    });
+
+
+    $("#password").keypress(function (e) {
+      code = (e.keyCode ? e.keyCode : e.which);
+      if (code == 13) {
+        login();
+      }
+
+    });
+    function login() {
+      id = $('#account').val();
+      pw = $('#password').val();
+      $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/id_verify",
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify(id + ',' + pw + ',user'),
+        success: function (result) {
+          if (result == 'success') {
+            // swal("登入成功","","success");
+            swal({
+              title: "登入成功",
+              text: "今天天氣不錯，歡迎回來使用～",
+              icon: "success",
+              buttons: false,
+              timer: 1200,
+            });
+            setTimeout(function () {
+              window.location.replace('/monitor_portal');
+            }, 1500);
+          }
+          else {
+            swal("登入失敗", "密碼錯誤 或 您並未擁有權限，如有需求，請聯絡窗口申請。", "error");
+          }
+
+
+        },
+        error: function (errorInfo) {
+          alert("失敗, error:" + errorInfo.message);
+        }
+      });
+
+    }
+  </script>
+</body>
+
+
+</html>

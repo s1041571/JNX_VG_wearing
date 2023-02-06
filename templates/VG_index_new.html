@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+
+    <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="Enterport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--ICON-->
+    <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+    <!-- Sweet Alert -->
+    <script src="../static/sweetalert-master/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../static/temp/vg_topic_new.css" />
+    <link rel="stylesheet" href="../static/temp/carousel/style.css" />
+    <link rel="stylesheet" href="../static/temp/carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../static/temp/carousel/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="../static/temp/w3.css" />
+    <!-- Loader Css-->
+    <link rel="stylesheet" href="../static/temp/loader-curtain.css" />
+
+    <title>Vision Guard</title>
+    <style>
+        a {
+            cursor: pointer;
+            color:inherit;
+        }
+        .mask{
+            background:#dfe9f3 url(../static/img/tracking-02.png) center center/cover;
+            background-color: rgba(128, 128, 128, 1);
+            background-blend-mode: multiply;
+
+        }
+        .mask2{
+            background:#dfe9f3 url(../static/img/dict_mode-01.png) center center/cover;
+            background-color: rgba(128, 128, 128, 1);
+            background-blend-mode: multiply;
+
+        }
+        .mask3{
+            background:#dfe9f3 url(../static/img/obj_mode-01.png) center center/cover;
+            background-color: rgba(128, 128, 128, 1);
+            background-blend-mode: multiply;
+
+        }
+        .mask4{
+            background:#dfe9f3 url(../static/img/motion-01.png) center center/cover;
+            background-color: rgba(128, 128, 128, 1);
+            background-blend-mode: multiply;
+
+        }
+        .mask5{
+            background:#dfe9f3 url(../static/img/face-01.png) center center/cover;
+            background-color: rgba(128, 128, 128, 1);
+            background-blend-mode: multiply;
+
+        }
+    </style>
+</head>
+
+<body class="bg-light py-2 overflow-hidden">
+    <div class="row text-center px-3">
+        <ul class="nav justify-content-end  align-items-baseline">
+            {% if current_user.is_authenticated %}
+            <li class="nav-item mr-3 text-black-50 font-italic font-weight-bold h5">
+                <i class="fas fa-user-circle mr-1"></i>歡迎回來，{{ current_user.id}}
+            </li>
+            <li class="nav-item">
+                <button class="btn" id="logout_Btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="登出">
+                    <i class="fas fa-sign-out-alt w3-text-red" style="font-size: 18px;"></i>
+                </button>
+            </li>
+            <li class="nav-item">
+                <a href="/global_setting">
+                    <button class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="設定">
+                        <i class="fas fa-cog" style="font-size: 18px;"></i>
+                    </button>
+                </a>
+            </li>
+            {% else %}
+            <li class="nav-item mx-1">
+                <a href="/login">
+                    <button class="btn w-auto w3-red" style="border-radius: 20px;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="管理者登入">
+                        Sign in
+                    </button>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="col-12">
+            <label class="h2 fw-bolder page-title">Vision Guard 五大主軸系統</label>
+        </div>
+    </div>
+    <section class="ftco-section">
+        <div class="container-xxl">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="item col">
+                            <div class="work">
+                                <div class="img d-flex align-items-center justify-content-center rounded mask2">
+                                    <a href="#" class="icon-rect icon d-flex align-items-center justify-content-center">
+                                        <span class="text-muted" style="font-size: 21px;">持續開發中</span>
+                                    </a>
+                                </div>
+                                <div class="text pt-3 w-100 text-center">
+                                    <h3 class="fw-bold"><a href="#">測距警報系統</a></h3>
+                                    <span>透過虛擬圍籬，自動偵測計算人(物)與圍籬距離</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col">
+                            <div class="work">
+                                <div class="img d-flex align-items-center justify-content-center rounded mask3">
+                                    <a href="#" class="icon-rect icon d-flex align-items-center justify-content-center">
+                                        <span class="text-muted" style="font-size: 21px;">持續開發中</span>
+                                    </a>
+                                </div>
+                                <div class="text pt-3 w-100 text-center">
+                                    <h3 class="fw-bold"><a href="#">物件警報系統</a></h3>
+                                    <span>針對區域範圍進行安全監控辨識</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col">
+                            <div class="work">
+                                <div class="img d-flex align-items-center justify-content-center rounded" style="background:#dfe9f3 url(../static/img/wear-01.png) center center/cover;">
+                                    <a onclick="start_app('wearing')" class="icon d-flex align-items-center justify-content-center">
+                                        <span>Go</span>
+                                    </a>
+                                </div>
+                                <div class="text pt-3 w-100 text-center">
+                                    <h3 class="fw-bold"><a onclick="start_app('wearing')">穿戴偵測系統</a></h3>
+                                    <span>無人管制場景下，管控人員是否有確實穿戴安全護具</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="item col">
+                            <div class="work">
+                                <div class="img d-flex align-items-center justify-content-center rounded mask4">
+                                    <a href="#" class="icon-rect icon d-flex align-items-center justify-content-center">
+                                        <span class="text-muted" style="font-size: 21px;">持續開發中</span>
+                                    </a>
+                                </div>
+                                <div class="text pt-3 w-100 text-center">
+                                    <h3 class="fw-bold"><a href="#">動作流程系統</a></h3>
+                                    <span>無人管制場景下，完成特定動作流程</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col">
+                            <div class="work">
+                                <div class="img d-flex align-items-center justify-content-center rounded mask5">
+                                    <a href="#" class="icon-rect icon d-flex align-items-center justify-content-center">
+                                        <span class="text-muted" style="font-size: 21px;">持續開發中</span>
+                                    </a>
+                                </div>
+                                <div class="text pt-3 w-100 text-center">
+                                    <h3 class="fw-bold"><a href="#">人臉管制系統</a></h3>
+                                    <span>透過人臉辨識進行門禁管制人員進出</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item col">
+                            <div class="work">
+                                <div class="img d-flex align-items-center justify-content-center rounded mask">
+                                    <a href="#" class="icon-rect icon d-flex align-items-center justify-content-center">
+                                        <span class="text-muted" style="font-size: 21px;">持續開發中</span>
+                                    </a>
+                                </div>
+                                <div class="text pt-3 w-100 text-center">
+                                    <h3 class="fw-bold"><a href="#">移動追蹤系統</a></h3>
+                                    <span>透過人臉辨識與物件追蹤，記錄分析人員行動的軌跡</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading div -->
+    <div id="loading" class="loader loader-curtain is-active" data-curtain-text="System Loading..."></div>
+
+    <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+    <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+    <script src="../static/bootstrap-5.0.0-beta3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/jquery-smartwizard-master/dist/js/jquery.smartWizard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+        crossorigin="anonymous"></script>
+    <script src="../static/temp/carousel/owl.carousel.min.js"></script>
+    <script src="../static/temp/carousel/main.js"></script>
+    <!-- <script src="https://cdn.socket.io/4.1.0/socket.io.js"></script> -->
+
+
+    <script>
+        $(document).ready(function () {
+
+            // 若是從其他子系統切換來主系統頁面，則此條件成立
+            if (sessionStorage.getItem("MainPageVisited")) {
+                sessionStorage.removeItem("MainPageVisited");
+                window.location.reload(true);  // 頁面重整
+            }
+
+            $('[data-bs-toggle="tooltip"]').tooltip();
+            $('#loading').hide();
+            if ($(this).height() < 1000)
+                $('.frame').height(screen.height * 0.8);
+            else
+                $('.frame').height(screen.height * 0.9);
+        });
+        $(window).resize(function () {
+            if ($(this).height() < 1000)
+                $('.frame').height(screen.height * 0.8);
+            else
+                $('.frame').height(screen.height * 0.9);
+        });
+
+        function start_app(app_name) {
+            $('#loading').show();
+            $.ajax({
+                type: 'GET',
+                url: `/start_app/${app_name}`,
+                success: function (res) {
+                    console.log(res)
+                    window.location.assign(`/${app_name}/index`)
+                },
+                error: function (res) {
+                    console.log(res)
+                    alert(res.responseText)
+                }
+            });
+            console.log('start app: ' + app_name)
+        }
+
+        $('#logout_Btn').click(function () {
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: "/logout",
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify('1'),
+                success: function (result) {
+                swal({
+                    title: "登出成功",
+                    text: "保持良好的登出習慣~",
+                    icon: "success",
+                    buttons: false,
+                    timer: 1200,
+                });
+                setTimeout(function () {
+                    location.reload();
+                }, 1500);
+                },
+                error: function (errorInfo) {
+                swal("登出失敗, 異常error:請聯絡系統開發窗口協助");
+                }
+            });
+
+        });
+    </script>
+</body>
+
+
+</html>

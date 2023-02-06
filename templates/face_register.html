@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+  <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--ICON-->
+  <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+  <!-- jquery-smartwizard -->
+  <link rel="stylesheet" href="../static/jquery-smartwizard-master/dist/css/smart_wizard_all.min.css">
+  </script>
+  <!-- Sweet Alert -->
+  <script src="../static/sweetalert2-11.0.0/sweetalert2.all.min.js"></script>
+  <!-- Loading CSS -->
+  <link rel="stylesheet" href="../static/csspin-round.css">
+  <link rel="stylesheet" href="../static/temp/w3.css">
+  <link rel="stylesheet" href="../static/temp/masterpage.css">
+
+  <title>管制口登入系統－會員註冊</title>
+
+  <style>
+
+    body {
+      /* background-color: #1b1533; */
+      font-family: 'Muli', 'Noto Sans TC', '微軟正黑體';
+
+    }
+
+    #main-left {
+      background-repeat: no-repeat;
+      background-image: url('../static/img/bg1.png');
+      background-size: cover;
+      background-position: right;
+
+    }
+
+    .btn-circle {
+      width: 65px;
+      height: 65px;
+      padding: 7px 10px;
+      border-radius: 35px;
+      font-size: 25px;
+      text-align: center;
+      border: none;
+      opacity: 60%;
+      z-index: 15;
+    }
+
+    .btn-circle.btn-sm {
+      width: 65px;
+      height: 65px;
+      padding: 7px 10px;
+      border-radius: 35px;
+      font-size: 25px;
+      text-align: center;
+      /* position: fixed;
+            right: 20px;  */
+      /* background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply; */
+      background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+      border: none;
+      opacity: 80%;
+    }
+
+    .btn-circle.btn-sm:hover {
+      opacity: 100%;
+    }
+
+    .form-signin {
+      width: 100%;
+      max-width: 400px;
+      padding: 15px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    #loading {
+      position: absolute;
+      left: 0px;
+      top: 200px;
+      width: 100%;
+      height: 100%;
+      z-index: 99999;
+    }
+
+    #home_Btn:hover {
+      background-color: rgba(255, 233, 111, 0.5);
+    }
+
+    #imageMap {
+      position: relative;
+    }
+
+    #imageMap #marker {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #f00;
+      border: 2px solid white;
+      border-radius: 50px;
+    }
+
+    #canvas {
+      position: absolute;
+      z-index: 50;
+      /* cursor: crosshair; */
+      /* border: 1px solid #333; */
+    }
+
+    #canvasSave {
+      position: absolute;
+      z-index: 20;
+    }
+
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 55
+    }
+
+    svg text {
+      text-shadow: black 0.1em 0.1em 0.2em
+    }
+  </style>
+
+</head>
+
+<body class=" bg-light">
+  <header class="row text-left" style="padding-bottom: 75px;">
+    <div class="col-12">
+        <nav class="navbar navbar-master">
+            <span class="navbar-brand text-center" href="#">
+                <img src="../static/img/VG_LOGO2.png" width="45"
+                    class="d-inline-block align-center mb-1" alt="" >
+                <nav class="navbar-text mx-2">
+                  <ol class="breadcrumb p-0">
+                    <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                    <li class="breadcrumb-item"><a href="/face/index">人臉管制系統</a></li>
+                    <li class="breadcrumb-item active">使用者註冊</li>
+                  </ol>
+                </nav>
+            </span>
+            <ul class="nav mr-auto" id="nav_items_list">
+              <li class="nav-item">
+                  <a class="nav-link" href="/face/login">辨識登入(UI控制)</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/face/io_login">辨識登入(外部IO)</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/face/admin">後台管理</a>
+              </li>
+            </ul>
+            <ul class="nav" id="nav-btn-top">
+                <li class="nav-item mr-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="首頁">
+                    <a href="/"><i class="fas fa-home navbar-btn"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+  <div class="container-fluid">
+    <div class="row bg-light">
+      <!-- <div class="col-7 " id="main-left">
+          <div class="frame" ></div>
+        </div> -->
+      <div class="col bg-light form-signin">
+        <div class="">
+          <img class="mb-0" src="../static/img/faceid.gif" alt="" width="20%" style="opacity: 40%;">
+          <h3 class="fw-bold ">使用者註冊 Register</h1>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-7 justify-content-center">
+        <div id="smartwizard">
+          <ul class="nav" id="stepTabs">
+            <li>
+              <a class="nav-link" href="#step-1">
+                Step 1
+              </a>
+            </li>
+            <li>
+              <a class="nav-link" href="#step-2">
+                Finish！
+              </a>
+            </li>
+
+          </ul>
+          <div class="col-12 text-center" id="camera_div">
+            <p class="text-muted">請完成以下拍照流程，得以建檔至資料庫。</p>
+            <div class="custom-control custom-switch d-flex align-items-center justify-content-end my-1">
+              <input type="checkbox" class="custom-control-input" id="switch_fence">
+              <label class="custom-control-label" for="switch_fence">虛擬圍籬功能</label>
+            </div>
+            <canvas class="" id="canvas"></canvas>
+            <div id="imageMap">
+              <img class="rounded-lg" id="camera" src="/stream/faceRegister" width="100%"  height="100%">
+            </div>
+            <div class="text-center" style="position: relative;bottom: 40px;z-index: 99;">
+              <button class="btn btn-circle btn-sm btn-light my-1 mx-3" onclick="checkSave()">
+                <i class="fas fa-camera text-white"></i>
+              </button>
+            </div>
+          </div>
+          <div class="tab-content">
+
+            <div id="step-1" class="tab-pane text-center" role="tabpanel">
+              <!-- <img class="rounded-lg" id="camera" src="/stream" width="85%"> -->
+              <!-- <div class="text-center" style="position: relative;bottom: 40px;z-index: 99;">
+                <button class="btn btn-circle btn-sm btn-light my-1 mx-3" onclick="checkSave()">
+                  <i class="fas fa-camera text-white"></i>
+                </button>
+              </div> -->
+            </div>
+            <div id="step-2" class="tab-pane text-center" role="tabpanel">
+              <label class="h1 fw-bolder text-black-50">註冊成功！</label>
+              <img class="mb-0" src="../static/img/Ok.gif" alt="" width="50%">
+              <p></p>
+              <a href="/face/register"><button class="w-25 btn btn-lg btn-secondary mx-1" type="submit"><i
+                    class="bi bi-arrow-return-right mr-2"></i>繼續註冊</button></a>
+              <a href="/face/index"><button class="w-25 btn btn-lg btn-secondary mx-1" type="submit"><i
+                    class="bi bi-house mr-2"></i>回首頁</button></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-12 text-center" style="opacity: 75%;z-index: -10;bottom: 0;position: fixed;">
+        <img src="../static/img/KHAIT_LOGO-01.png" alt="" width="65" height="65" style="margin-bottom: 30px;">
+        <p class="mt-5 mb-3 text-muted fixed-bottom">Service Window MAMCA1 8656-7390.|8656-1233.|8656-5267.</p>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+ 
+  <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+  <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+  <script src="../static/bootstrap-5.0.0-beta3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/jquery-smartwizard-master/dist/js/jquery.smartWizard.min.js"></script>
+  <!--SVG.js-->
+  <script src="../static/temp/svg.min.js"></script>
+
+  <!-- {% if picNum == 0 %}
+  {% else %}
+  <script>
+    Swal.fire("訓練完成", "成功！訓練張數：{{picNum}} 張", "success");　// ,共耗時 {{sec}} sec
+    window.location.href = '/face/register#step-3';
+  </script>
+  {% endif %} -->
+
+  <script>
+    var can = document.getElementById("canvas");    // Area Canvas
+    var img = document.getElementById("camera");    // 串流影像
+    var canSave = document.getElementById("canvasSave");
+    var drawArea = SVG().addTo('#imageMap').size('100%', '100%');   //新建SVG圖層 for圍籬區域
+    drawArea.attr('id', 'svgArea');
+
+    $(document).ready(function () {
+      $('[data-bs-toggle="tooltip"]').tooltip();
+      $('#train').hide();
+      $("#loading").hide();
+      $('#main-left').width(screen.width);
+      $('#main-left').height($(window).height()); //$(window).scrollTop()
+      $('#smartwizard').smartWizard({
+        theme: 'dots',
+        // errorSteps: [0] ,
+        anchorClickable: false,
+        transition: {
+          animation: 'slide-horizontal', // Effect on navigation, none/fade/slide-horizontal/slide-vertical/slide-swing
+          speed: '400', // Transion animation speed
+          easing: '' // Transition animation easing. Not supported without a jQuery easing plugin
+        },
+        toolbarSettings: {
+          showNextButton: false, // show/hide a Next button
+          showPreviousButton: false, // show/hide a Previous button
+        }
+      });
+
+      setTimeout(function(){
+        can.width = img.width;
+        can.height = img.height;
+        //上次儲存的圍籬區域&比例尺 座標資訊
+        var area_coordResult = "{{fence_coord['coord']}}";
+        if (area_coordResult.length > 0) {
+            area_arr = area_coordResult.split('},');
+            area_arr.forEach(coord => {
+                if (coord == "") {}
+                else {
+                    coord = coord.replace('{', '');
+                    coord = coord.replace('}', '');
+                    var result = createXYinfo(coord,"{{fence_coord['img_width']}}","{{fence_coord['img_height']}}", 'markInfo');                    
+                    resize([result]);
+                }
+            });
+        }
+        if($('#switch_fence').prop('checked') == false){
+          $('#svgArea').hide();
+        }
+        
+        
+      },2500);
+      
+    });
+
+    $('#switch_fence').change(function(){
+      if($('#switch_fence').prop('checked') == false){
+        $('#svgArea').hide();
+      }
+      else{
+        $('#svgArea').show();
+      }
+    });
+
+    function nextStep() {
+      $('#smartwizard').smartWizard("next");
+    }
+
+    $("#input_password").keypress(function (e) {
+      code = (e.keyCode ? e.keyCode : e.which);
+      if (code == 13) {
+        login();
+      }
+
+    });
+    function login() {
+      id = $('#input_account').val();
+      pw = $('#input_password').val();
+      $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/id_verify",
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify(id + ',' + pw + ',admin'),
+        success: function (result) {
+          if (result == 'success') {
+            Swal.fire("登入成功", "", "success");
+            $('#train').show();
+            $('#login').hide();
+          }
+          else
+            Swal.fire("登入失敗", "您並未擁有權限，如有需求，請聯絡窗口申請。", "error");
+
+        },
+        error: function (errorInfo) {
+          alert("失敗, error:" + errorInfo.message);
+        }
+      });
+
+    }
+
+
+    //截圖功能
+    function screenshot() {
+      $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/screenShot",
+        contentType: 'application/json; charset=UTF-8',
+        // data: JSON.stringify(user),
+        success: function (result) {
+          // alert(result);
+        },
+        error: function (errorInfo) {
+          alert("截圖失敗, error:" + errorInfo.message);
+        }
+      });
+    }
+
+    function savePic(user) {
+      var fence_enable = $('#switch_fence').prop('checked');
+      var json = {
+        'user': user,
+        'fence_enable': fence_enable
+      }
+      $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/face/savePic",
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify(json),
+        success: function (result) {
+          if (result == 'success') {
+            Swal.fire({
+              title: "建檔成功",
+              text: `${user} 先生/小姐你好，您已成功加入圖像庫`,
+              icon: "success",
+              timer: 4000,
+            });
+            $('#camera_div').hide();
+            $('#smartwizard').smartWizard("next");
+          }
+          else if(result == 'Fail'){
+            Swal.fire({
+              title: "建檔失敗",
+              text: `「${user}」的圖片沒有人臉資訊，請重新拍攝。`,
+              icon: "error",
+            });
+          }
+          else {
+            Swal.fire({
+              title: "建檔失敗",
+              text: `「${user}」的名稱已有建檔記錄，請重新命名、建檔。`,
+              icon: "error",
+            });
+          }
+
+        },
+        error: function (errorInfo) {
+          Swal.fire({
+            title: "保存失敗",
+            text: '照片儲存失敗',
+            icon: "error",
+            timer: 4000,
+
+          });
+          // $('#smartwizard').smartWizard("errorSteps",0);
+          // alert("儲存照片失敗, error:" + errorInfo.message);
+        }
+      });
+    }
+
+    async function checkSave() {
+      screenshot();
+      Swal.fire({
+        title: "儲存影像",
+        text: "是否要儲存當前照片?",
+        icon: "info",
+        backdrop:false,
+        showCancelButton: true
+      })
+        .then((setName) => {
+          // screenshot();
+          if (setName.isConfirmed) {
+            Swal.fire({
+              title: '使用者註冊',
+              input: 'text',
+              inputLabel: '輸入使用者名稱',
+              inputPlaceholder: "使用者名稱 (工號 or 中英文名)",
+              showCancelButton: true,
+              inputValidator: (value) => {
+                if (!value) {
+                  return '不能輸入空值'
+                }
+              }
+            })
+            .then((save) => {
+              if (save.value) {
+                savePic(save.value);
+              }
+            });
+
+          }
+          screenshot();
+
+        });
+
+    }
+
+    function train() {
+      $("#loading").show();
+      document.getElementById("form1").submit()
+      var start = 0;
+      var end = 0;
+      var res = "";
+      start = new Date().getTime();
+      // 要測試的 function 開始 =======
+      var elem = document.getElementById("progress");
+      var width = 1;
+      var id = setInterval(frame, parseInt(res[1]) * 10);
+      //強制登出
+      $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/logout",
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify('1'),
+        success: function (result) {
+        },
+        error: function (errorInfo) {
+        }
+
+      });
+    }
+
+    //當視窗大小變更，作 resize()
+    $(window).on("resize", function () {
+        var fence_coord = sessionStorage.getItem('fence_coord');
+        resize([fence_coord]); //canvas responsive
+    });
+
+    //隨畫面解析度變動，更新畫布座標
+    function resize(area_coord_array) {
+        /* area_coord_array, bili_coord 傳入參數皆為轉換後的`百分比`座標 */
+        can.width = img.width;
+        can.height = img.height;
+        drawArea.clear(); 
+        var new_coordStr = "";
+        area_coord_array.forEach(coord => {
+            coord_list = coord.split(' ')
+            for (var coord_group of coord_list) {
+                if(coord_group=="") continue
+                else{
+                    coord = coord_group.split(',') 
+                    new_coordStr += ((coord[0]/100*img.width).toFixed(0)) +','+((coord[1]/100*img.height).toFixed(0)) +' ';
+                }
+            }
+            drawSVG(new_coordStr,drawArea)//因畫布比例變動，須更新畫布上座標
+            new_coordStr ="";
+        });
+
+    }
+
+    // SVG 創建圖案
+    function drawSVG(crood, drawObj) {
+        var test1 = crood.split(' ');
+        var test2 = test1[0].split(',');
+        var group = drawObj.group()
+        if (drawObj.node.id == 'svgArea') {
+            polyId = $('#svgArea').find('polygon').length;
+            var polygon = group.polygon(crood).move(test1[0]).fill({ color: '#f06', opacity: 0 }).stroke({ color: '#f06', opacity: 1, width: 2.5 })
+            group.text('虛擬圍籬').cx(parseInt(test2[0])).cy(test2[1]).font({ family: '微軟正黑體', weight: 'bold' }).fill({ color: '#fff' })
+            group.attr('id', 'poly' + polyId)
+        }
+        else {
+            var polygon = group.polygon(crood).move(test1[0]).fill({ color: '#01fff4', opacity: 0.1 }).stroke({ color: '#01fff4', opacity: 1, width: 2.5 })
+            group.attr('id', 'line1')
+        }
+    }
+
+    //畫好的座標組資訊 生成顯示於前端
+    function createXYinfo(coord, img_width, img_height, divID) {
+        var InfoHTML = "";
+        var obj = "";
+        var new_coordStr = "";
+        coord_list =coord.split(' ')
+        //轉換成百分比座標
+        for (var coord_group of coord_list) {
+            if(coord_group=="") continue
+            else{
+                coord = coord_group.split(',') 
+                new_coordStr += (((coord[0]/img_width)*100).toFixed(1)) +','+(((coord[1]/img_height)*100).toFixed(1)) +' ';
+            }
+        }
+        sessionStorage.setItem('fence_coord',new_coordStr)
+        return new_coordStr
+    }
+  </script>
+
+
+</body>
+
+</html>

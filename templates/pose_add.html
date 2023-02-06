@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="Enterport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--ICON-->
+    <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.css">
+
+    <!-- Sweet Alert -->
+    <script src="../static/sweetalert2-11.0.0/sweetalert2.all.min.js"></script>
+    <script src="../static/sweetalert-master/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="../static/temp/monitor.css" />
+    <!--w3 CSS-->
+    <link rel="stylesheet" href="../static/temp/w3.css" />
+
+    <link rel="stylesheet" href="../static/temp/masterpage.css" />
+
+    <title>動作流程辨識_Vision Guard</title>
+    <style>
+        body {
+            font-family: 'Muli', 'Noto Sans TC', '微軟正黑體';
+        }
+
+        .bootstrap-table .fixed-table-container .table tbody tr.selected td {
+            background-color: lemonchiffon;
+        }
+
+        .btn-circle.btn-sm {
+            width: 65px;
+            height: 65px;
+            padding: 7px 10px;
+            border-radius: 35px;
+            font-size: 25px;
+            text-align: center;
+            /* position: fixed;
+            right: 20px;  */
+            /* background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+            background-blend-mode: multiply,multiply; */
+            background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+            border: none;
+            opacity: 80%;
+        }
+
+        .btn-circle.btn-sm:hover {
+            opacity: 100%;
+        }
+
+        /* 圍籬 imageMap css*/
+        #imageMap,#imageMap2 {
+            position: relative;
+        }
+
+        #imageMap2 #marker {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #f00;
+            border: 2px solid white;
+            border-radius: 50px;
+        }
+
+        #canvas {
+            position: absolute;
+            z-index: 99;
+            cursor: crosshair; 
+            border: 1px solid #333;
+        }
+
+        #canvasSave {
+            position: absolute;
+            z-index: 99;
+        }
+
+        svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 55;
+        }
+
+        svg text {
+            text-shadow: black 0.1em 0.1em 0.2em;
+        }
+    </style>
+</head>
+
+<body class="bg-light py-2">
+    <header class="row text-left" style="padding-bottom: 75px;">
+        <div class="col-12">
+            <nav class="navbar navbar-master">
+                <span class="navbar-brand text-center" href="#">
+                    <img src="../static/img/VG_LOGO2.png" width="45"
+                        class="d-inline-block align-center mb-1" alt="" >
+                    <nav class="navbar-text mx-2">
+                      <ol class="breadcrumb p-0 d-flex align-items-center">
+                        <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                        <li class="breadcrumb-item"><a href="/process/index">動作流程系統</a></li>
+                        <li class="breadcrumb-item active">動作新增</li>
+                      </ol>
+                    </nav>
+                </span>
+                <ul class="nav mr-auto" id="nav_items_list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/process/index">動作辨識</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/process/pose_setting">動作流程設定</a>
+                    </li>
+                </ul>
+                <ul class="nav" id="nav-btn-top">
+                    <li class="nav-item mr-1" data-toggle="tooltip" data-placement="bottom" title="首頁">
+                        <a href="/"><i class="fas fa-home navbar-btn"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row px-1 align-items-start justify-content-center">
+            <div class="col-sm-12 col-md-10 text-center mx-2 ">
+                <div class=" form-inline mb-2 mx-5">
+                    <div class="form-group">
+                        <label class="mr-1 h5"><i class="fas fa-at mr-1 text-primary"></i>Recipe</label>
+                        <input id='recipe_name' class="form-control" type="text" value="{{recipe_name}}" readonly>
+                    </div>
+                    <div class="form-group ml-4">
+                        <label class="mr-1 h5"><i class="fas fa-video mr-1 text-primary"></i>Cam</label>
+                        <select class="form-select w-auto" id="select_cam">
+                            {% for i in range(1,cam_data[1]+1) %}
+                            <option {{ 'selected' if cam_data[0]==i else '' }}>Cam{{i}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col text-right">
+                        <a href="/process/pose_setting">
+                            <button class="btn btn-md py-2 fw-bold btn-warning">
+                            <i class="fas fa-chevron-left mr-sm-2"></i>回設定頁</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9 mt-2 d-flex justify-content-end">
+                <div class="custom-control custom-switch d-flex align-items-center">
+                    <input type="checkbox" class="custom-control-input" id="switch_fence">
+                    <label class="custom-control-label" for="switch_fence">虛擬圍籬功能</label>
+                    <button class="btn btn-link p-1" onclick="open_fence_modal()">
+                        <i class="fas fa-cog text-primary" style="font-size: 18px;"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9 text-center">
+                <div id="imageMap">
+                    <img class="rounded-lg" id="camera" src="/stream/poseAdd" width="100%"  height="90%">
+                </div>
+                <div class="text-center" style="position: relative;bottom: 40px;z-index: 99;">
+                    <button class="btn btn-circle btn-sm btn-light my-1 mx-3" onclick="checkSave()">
+                        <i class="fas fa-camera text-white"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 text-center fixed-bottom" style="opacity: 65%;z-index: -10;bottom: 0;">
+                <p class="mt-5 mb-3 text-muted fixed-bottom">© MCF0A2–先進製造二課</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 圍籬 Model -->
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true" id="vf-modal">
+        <div class="modal-dialog  modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row  d-flex justify-content-start align-items-center">
+                        <div class="col ">
+                            <h3 class="fw-bolder my-1">
+                                <i class="fas fa-draw-polygon" style="font-size: 23px;color:#f48b53"></i>
+                                虛擬圍籬設定
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-7 mr-1 ">
+                            <p class="text-right my-1"><i class="fas fa-map-marker-alt w3-text-red"></i>&nbsp;
+                                <label id="site"></label>
+                            </p>
+                            <canvas id="canvas"></canvas>
+                            <div id="imageMap2"><img src="/stream" width="100%"  id="mapPic">
+                                <div id="markArea"></div>
+                            </div>
+
+                        </div>
+                        <div class="col-md col-lg" id="Setting_Tabs">
+                            <div class="tab-pane fade show active" id="areaSet">
+                                <p class="text-muted"><mark>*請於左方框選區域</mark></p>
+                                <div class="mt-2 row" id="markInfo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="mx-auto my-3">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消返回</button>
+                        <button type="button" class="btn btn-primary" onclick="saveAreaCoord()">儲存區域</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+    <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+    <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/temp/svg.min.js"></script>
+    <script src="../static/temp/pose_add.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+            
+            setTimeout(function(){
+                can.width = img.width;
+                can.height = img.height;
+                //上次儲存的圍籬區域&比例尺 座標資訊
+                var area_coordResult = "{{fence_coord['coord']}}";
+                if (area_coordResult.length > 0) {
+                    area_arr = area_coordResult.split('},');
+                    area_arr.forEach(coord => {
+                        if (coord == "") {}
+                        else {
+                            coord = coord.replace('{', '');
+                            coord = coord.replace('}', '');
+                            var result = createXYinfo(coord,"{{fence_coord['img_width']}}","{{fence_coord['img_height']}}", 'markInfo');                    
+                            resize([result]);
+                        }
+                    });
+                }
+                if($('#switch_fence').prop('checked') == false){
+                    $('#svgArea_view').hide();
+                }
+                
+                
+            },1000);
+        });
+
+
+        var select_cam = document.getElementById("select_cam");
+
+        $("#select_cam").change(function () {
+        camid = select_cam.selectedIndex + 1
+        console.log('change cam to ' + camid)
+        url = "/change_cam/" + camid
+        $.ajax({
+            url: url,
+            method: 'GET',
+            beforeSend: function(){
+                Swal.fire({ 
+                html:"切換至「" + camid + "號」攝影機<br><strong>讀取中，請稍後...</strong>",
+                toast: true,
+                showConfirmButton: false,
+                didOpen: () => {Swal.showLoading()}
+                });
+            },
+            success: function (res) {
+            console.log(res)
+            Swal.fire({
+                title: "成功切換攝影機",
+                text: "已切換至「" + camid + "號」攝影機",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1200,
+            });
+            // $('.frame').resize();
+            if ($(window).height() < 1000)
+                $('.frame').height(window.height * 0.85);
+            else
+                $('.frame').height(window.height);
+
+            console.log('window: ' + $(window).height())
+            console.log('frame: ' + $('.frame').height())
+            console.log('.frame resized')
+            },
+            error: function (res) {
+            console.log(res)
+            }
+        })
+        });
+
+        function checkSave() {
+            var fence_enable = $('#switch_fence').prop('checked');
+            $.ajax({
+                method: 'POST',
+                async: false,
+                url: '/screenShot',
+            });
+            swal({
+                title: "新增動作",
+                text: "是否要儲存當前動作?",
+                icon: "info",
+                buttons: true,
+            })
+                .then((setName) => {
+                    if (setName) {
+                        $.ajax({
+                            method: 'GET',
+                            async: false,
+                            url: '/process/add_pose',
+                        })
+                        swal({
+                            title: "输入動作名稱",
+                            text: "動作名：",
+                            content: "input",
+                            // buttons: true,
+                            closeOnConfirm: false,
+                            animation: "slide-from-top",
+                        })
+                            .then((save) => {
+                                if (save == '') {
+                                    swal("輸入不能為空值！", "", "warning");
+                                }
+                                if (save) {
+                                    pose_name = save
+                                    recipe_name = document.getElementById('recipe_name').value
+                                    $.ajax({
+                                        url: '/process/api/pose',
+                                        method: 'POST',
+                                        data: {
+                                            "recipe_name": recipe_name,
+                                            "pose_name": pose_name,
+                                            "cam_id": parseInt($('#select_cam').prop('selectedIndex'))+1,
+                                            "fence_enable": fence_enable
+                                        },
+                                        success: function (res) {
+                                            console.log('success add pose ...')
+                                            swal({title:"動作新增成功", text:res, icon:"success", timer:1500, buttons:false});
+                                            // window.location.reload();
+                                        },
+                                        error: function (res) {
+                                            console.log('fail to add pose ...')
+                                            swal({title:"動作新增失敗", text:res.responseText, icon:"error", timer:1300, buttons:false});
+                                        }
+                                    })
+                                }
+                                // $.ajax({
+                                //     url: '/process/add_pose',
+                                // })
+                                $.ajax({
+                                    method: 'POST',
+                                    async: false,
+                                    url: '/screenShot',
+                                }); //執行截圖，切換flag，避免影像卡住
+                                $.ajax({
+                                    url: '/process/add_pose_cancel',
+                                })
+                            });
+
+                    }
+                });
+
+        }
+    
+        //當視窗大小變更，作 resize()
+        $(window).on("resize", function () {
+            var fence_coord = sessionStorage.getItem('fence_coord');
+            resize([fence_coord]); //canvas responsive
+        });
+
+        $('#switch_fence').change(function(){
+            if($('#switch_fence').prop('checked') == false){
+                $('#svgArea_view').hide();
+            }
+            else{
+                $('#svgArea_view').show();
+            }
+        });
+        
+    </script>
+</body>
+
+
+</html>

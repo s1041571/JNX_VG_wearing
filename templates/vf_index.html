@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+  <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--ICON-->
+  <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+  <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/fontawesome.css">
+  <script src="../static/fontawesome-free-5.15.3-web/js/all.js"></script>
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.css">
+
+  <!-- Sweet Alert -->
+  <script src="../static/sweetalert-master/sweetalert.min.js"></script>
+
+
+  <title>遠端即時監控_Vision Guard</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Oswald:500");
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
+
+    body {
+      background: #ebf6ff;
+      font-family: 'Muli', 'Noto Sans TC', '微軟正黑體';
+      /* background-position: left; */
+      /* background-repeat: no-repeat; */
+      /* background-image: url('../static/img/image1.png'); */
+      /* background-size: cover; */
+    }
+
+    .btn-circle.btn-sm {
+      background-color: #51b1ff;
+      color: white;
+      padding: 7px 15px;
+      border-radius: 35px;
+      font-size: 26px;
+      text-align: center;
+      /* position: fixed; */
+      /* right: 20px; 
+            top:8px; */
+      z-index: 15;
+      cursor: pointer;
+      padding: 5px 2rem;
+      border: 0;
+      transition: all 0.5s;
+      width: auto;
+      position: relative;
+    }
+
+    .btn-circle.btn-sm::after {
+      font-family: 'Font Awesome 5 Free';
+      content: "\f245";
+      /* FontAwesome Unicode */
+      font-weight: 900;
+      position: absolute;
+      left: 73%;
+      top: 22%;
+      right: 10%;
+      bottom: 0;
+      opacity: 0;
+      color: white;
+    }
+
+    .btn-circle.btn-sm:hover {
+      background: #fca311;
+      transition: all 0.5s;
+      /* border-radius: 10px; */
+      box-shadow: 0px 6px 15px #f2dcc5;
+      padding: 8px 3rem 8px 2rem;
+    }
+
+    .btn-circle.btn-sm:hover::after {
+      opacity: 1;
+      transition: all 0.5s;
+    }
+
+    .info-text {
+      line-height: 1.5;
+    }
+
+    .info-text::first-letter {
+      font-size: 25px;
+      text-align: justify;
+      text-justify: distribute;
+    }
+    .btn-circle-w {
+      width: 65px;
+      height: 65px;
+      padding: 7px 10px;
+      border-radius: 35px;
+      font-size: 20px;
+      text-align: center;
+      position: fixed;
+      left: 20px;
+      top: 5px;
+      z-index: 15;
+
+    }
+    .btn-circle-w:hover{
+      background-color: rgba(255,255,255,0.75);
+    }
+  </style>
+
+</head>
+
+<body class="">
+  <div class="container">
+    <div class="row align-items-center text-center" style="margin: 10% 0;">
+      <button class="btn btn-circle-w" id="home_Btn" data-toggle="tooltip" data-placement="right" title="回首頁">
+        <a href="/"><i class="fas fa-home text-muted"></i></a>
+      </button>
+      <div class="col-12 my-2">
+        <h4>請選擇辨識模式：</h4>
+      </div>
+      <div class="col px-4 mx-1" style="border-right: #9fd4ff 0.15rem solid;">
+        <div style="height:400px;" class="d-flex align-items-center">
+          <img src="../static/img/dict_mode-01.png" width="100%" />
+        </div>
+        <h2 class="fw-bolder">測距警報模式</h2>
+        <div class="row my-4">
+          <i class="bi bi-info-circle px-0" style="font-size: 24px;color:#79c5e7;"></i>
+          <p class="col h6 info-text px-1">
+            透過虛擬(電子)圍籬，自動偵測計算人(物)與圍籬之間距離，一旦有人員靠近越區，系統會即時發出「警示通報」，以達到智能安全監控。
+          </p>
+        </div>
+        <a href="/ObjectDetect/dist_index">
+          <button class="btn btn-circle btn-sm my-3">Enter</button>
+        </a>
+      </div>
+      <div class="col px-4 mx-1">
+        <div style="height:400px;" class="d-flex align-items-center">
+          <img src="../static/img/obj_mode-01.png" width="100%" />
+
+        </div>
+        <h2 class="fw-bolder">範圍偵測模式</h2>
+        <div class="row my-4">
+          <i class="bi bi-info-circle px-0" style="font-size: 24px;color:#79c5e7;"></i>
+          <p class="col h6 info-text px-1">
+            可針對區域範圍進行監控辨識，自動偵測計算人(物)與圍籬之間距離，一旦有人員靠近越區，系統會即時發出「警示通報」。
+
+          </p>
+        </div>
+        <a href="/ObjectDetect/obj_index">
+          <button class="btn btn-circle btn-sm my-3">Enter</button>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+  <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+  <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+    integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+      // $('.row').width(screen.width);
+      // $('.row').height(screen.height * 0.7);
+    });
+
+  </script>
+</body>
+
+
+</html>

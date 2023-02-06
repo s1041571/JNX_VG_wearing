@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="Enterport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--ICON-->
+    <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+    <script src="../static/fontawesome-free-5.15.3-web/js/all.js"></script>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <!--BootstrapTable-->
+    <link rel="stylesheet" href="../static/bootstrap-table-master/dist/bootstrap-table.min.css">
+    <!-- Sweet Alert -->
+    <script src="../static/sweetalert2-11.0.0/sweetalert2.all.min.js"></script>
+    <!-- Loader Css-->
+    <link rel="stylesheet" href="../static/temp/loader-curtain.css" />
+    <link rel="stylesheet" href="../static/temp/w3.css" />
+    <link rel="stylesheet" href="../static/temp/masterpage.css" />
+    <link rel="stylesheet" href="../static/temp/vg_setting.css" />
+
+    <title>Vision Guard　設定頁</title>
+    <style>
+       .nav-link {
+           color: #4da3ff;
+       }
+    </style>
+</head>
+
+<body class="bg-light">
+    <header class="row text-left" style="padding-bottom: 75px;">
+        <div class="col-12">
+            <nav class="navbar navbar-master">
+                <span class="navbar-brand" href="#">
+                    <img src="../static/img/VG_LOGO2.png"  width="45" 
+                        class="d-inline-block align-center mb-1" alt="" >
+                    <nav class="navbar-text mx-2">
+                        <ol class="breadcrumb p-0 d-flex align-items-center">
+                          <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                          <li class="breadcrumb-item active">系統功能設定</li>
+                        </ol>
+                    </nav>
+                </span>
+                <ul class="nav justify-content-end  align-items-baseline" id="nav-btn-top">
+                    <li class="nav-item mr-1" data-toggle="tooltip" data-placement="bottom" title="首頁">
+                        <a href="/"><i class="fas fa-home navbar-btn"></i></a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <button class="btn" id="logout_Btn" data-toggle="tooltip" data-placement="bottom" title="登出">
+                            <i class="fas fa-sign-out-alt w3-text-red" style="font-size: 18px;"></i>
+                        </button>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row bg-white rounded shadow-sm mx-5 py-5 justify-content-center" style="min-height: 600px;">
+            <div class="col-md-4 col-lg-2 px-2">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link text-muted font-italic border-bottom mb-3">功能表</a>
+                    <a class="nav-link active row text-left"  data-toggle="pill" href="#v-pills-admin" role="tab" aria-selected="true">
+                        <span class="col-1 px-0 text-center"><i class="fas fa-user-tie" style="font-size:20px;width: 20px;"></i></span>
+                        <span class="col-auto">管理者權限</span>
+                    </a>
+                    <a class="nav-link row text-left"  data-toggle="pill" href="#v-pills-email" role="tab" aria-selected="false">
+                        <span class="col-1 px-0 text-center"><i class="fas fa-envelope" style="font-size:20px;width: 20px;"></i></span>
+                        <span class="col-auto">Email 通報</span>
+                    </a>
+                    <a class="nav-link row text-left"  data-toggle="pill" href="#v-pills-link" role="tab" aria-selected="false">
+                        <span class="col-1 px-0 text-center"><i class="fas fa-envelope" style="font-size:20px;width: 20px;"></i></span>
+                        <span class="col-auto">Link 通報</span>
+                    </a>
+                    <a class="nav-link row text-left" data-toggle="pill" href="#v-pills-line" role="tab" aria-selected="false">
+                        <span class="col-1 px-0 text-center"><i class="fab fa-line" style="font-size:25px;width: 20px;"></i></span>
+                        <span class="col-auto">LINE 通報</span>
+                    </a>
+                    <a class="nav-link row text-left" data-toggle="pill" href="#v-pills-cam" role="tab" aria-selected="false">
+                        <span class="col-1 px-0 text-center"><i class="fas fa-camera"  style="font-size:20px;width: 20px;"></i></span>
+                        <span class="col-auto">攝影機資訊</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-9 px-3">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-admin">
+                        <div class="row border-bottom mb-2 ml-1 d-flex align-items-center">
+                            <h5 class="col-auto pl-0 text-black-50 ">
+                                <i class="fas fa-user-tie"></i><b>&nbsp;身分權限管理</b>
+                            </h5>
+                            <button class="col-auto btn btn-sm btn-outline-primary mb-2 mx-1" onclick="createNewRow('admin_table')">
+                                <i class="fas fa-plus mr-1"></i>新增管理者</button>
+                        </div>
+                        <div class="row" style="z-index: 10;">
+                            <p class="col-12 text-muted ml-1"><i class="bi bi-info-circle mr-1"></i>進行項目更新／刪除後，請記得按儲存資料</p>
+                            <div class="col-md-12 col-lg-10">
+                                <table data-toggle="table" id="admin_table" class="table table-striped table-bordered text-center" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="id">帳號Account</th>
+                                            <th data-field="password">密碼Password</th>
+                                            <th data-field="edit">編輯</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for key,val in admin_dict.items() %}
+                                        <tr>
+                                            <td onclick="editContent(this)" name="id">{{key}}</td>
+                                            <td onclick="editContent(this)" name="password">{{val['password']}}</td>
+                                            <td>
+                                                <button class="btn btn-secondary" id="updateBtn" onclick="openModal(this,'AdminEditModal')">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button class="btn btn-danger" id="deleteBtn" onclick="delRow(this,'admin_table')">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-success my-3" onclick="saveTable('admin_table')"><i class="bi bi-check-all"></i>儲存變更</button>
+                            </div>
+                        </div>
+                        <img class="float-right" src="../static/img/management.png" width="180" style="opacity: 0.6;">
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-email">
+                        <div class="row border-bottom mb-2 ml-1 d-flex align-items-center">
+                            <h5 class="col-auto pl-0 text-black-50 ">
+                                <i class="fas fa-envelope"></i><b>&nbsp;Email通報設定</b>
+                            </h5>
+                            <button class="col-auto btn btn-sm btn-outline-primary mb-2 mx-1" onclick="addMailGroup()">
+                                <i class="fas fa-plus mr-1"></i>New Group</button>
+                        </div>
+                        <div class="row p-3" style="z-index: 10;">
+                            <div class="col-md-12">
+                                <div class="col-md-9">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        {% for key,value in mail_dict.items() %}
+                                        <div class="panel panel-default mail-panel" id="mail-panel-{{key}}">
+                                            <div class="row d-flex align-items-stretch">
+                                                <div class="panel-heading col mr-3">
+                                                    <h4 class="panel-title">
+                                                        <a class="border d-flex justify-content-between" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{key}}" aria-expanded="true">
+                                                            <span id="mail-group-name">{{key}}</span>
+                                                            <span class="mail-group-num">
+                                                                <i class="fas fa-users text-mute"></i> 
+                                                                <span class="badge badge-primary badge-pill">{{value|length}}</span>
+                                                            </span>
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <span class="py-3 mail-edit-btn text-primary">
+                                                    <a onclick="renameGroup(this)" data-toggle="tooltip" data-placement="top" title="重新命名群組">
+                                                        <i class="fas fa-pen"></i>
+                                                    </a>
+                                                    <a onclick="insertRow('{{key}}')" data-toggle="tooltip" data-placement="top" title="新增使用者">
+                                                        <i class="fas fa-plus"></i>
+                                                    </a>
+                                                    <a onclick="delGroup('{{key}}')" data-toggle="tooltip" data-placement="top" title="刪除群組">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </a>
+                                                </span>
+                                                {% if loop.index == 1%}
+                                                <div id="collapse-{{key}}" class="col-11 panel-collapse collapse show">
+                                                {% else %}
+                                                <div id="collapse-{{key}}" class="col-11 panel-collapse collapse">
+                                                {% endif %}
+                                                        <div class="panel-body px-0">
+                                                        <table id="mail-table-{{key}}" class="text-center" data-toggle="table" >
+                                                            <thead>
+                                                                <tr>
+                                                                    <th data-field="id" data-visible="false">ID</th>
+                                                                    <th data-field="name">UserName</th>
+                                                                    <th data-field="mail">Email</th>
+                                                                    <th data-field="edit">Edit</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for v in value %}
+                                                                <tr>
+                                                                    <td>{{v['id']}}</td>
+                                                                    <td>{{v['name']}}</td>
+                                                                    <td>{{v['mail']}}</td>
+                                                                    <td>
+                                                                        <a class="text-danger" onclick="delMember(this)"><i class="far fa-trash-alt "></i></a>
+                                                                    </td>
+                                                                </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                        <button class="btn btn-success my-2 float-right" onclick="saveTableData(this)"><i class="bi bi-check-all"></i>儲存變更</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <img class="float-right" src="../static/img/email-marketing.png" width="200" style="opacity: 0.6;">
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-link">
+                        <div class="row border-bottom mb-2 ml-1 d-flex align-items-center">
+                            <h5 class="col-auto pl-0 text-black-50 ">
+                                <i class="fab fa-line"></i><b>&nbsp;Link通報設定</b>
+                            </h5>
+                        </div>
+                        <div class="row" style="z-index: 10;">
+                            <p class="col-12 text-muted ml-1"><i class="bi bi-magic mr-1"></i></p>
+                            <div class="col-md-10 col-lg-6 mx-3">
+                                <div class="form-group">
+                                    <label class="h5">systemCode</label>
+                                    <input type="text" class="form-control text-center" id="input_link_systemCode" value="{{link_json['systemCode']}}">
+                                    <label class="h5">subCateNo</label>
+                                    <input type="text" class="form-control text-center" id="input_link_subCateNo" value="{{link_json['subCateNo']}}">
+                                </div>
+                                <button class="btn btn-success my-2 float-left" onclick="save_link_setting()"><i class="bi bi-check-all"></i>儲存變更</button>
+                            </div>
+                            
+                        </div>
+                        <img class="float-right" src="../static/img/line-marketing.png" width="200" style="opacity: 0.6;">
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-line">
+                        <div class="row border-bottom mb-2 ml-1 d-flex align-items-center">
+                            <h5 class="col-auto pl-0 text-black-50 ">
+                                <i class="fab fa-line"></i><b>&nbsp;LINE通報設定</b>
+                            </h5>
+                        </div>
+                        <div class="row" style="z-index: 10;">
+                            <p class="col-12 text-muted ml-1"><i class="bi bi-magic mr-1"></i></p>
+                            <div class="col-md-10 col-lg-6 mx-3">
+                                <div class="form-group">
+                                    <label class="h5">LINE Token(權杖)</label>
+                                    <input type="text" class="form-control text-center" id="input_line_token" value="{{line_dict['token']}}">
+                                    <p class="form-text text-muted">未有權杖，請先至 <a class="text-success" target="_blank" href="https://notify-bot.line.me/zh_TW/">LINE Notify API</a>
+                                    申請Token權杖 / 開通服務。</p>
+                                </div>
+                                <button class="btn btn-success my-2 float-left" onclick="save_line_setting()"><i class="bi bi-check-all"></i>儲存變更</button>
+                            </div>
+                            
+                        </div>
+                        <img class="float-right" src="../static/img/line-marketing.png" width="200" style="opacity: 0.6;">
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-cam">
+                        <div class="row border-bottom mb-2 ml-1 d-flex align-items-center">
+                            <h5 class="col-auto pl-0 text-black-50 ">
+                                <i class="fas fa-camera"></i><b>&nbsp;攝影機資訊設定</b>
+                            </h5>
+                            <button class="col-auto btn btn-outline-primary mb-2 mx-1" onclick="createNewRow('cam_table')">
+                                <i class="fas fa-plus mr-1"></i>新增</button>
+                        </div>
+                        <div class="row" style="z-index: 10;">
+                            <p class="col-12 text-muted ml-1"><i class="bi bi-info-circle mr-1"></i>進行項目更新／刪除後，請記得按儲存資料</p>
+                            <div class="col-md-12 col-lg-10">
+                                <table data-toggle="table" id="cam_table" class="table table-striped table-bordered text-center" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="id">攝影機ID</th>
+                                            <th data-field="site">設置區域</th>
+                                            <th data-field="ip">IP / 連接字串</th>
+                                            <th data-field="edit">編輯</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for key,val in cam_dict.items() %}
+                                        <tr>
+                                            <td onclick="editContent(this)" name="id">{{key}}</td>
+                                            <td onclick="editContent(this)" name="site">{{val.split(',')[0]}}</td>
+                                            <td onclick="editContent(this)" name="ip">{{val.split(',')[1]}}</td>
+                                            <td>
+                                                <button class="btn btn-secondary" id="updateBtn" onclick="openModal(this,'CamEditModal')">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button class="btn btn-danger" id="deleteBtn" onclick="delRow(this,'cam_table')">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <button class="btn btn-success my-3" onclick="saveTable('cam_table')"><i class="bi bi-check-all"></i>儲存變更</button>
+                            </div>
+                        </div>
+                        <img class="float-right" src="../static/img/security-camera.png" width="200" style="opacity: 0.7;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--編輯Cam Modal-->
+    <div class="modal fade" id="CamEditModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title"><i class="fas fa-edit mr-1"></i>編輯攝影機資訊</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                    <label for="edit_camid" class="col-form-label">Camera ID</label>
+                    <input type="text" class="form-control" id="edit_camid">
+                </div>
+                <div class="form-group">
+                    <label for="edit_site" class="col-form-label">設置區域</label>
+                    <input type="text" class="form-control" id="edit_site">
+                </div>
+                <div class="form-group">
+                    <label for="edit_ip" class="col-form-label">IP / 連接字串</label>
+                    <input type="text" class="form-control" id="edit_camip">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+              <button type="button" class="btn btn-primary" id="cam_updateBtn" onclick="updateRow()">儲存變更</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--編輯權限者Modal-->
+    <div class="modal fade" id="AdminEditModal" tabindex="-1">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title"><i class="fas fa-edit mr-1"></i>編輯權限管理者資訊</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p class="col-12 text-muted mx-auto"><i class="bi bi-info-circle mr-1"></i>如需變更帳號，請刪除帳戶後再重新建立！</p>
+                <form>
+                <div class="form-group">
+                    <label for="edit_password" class="col-form-label">更改密碼</label>
+                    <input type="text" class="form-control" id="edit_password">
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+              <button type="button" class="btn btn-primary" id="admin_updateBtn" onclick="updateRow()">儲存變更</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+    <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+    <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+    <script src="../static/temp/vg_setting.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        
+    </script>
+</body>

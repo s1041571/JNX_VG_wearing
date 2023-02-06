@@ -1,0 +1,1193 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="Enterport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--ICON-->
+    <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <!-- Sweet Alert -->
+    <script src="../static/sweetalert-master/sweetalert.min.js"></script>
+    <!--Bootstrap Table-->
+    <link rel="stylesheet" href="../static/bootstrap-table-master/dist/bootstrap-table.min.css" />
+    <!--w3 CSS-->
+    <link rel="stylesheet" href="../static/temp/w3.css" />
+    <!-- dragula -->
+    <link rel="stylesheet" href="../static/dragula-master/dragula.css" />
+    <link rel="stylesheet" href="../static/temp/wear_model_train.css" />
+    <link rel="stylesheet" href="../static/temp/wear_model_opt.css" />
+    <link rel="stylesheet" href="../static/temp/masterpage.css" />
+    <!-- Loader Css-->
+    <link rel="stylesheet" href="../static/temp/loader-curtain.css" />
+
+    <title>裝備穿戴偵測_Vision Guard</title>
+    <style>
+        body {
+            font-family: 'Muli', 'Noto Sans TC', '微軟正黑體';
+        }
+
+        .bootstrap-table .fixed-table-container .table tbody tr.selected td {
+            background-color: lemonchiffon;
+        }
+
+        #hr_row {
+            background-image: linear-gradient(to right, rgba(242, 123, 59, 1) 0%, rgba(242, 123, 59, 0.6) 50%, rgba(242, 123, 59, 0) 100%);
+            width: 100%;
+            height: 3px;
+        }
+
+        .kanban-card {
+            cursor: pointer;
+        }
+
+        #myBar {
+            width: 0%;
+            height: 60px;
+            /* background-color: #04AA6D; */
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+        .file_list,.modal_file_list{
+            outline: none;
+        }
+    </style>
+</head>
+
+<body class="bg-light pt-2" style="overflow: auto;" id="body">
+    <header class="row text-left" style="padding-bottom: 75px;">
+        <div class="col-12">
+            <nav class="navbar navbar-master">
+                <span class="navbar-brand text-center" href="#">
+                    <img src="../static/img/VG_LOGO2.png" width="45"
+                        class="d-inline-block align-center mb-1" alt="" >
+                    <nav class="navbar-text mx-2">
+                      <ol class="breadcrumb p-0 d-flex align-items-center">
+                        <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                        <li class="breadcrumb-item"><a href="/wearing/index">裝備偵測系統</a></li>
+                        <li class="breadcrumb-item active">模型訓練</li>
+                      </ol>
+                    </nav>
+                </span>
+                <ul class="nav mr-auto" id="nav_items_list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/wearing/index">穿戴辨識</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/wearing/model_OPT">模型優化</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/wearing/wear_setting">功能設定</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/wearing/log_review">異常發報訊息</a>
+                    </li>
+                </ul>
+                <ul class="nav" id="nav-btn-top">
+                    <li class="nav-item mr-1" data-toggle="tooltip" data-placement="bottom" title="首頁">
+                        <a href="/"><i class="fas fa-home navbar-btn"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row mt-4 mx-2 " style="margin-bottom: 8%;">
+            <div class=" col-5  align-items-center d-flex">
+                <img src="../static/img/developer_outline I.png" width="100%" />
+            </div>
+            <div class="col  mx-5">
+                <div class="row justify-content-center d-flex">
+                    <div class="col mx-4">
+                        <div class="row px-1  mt-5 mb-1 mr-1">
+                            <div class="col">
+                                <div class="form-group row">
+                                    <label class="col-auto fw-bold col-form-label col-form-label-lg"><i
+                                            class="fas fa-user mr-1 w3-text-orange "></i>部位</label>
+                                    <select class="col form-select form-select-lg" id="body_select_list">
+                                        <option value="head">head</option>
+                                        <option value="hand">hand</option>
+                                        <option value="body">body</option>
+                                        <option value="foot">foot</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col ml-3">
+                                <div class="form-group row">
+                                    <label class="col-auto fw-bold col-form-label col-form-label-lg"><i
+                                            class="fas fa-hard-hat  mr-1 w3-text-orange "></i>類別</label>
+                                    <select class="col form-select form-select-lg" id="class_select_list">
+                                        <!-- <option value="">口罩</option>
+                                        <option value="">護目鏡</option>
+                                        <option value="">安全帽</option> -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-11 ">
+                        <div class="row p-2 bg-white justify-content-between align-items-center"
+                            style="border-radius: 18px;    box-shadow: 1px 1px 10px rgba(209,209,209, 0.2); ">
+                            <div class="col p-0">
+                                <div class="my-auto ml-1 p-3 text-center fw-bold" id="list_icon_text"
+                                    style="font-size:16px;">原始資料</div>
+                            </div>
+                            <div class="col text-right text-muted" id="og_dataNum_o">有 - NaN張</div>
+                            <div class="col text-right text-muted" id="og_dataNum_x">無 - NaN張</div>
+                            <div class="col text-right">
+                                <button class="btn m-auto" data-toggle="tooltip" data-bs-placement="top" title="資料加載"
+                                    onclick="og_data_load()"
+                                    style="color:#FBB24F;background: #fff4e5;border-radius: 30px;width: 35px;height: 35px;">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-11">
+                        <div class="row  p-3 bg-white justify-content-between align-items-baseline my-2"
+                            style="border-radius: 18px;    box-shadow: 1px 1px 10px rgba(209,209,209, 0.2); ">
+                            <h4 class="mt-1 mb-3 fw-bold col-12">
+                                <i class="fas fa-hashtag mr-1" style="color:#fb9f24;"></i>
+                                Image Collection by Camera
+                            </h4>
+                            <div class="col-md-12 col-lg-5">
+                                <div class="form-group row">
+                                    <label class="col-auto col-form-label col-form-label">
+                                        <i class="fas fa-clone mr-1 text-muted"></i>間隔
+                                    </label>
+                                    <div class="col input-group">
+                                        <input type="number" class="form-control text-center" value="30" id="collect_interval"> 
+                                        <div class="input-group-append">
+                                          <span class="input-group-text">Frame</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-4">
+                                <div class="form-group row">
+                                    <label class="col-auto col-form-label col-form-label">
+                                        <i class="fas fa-clone mr-1 text-muted"></i>有無穿戴
+                                    </label>
+                                    <select class="col form-select form-select text-center" , id='collect_type'>
+                                        <option>有</option>
+                                        <option>無</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-3 px-4">
+                                <div class="form-group row">
+                                    <label class="col-auto col-form-label col-form-label">
+                                        <i class="fas fa-clone mr-1 text-muted"></i>虛擬圍籬功能
+                                    </label>
+                                    <div class="col my-auto mx-3 form-check form-switch">
+                                        <input class="form-check-input" type="checkbox"  id="switch_fence">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg text-right">
+                                <button class="btn btn-outline-success mt-0" onclick="start_camera_img_collect()">
+                                    <i class="fas fa-play mr-1"></i>START
+                                </button>
+                            </div>
+                            <div class="col-md-6 col-lg p-0 m-0">
+                                <button class="btn btn-outline-danger" onclick="stop_camera_img_collect()">
+                                    <i class="fas fa-stop mr-1"></i>STOP
+                                </button>
+                            </div>
+                            <div class="col-lg-12 text-center mt-3">
+                                <label class="text-muted">
+                                    <span
+                                        class="badge badge-danger mx-1">提醒</span>點擊開始後，下方將會跳出影像擷取視窗，如需結束請點擊停止鍵。</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row p-5  mt-5 tab-pane collapse" id="img_data_div"
+            style="background-image: url(../static/img/global_bg.jpg);background-size: cover;background-position: bottom;">
+            <div class="col-12 text-white text-center">
+                <h2 class="fw-bolder " style="text-shadow: 2px 2px 4px rgba(148, 86, 2, 0.8);">影像資料收集</h2>
+            </div>
+            <div class="col-2">
+            </div>
+            <div class="col p-3 bg-white" style="border-radius: 20px;">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="../static/img/live (1).png" width="120px" id="live_icon"
+                            style="position: absolute;right:1%;top:-3%;" />
+                        <img src="/stream/wearCollection" width="100%" style="border-radius: 18px;" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-2">
+            </div>
+            <div class="col-12 text-center">
+                <button class="btn btn-lg  col-1 text-center" onclick="stop_camera_img_collect()">
+                    <img src="../static/img/stop-button.png" width="70%" data-toggle="tooltip"
+                        data-bs-placement="bottom" title="停止收集">
+                </button>
+            </div>
+        </div>
+
+        <div class="row pt-5 d-flex align-items-center" style="background: #20233e;padding-bottom: 14%;">
+            <div class="col-12 text-white text-center">
+                <h2 class="fw-bolder ">資料審核<i class="fas fa-search ml-1"></i></h2>
+            </div>
+            <div class="col-1">
+            </div>
+            <div class="col p-3 bg-white" style="border-radius: 20px;">
+                <div class="row">
+                    <div class="col-12 my-2 d-flex justify-content-center">
+                        <div class="col-5 align-items-center d-flex">
+                            <p class="row mt-1 p-2 fw-bold " id="side_text">檔案預覽框</p>
+                            <img src="http://fakeimg.pl/620x340/?text=File Review" width="100%"
+                                style="border-radius: 18px;" id="img_review" />
+                        </div>
+                    </div>
+                    <div class="col-12 text-center mb-2">
+                        <h5 class="fw-bold text-muted" id="review_file_name">預覽檔名 FileName</h5>
+                    </div>
+                    <div class="col  p-3 mx-2 ml-5 text-center" style="border-radius: 18px;">
+                        <div class="card  border-1 text-center" style="border-radius: 18px;">
+                            <button class="list_clear_btn btn btn-sm btn-light border text-muted" name="btn_delete_has">
+                                <i class="bi bi-trash2-fill mr-1"></i>清空
+                            </button>
+                            <div class="card-body pt-1 pb-0">
+                                <div class="card-left-icon"><img src="../static/img/yes_o.png" width="35%" /></div>
+                                <div class="pt-1 mb-2 file_list" id="file_list_o" tabindex="0">
+                                    <!-- <p class="card-list-item">檔案1</p> -->
+                                </div>
+                            </div>
+                            <div class="file_list_o_footer">
+                                <b style="font-size: 18px;">有</b>穿戴裝備
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary  mt-2" style="font-weight: 500;"
+                            onclick="final_data_load('has')">
+                            <i class="bi  bi-save2 mr-1"></i>資料加載
+                        </button>
+                    </div>
+                    <div style="width: 25px;font-size: 30px;" class="d-flex align-items-center">
+                    </div>
+                    <div class="col  p-3 mx-2 mr-5 text-center" style="border-radius: 18px;">
+                        <div class="card  text-center" style="border-radius: 18px;">
+                            <button class="list_clear_btn btn btn-sm btn-light border text-muted" name="btn_delete_no">
+                                <i class="bi bi-trash2-fill mr-1"></i>清空
+                            </button>
+                            <div class="card-body pt-2 pb-0">
+                                <div class="card-left-icon "><img src="../static/img/no_b.png" width="35%" /></div>
+                                <div class="pt-1 mb-2 file_list" id="file_list_x" tabindex="0">
+                                </div>
+                            </div>
+                            <div class="file_list_x_footer ">
+                                <b style="font-size: 18px;">無</b>穿戴裝備
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary  mt-2" style="font-weight: 500;"
+                            onclick="final_data_load('no')">
+                            <i class="bi  bi-save2 mr-1"></i>資料加載
+                        </button>
+                    </div>
+                    <div class="col-12  text-center d-flex justify-content-center" style="margin-top: 95px;">
+                        <h2 class="fw-bolder  col-3 px-3" style="border-bottom: 5px solid #fb9f24;">Total Train Data
+                        </h2>
+                    </div>
+                    <div class="col-7 p-0">
+                        <img src="../static/img/scrum-board-2.png" width="100%" />
+                    </div>
+                    <div class="col ml-5 my-auto ">
+                        <div class="form-group row  d-flex align-items-center">
+                            <label class="fw-bold h3 col-auto">有裝備</label>
+                            <input type="number" class="col-4 border rounded-sm text-center form-control-plaintext mr-1"
+                                readonly value="0" id="input_equd"> 張
+                            <button class="btn btn-sm btn-primary col-auto mx-2" id="review-btn-o">Review</button>
+                        </div>
+                        <div class="form-group row  d-flex align-items-center">
+                            <label class="fw-bold h3 col-auto">無裝備</label>
+                            <input type="number" class="col-4 border rounded-sm text-center form-control-plaintext mr-1"
+                                readonly value="0" id="input_unequd"> 張
+                            <button class="btn btn-sm btn-primary col-auto mx-2" id="review-btn-x">Review</button>
+                        </div>
+                        <button class="btn btn-lg btn-danger col-5 mx-2 fw-bold" onclick="model_train()">模型訓練</button>
+                    </div>
+                    <!-- jack add -->
+                    <!-- <div id="myProgress">
+                        <div id="myBar">0%</div>
+                    </div> -->
+                    <div class="col-12 px-4">
+                        <div id="myProgress" class="progress" style="height: 50px;">
+                            <div id="myBar" class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                10%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Model -->
+    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modal-div">
+        <div class="modal-dialog  modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row  d-flex justify-content-start align-items-center">
+                        <div class="col-auto text-right">
+                            <img src="../static/img/google-docs.png" width="45px" />
+                        </div>
+                        <div class="col px-0">
+                            <h3 class="fw-bolder  my-1">
+                                狀態：<span class="modal_flag"></span>裝備
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row px-4">
+                        <label class="text-muted text-center">點擊檔案可進行預覽，如需移除檔案請拖曳項目到清單外即可。</label>
+                        <div class="col-6 align-items-center d-flex">
+                            <p class="row mt-1 p-2 fw-bold " id="side_text">檔案預覽框</p>
+                            <img src="http://fakeimg.pl/510x320/f7f6ff/d8d8d6/?text=File Review" width="100%"
+                                style="border-radius: 18px;" id="modal_img_review" />
+                        </div>
+                        <div class="col">
+                            <div class="card  border-1 text-center" style="border-radius: 18px;height: 100%;">
+                                <button class="list_clear_btn btn btn-sm btn-light border text-muted"
+                                    name='btn_delete_review'>
+                                    <i class="bi bi-trash2-fill mr-1"></i>清空
+                                </button>
+                                <div class="card-body pt-1 pb-0">
+                                    <div class="pt-1 mb-1  file_list modal_file_list" tabindex="0">
+                                        <!-- <p class="card-list-item">檔案1</p>
+                                        <p class="card-list-item">檔案2</p>
+                                        <p class="card-list-item">檔案3</p> -->
+                                    </div>
+                                </div>
+                                <div class="modal_file_footer">
+                                    <b style="font-size: 18px;" class="modal_flag"></b>穿戴裝備
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="mx-auto mt-3">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消返回</button>
+                            <!-- jack 先把儲存按鈕拿掉，因為好像用不到 -->
+                            <!-- <button type="button" class="btn btn-primary" id="modal_save_btn">儲存變更</button> -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Loading div -->
+    <div id="data_loading" class="loader loader-curtain is-active" data-curtain-text="資料載入中..."></div>
+    <div id="model_loading" class="loader loader-curtain is-active" data-curtain-text="模型載入中..."></div>
+    <div id="model_training" class="loader loader-curtain is-active" data-curtain-text="模型訓練中..."></div>
+
+
+    <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+    <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+    <script src="../static/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="../static/bootstrap-5.0.0-beta3-dist/js/bootstrap.min.js"></script>
+    <script src="../static/bootstrap-5.0.0-beta3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
+    <script src="../static/jquery-smartwizard-master/dist/js/jquery.smartWizard.min.js"></script>
+    <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+    <script src="../static/dragula-master/dragula.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.1/dist/echarts.min.js"></script>
+
+    <!--前後端資料傳接-->
+    <script>
+        var TRAIN_CHECK_DIR = ''
+        var TRAIN_DIR = ''
+        $(document).ready(function () {
+            $('#data_loading').hide();
+            $('#model_loading').hide();
+            $('#model_training').hide();   
+            var selected = $('#body_select_list').val();
+            {% for body, items in class_data_list.items() %}
+            if (selected == "{{body}}") {
+                {% for i in items %}
+                $("#class_select_list").append(" <option value='{{i}}'>{{i}}</option>");
+                {% endfor %}
+            }
+            {% endfor %}
+            get_class_ogdata_num();
+
+            // 這邊從後端得到 訓練check 跟 待訓練資料 的資料夾名稱，
+            // 當把資料從 check 載入到下方的待訓練區時，圖片路徑的資料夾名稱要 從 TRAIN_CHECK_DIR 變成 TRAIN_DIR
+            $.ajax({
+                type: 'POST',
+                url: "/wearing/get_train_data_dir",
+                success: function (result) {
+                    // console.log(result)
+                    TRAIN_CHECK_DIR = result.check_dir
+                    TRAIN_DIR = result.train_dir
+                    console.log('TRAIN_CHECK_DIR: ' + TRAIN_CHECK_DIR)
+                    console.log('TRAIN_DIR: ' + TRAIN_DIR)
+                },
+                error: function (errorInfo) {
+                    swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                }
+            });
+        });
+
+        $('#body_select_list').change(function () {
+            var selected_item = $('#body_select_list').val();
+            $('#class_select_list').empty();
+            {% for body, items in class_data_list.items() %}
+            if (selected_item == "{{body}}") {
+                {% for i in items %}
+                $("#class_select_list").append(" <option value='{{i}}'>{{i}}</option>");
+                {% endfor %}
+            }
+            {% endfor %}
+            
+            //先刪除收集或已放入待訓練的資料
+            delete_type = 'all'
+            $.ajax({
+                type: 'POST',
+                url: `/wearing/model_train/delete_data/${delete_type}`,
+                beforeSend: function () {
+                    $('#data_loading').show();
+                },
+                success: function (result) {
+                    $('.file_list').html("<img src='../static/img/undraw_No_data.png' width='185px'/><h5 class='text-muted'>No Data</h5>");
+                    $('#input_equd, #input_unequd').val(0);
+                    setTimeout(function () {
+                        $('#data_loading').hide()
+                    }, 1250);
+                },
+                error: function (errorInfo) {
+                    swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                }
+            });
+            get_class_ogdata_num();  //後端要資料
+        });
+
+        $("#body_select_list, #class_select_list").on('focus', function () {
+            swal({
+                    title: "切換前提醒",
+                    text: "切換新類別將會移除已收集的照片資料，包含待訓練照片！",
+                    icon: "info",
+                    buttons: false,
+                    timer: 1200
+                })
+        });
+
+        $('#class_select_list').change(function() {
+            //先刪除收集或已放入待訓練的資料
+            delete_type = 'all'
+            $.ajax({
+                type: 'POST',
+                url: `/wearing/model_train/delete_data/${delete_type}`,
+                beforeSend: function () {
+                    $('#data_loading').show();
+                },
+                success: function (result) {
+                    // $('.file_list').html("<img src='../static/img/undraw_No_data.png' width='185px'/><h5 class='text-muted'>No Data</h5>");
+                    $('#input_equd, #input_unequd').val(0);
+                    setTimeout(function () {
+                        $('#data_loading').hide()
+                    }, 1250);
+                },
+                error: function (errorInfo) {
+                    swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                }
+            });
+            get_class_ogdata_num();
+        });
+
+
+        // jack add
+        var name_to_path = {}
+
+        function fixedEncodeURIComponent(str) {
+            return encodeURIComponent(str).replace(/[!'()*]/g, function (c) {
+                return '%' + c.charCodeAt(0).toString(16);
+            });
+        }
+
+        //點擊、預覽影像 的程式碼
+        function get_review_file_request_url_check(filename) {
+            path = name_to_path[filename]
+            console.log("path: " + path)
+            path = fixedEncodeURIComponent(path)
+            request_url = `/show_photo?filepath=${path}`
+            return request_url
+        }
+
+        function get_review_file_request_url_train(filename) {
+            path = name_to_path[filename]
+            path = path.replace(TRAIN_CHECK_DIR, TRAIN_DIR)
+            console.log("path: " + path)
+            path = fixedEncodeURIComponent(path)
+            request_url = `/show_photo?filepath=${path}`
+            return request_url
+        }
+
+        let last_click_reviewfile = null;
+
+        function show_check_img(obj) {
+            filename = $(obj).html()+'.png'
+            path = 'tmp_training_check_data'
+            // request_url = get_review_file_request_url_check(filename)
+            if($(obj).parent()[0].id.split('_').pop() == 'o')
+                path += "/has"
+            else
+                path += "/no"
+            request_url = `/show_photo?sys=wearing&path=${path}/${filename}`
+            console.log(request_url)
+            $('#img_review').attr("src", request_url);
+            $(last_click_reviewfile).css('background','#fac738'); //先把舊的顏色改回黃色
+            last_click_reviewfile = obj
+            $(last_click_reviewfile).css('background','#386bfa');   //新的標色
+            $(obj).parent().focus();
+            //適時調整滾動條 滾動到與正預覽檔案的位置
+            if( $(obj).parent()[0].scrollTop + $(obj).parent().height() < ($(obj).parent()[0].scrollHeight*0.95)){
+                $(obj).parent().animate({ 
+        　　        scrollTop: $(obj).offset().top - $(obj).parent().offset().top + $(obj).parent().scrollTop() -25
+        　　    })
+            }
+            $('#review_file_name').html(`${filename}`);
+        }
+
+        function show_train_img(obj) {
+            filename = $(obj).html()+'.png'
+            path = 'tmp_training_data'
+            if($('.modal_flag').html() == '有')
+                path += "/has"
+            else
+                path += "/no"
+            request_url = `/show_photo?sys=wearing&path=${path}/${filename}`
+            // request_url = get_review_file_request_url_train(filename)
+            console.log(`show train: ${request_url}`)
+            $('#modal_img_review').attr("src", request_url);
+            $(last_click_reviewfile).css('background','#fac738'); //先把舊的顏色改回黃色
+            last_click_reviewfile = obj
+            $(last_click_reviewfile).css('background','#386bfa');   //新的標色
+            $(obj).parent().focus();
+            //適時調整滾動條 滾動到與正預覽檔案的位置
+            if( $(obj).parent()[0].scrollTop + $(obj).parent().height() < ($(obj).parent()[0].scrollHeight*0.95)){
+                $(obj).parent().animate({ 
+        　　        scrollTop: $(obj).offset().top - $(obj).parent().offset().top + $(obj).parent().scrollTop() -25
+        　　    })
+            }
+            $('#review_file_name').html(`${filename}`);
+        }
+
+        //鍵盤操控 上下查看檔案
+        $('.file_list:not(.modal_file_list)').on('keydown', function(event){
+            console.log(event.keyCode);
+            if(!last_click_reviewfile){
+                swal({title: "注意", text: "首次使用鍵盤操控，請先按要瀏覽的檔案才得以控制", icon: "info", buttons: true})
+            }
+            else{
+                var index =$(`#${last_click_reviewfile.parentElement.id}`).children().index(last_click_reviewfile);
+                if(event.which == 38){ // 按 Up
+                    var prev_obj = $(`#${last_click_reviewfile.parentElement.id}`).children().eq(index).prev()[0];
+                    console.log('按上');
+                    if (prev_obj)
+                        show_check_img(prev_obj);
+                }
+                if(event.which == 40){ // 按 Down
+                    var next_obj = $(`#${last_click_reviewfile.parentElement.id}`).children().eq(index).next()[0];
+                    console.log('按下');
+                    if (next_obj)
+                        show_check_img(next_obj);
+                }
+            }
+        });
+
+        $('.modal_file_list').on('keydown', function(event){
+            console.log(event.keyCode);
+            if(!last_click_reviewfile){
+                swal({title: "注意", text: "首次使用鍵盤操控，請先按要瀏覽的檔案才得以控制", icon: "info", buttons: true})
+            }
+            else{
+                var index =$('.modal_file_list').children().index(last_click_reviewfile);
+                if(event.which == 38){ // 按 Up
+                    var prev_obj = $('.modal_file_list').children().eq(index).prev()[0];
+                    console.log('按上');
+                    if (prev_obj)
+                        show_train_img(prev_obj);
+                }
+                if(event.which == 40){ // 按 Down
+                    var next_obj = $('.modal_file_list').children().eq(index).next()[0];
+                    console.log('按下');
+                    if (next_obj)
+                        show_train_img(next_obj);
+                }
+            }
+        });
+
+        function insert_data_to_card_list(data, list_id) {
+            for (const name_path of data) {
+                name = name_path[0]
+                path = name_path[1]
+                $(list_id).append(`<p class="card-list-item" onclick="show_check_img(this)">${name}</p>`)
+                name_to_path[name] = path
+            }
+        }
+
+        //原始資料載入Btn
+        function og_data_load() {
+            if (($('#file_list_o').find('p')).length > 0 || ($('#file_list_x').find('p')).length > 0) {
+                swal(
+                    {
+                        title: "執行前確認",
+                        text: "審核清單上尚有資料！！\n新加載的資料會直接合併到當前清單\n確認是否繼續執行?",
+                        icon: "warning",
+                        buttons: true,
+                    })
+                    .then((setName) => {
+                        if (setName) {
+                            $('.file_list:not(.modal_file_list)').empty();
+                            // backend_DataLoad();
+                            var result = get_class_ogdata();
+                            insert_data_to_card_list(result.og_data_o, '#file_list_o')
+                            insert_data_to_card_list(result.og_data_x, '#file_list_x')
+                        }
+                    });
+
+            }
+            else {
+                var result = get_class_ogdata();
+                $('.file_list:not(.modal_file_list)').empty(); //為了刪除 no data圖片內容
+                insert_data_to_card_list(result.og_data_o, '#file_list_o')
+                insert_data_to_card_list(result.og_data_x, '#file_list_x')
+            }
+
+        }
+
+
+        //當選單變更時 向後端請求該裝備的 原始資料 數量
+        function get_class_ogdata_num() {
+            selected_part = $('#body_select_list').val()
+            selected_class = $('#class_select_list').val()
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: "/wearing/model_train/og_data_num",
+                data: {
+                    "part": selected_part,
+                    "class": selected_class
+                },
+                beforeSend: function () {
+                    $('#data_loading').show();
+                },
+                success: function (result) {
+                    $('#og_dataNum_o').html("有 - " + result.og_dataNum[0] + "張");
+                    $('#og_dataNum_x').html("無 - " + result.og_dataNum[1] + "張");
+                    setTimeout(function () {
+                        $('#data_loading').hide()
+                    }, 1250);
+                },
+                error: function (errorInfo) {
+                    swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                }
+            });
+        }
+
+
+        function get_class_ogdata() {
+            selected_part = $('#body_select_list').val()
+            selected_class = $('#class_select_list').val()
+            var res = "";
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: "/wearing/model_train/og_data_load",
+                data: {
+                    "part": selected_part,
+                    "class": selected_class
+                },
+                beforeSend: function () {
+                    $('#data_loading').show();
+                },
+                success: function (result) {
+                    res = result;
+                    setTimeout(function () {
+                        $('#data_loading').hide()
+                    }, 1250);
+                },
+                error: function (errorInfo) {
+                    swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                }
+            });
+            return res;
+        }
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+
+            if (($('#file_list_o').find('p')).length == 0) {
+                $('#file_list_o').html("<img src='../static/img/undraw_No_data.png' width='185px'/><h5 class='text-muted'>No Data</h5>");
+            }
+            if (($('#file_list_x').find('p')).length == 0) {
+                $('#file_list_x').html("<img src='../static/img/undraw_No_data.png' width='185px'/><h5 class='text-muted'>No Data</h5>");
+            }
+
+        });
+
+
+        review_type = ''
+        // review 按鈕(有裝備 Modal)
+        $("#review-btn-o").click(function () {
+            $(last_click_reviewfile).css('background','#fac738'); //先把舊的顏色改回黃色
+            last_click_reviewfile = null;
+            review_type = 'final_has'
+            $('#modal-div').modal('show');
+            $('.modal').find('.modal_flag').html('有');
+            $('.modal_file_list').find('.modal_file_o').show();
+            $('.modal_file_list').find('.modal_file_x').hide();
+            $('#modal_img_review').attr("src", "http://fakeimg.pl/510x320/f7f6ff/d8d8d6/?text=File Review");
+
+        });
+        // review 按鈕(無裝備 Modal)
+        $("#review-btn-x").click(function () {
+            
+            review_type = 'final_no'
+            $('#modal-div').modal('show');
+            $('.modal').find('.modal_flag').html('無');
+            $('.modal_file_list').find('.modal_file_x').show();
+            $('.modal_file_list').find('.modal_file_o').hide();
+            $('#modal_img_review').attr("src", "http://fakeimg.pl/510x320/f7f6ff/d8d8d6/?text=File Review");
+
+        });
+
+        //清空資料按鈕
+        $(".list_clear_btn").click(function (event) {
+            swal(
+                {
+                    title: "檔案清空確認",
+                    text: "此動作會刪除資料，確定要清空嗎?",
+                    icon: "warning",
+                    buttons: true,
+                })
+                .then((setName) => {
+                    if (setName) {
+                        // $(this).parent().find('.file_list').empty();
+                        btn_name = $(this)[0].name
+                        
+
+                        delete_type = ""
+                        if (btn_name == 'btn_delete_has') {
+                            $(this).parent().find('.file_list').empty();
+                            $('#file_list_o').html("<img src='../static/img/undraw_No_data.png' width='185px'/><h5 class='text-muted'>No Data</h5>");
+                            delete_type = "has"
+                        }
+
+                        if (btn_name == 'btn_delete_no') {
+                            $(this).parent().find('.file_list').empty();
+                            $('#file_list_x').html("<img src='../static/img/undraw_No_data.png' width='185px'/><h5 class='text-muted'>No Data</h5>");
+                            delete_type = "no"
+                        }
+
+                        if (btn_name == 'btn_delete_review') {
+                            if( $('.modal_flag').html()=="有")
+                                $('.modal_file_list').find('.modal_file_o').remove();
+                            else if($('.modal_flag').html()=="無")
+                                $('.modal_file_list').find('.modal_file_x').remove();
+                            delete_type = review_type
+                        }
+                        if (($(this).parent().find('.modal_file_list')).length > 0) {
+                            $('#input_equd').val(($('.modal_file_list').find('.modal_file_o')).length);
+                            $('#input_unequd').val(($('.modal_file_list').find('.modal_file_x')).length);
+                        }
+                        $.ajax({
+                            type: 'POST',
+                            url: `/wearing/model_train/delete_data/${delete_type}`,
+                            beforeSend: function () {
+                                $('#data_loading').show();
+                            },
+                            success: function (result) {
+                                setTimeout(function () {
+                                    $('#data_loading').hide()
+                                }, 1250);
+                            },
+                            error: function (errorInfo) {
+                                swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                            }
+                        });
+                    }
+                });
+        });
+
+        //modal 修改儲存按鈕
+        $('#modal_save_btn').click(function (event) {
+            swal(
+                {
+                    title: "確定儲存變更",
+                    text: "要保存更新後的資料嗎?",
+                    icon: "warning",
+                    buttons: true,
+                })
+                .then((setName) => {
+                    if (setName) {
+                        //判斷是 有裝備 還是 無裝備 的modal
+                        if ($('.modal_flag').html() == "有") {
+                            //有修改變動 後端更新資料
+                            $('#input_equd').val(($('.modal_file_list').find('.modal_file_o')).length);
+                        }
+                        else {
+                            //有修改變動 後端更新資料
+                            $('#input_unequd').val(($('.modal_file_list').find('.modal_file_o')).length);
+                        }
+                        $('#modal-div').modal('hide');
+                    }
+                });
+
+
+        });
+        var dragulaList_check_O = dragula([
+            document.querySelector('#file_list_o'),
+        ],
+            {
+                removeOnSpill: true
+            }
+        );
+
+        var dragulaList_check_X = dragula([
+            document.querySelector('#file_list_x'),
+
+
+        ],
+            {
+                removeOnSpill: true
+            }
+        );
+
+        var dragulaList_total_train = dragula([
+            document.querySelector('.modal_file_list'),
+        ],
+            {
+                removeOnSpill: true
+            }
+        );
+
+
+        dragulaList_check_O.on('remove', function (el, container, source) {
+            // 刪除 tmp_training_check_data 中的照片
+            filename = $(el).html()
+            path = name_to_path[filename]
+            remove_file_when_removeOnSpill(path)
+        })
+        dragulaList_check_X.on('remove', function (el, container, source) {
+            // 刪除 tmp_training_check_data 中的照片
+            filename = $(el).html()
+            path = name_to_path[filename]
+            remove_file_when_removeOnSpill(path)
+        })
+
+        dragulaList_total_train.on('remove', function (el, container, source) {
+            // 刪除 tmp_training_data 中的照片
+            filename = $(el).html()
+            path = name_to_path[filename]
+            path = path.replace(TRAIN_CHECK_DIR, TRAIN_DIR) // 要把check資料夾 改成 train資料夾
+            remove_file_when_removeOnSpill(path)
+
+            // 更新資料數量的數字
+            if (review_type == 'final_has') {
+                has_num = $('#input_equd').val()
+                has_num -= 1
+                $('#input_equd').val(has_num);
+            } else if (review_type == 'final_no') {
+                no_num = $('#input_unequd').val()
+                no_num -= 1
+                $('#input_unequd').val(no_num);
+            }
+        })
+
+        function remove_file_when_removeOnSpill(path) {
+            request_url = encodeURI(`/wearing/remove_file/${path}`)
+            $.ajax({
+                type: 'GET',
+                url: request_url,
+                success: function (result) {
+                    console.log('已刪除檔案: ' + path)
+                },
+                error: function (errorInfo) {
+                    swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                }
+            });
+        }
+
+        //即時更新 資料筆數
+        // $("#file_list_o").removeData(function () {
+        //     if (($('#file_list_o').find('p')).length == 0) {
+        //         $('#file_list_o').html("<img src='../static/img/undraw_No_data.png' width='185px'/><h5 class='text-muted'>No Data</h5>");
+        //     }
+        //     // $('#input_unequd').val(($('#file_list_x').find('p')).length);
+        // });
+
+        // 影像收集Btn
+        function start_camera_img_collect() {
+            select_type = document.getElementById('collect_type')
+            type = select_type.value
+            frame = $('#collect_interval').val()
+            selected_part = $('#body_select_list').val()
+            fence_enable = $('#switch_fence').prop('checked')
+
+            swal(
+                {
+                    title: "執行前確認",
+                    // text: "審核清單上尚有資料！！\n影像蒐集會清空目前清單資料，確認是否繼續執行?",
+                    text: `確定要開始使用攝影機收集 [${type}裝備] 的照片嗎\n 取樣間隔為 ${frame} 個frame`,
+                    icon: "warning",
+                    buttons: true,
+                })
+                .then((setName) => {
+                    if (setName) {
+                        $('#img_data_div').collapse('show');
+                        $.ajax({
+                            type: 'POST',
+                            data: {
+                                "part": selected_part,
+                                "frame": frame,
+                                "type": type,
+                                "fence_enable": fence_enable
+                            },
+                            url: "/wearing/model_train/camera_data_load",
+                            success: function (result) {
+                                // console.log(result)
+                                // console.log(result.collect_data)                                
+                                if (type == '有') {
+                                    if ($('#file_list_o').find('p').length == 0) {
+                                        $('#file_list_o').empty(); //為了刪除 no data圖片內容
+                                    }
+                                    insert_data_to_card_list(result.collect_data, '#file_list_o')
+                                } else {
+                                    if ($('#file_list_x').find('p').length == 0) {
+                                        $('#file_list_x').empty(); //為了刪除 no data圖片內容                                        
+                                    }
+                                    insert_data_to_card_list(result.collect_data, '#file_list_x')
+                                }
+                            },
+                            error: function (errorInfo) {
+                                swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                            }
+                        })
+
+                    }
+                });
+        }
+
+        function stop_camera_img_collect() {
+            $('#img_data_div').collapse('hide');
+            //後端請求 - 影像資料收集結束 
+            $.ajax({
+                type: 'POST',
+                url: "/wearing/model_train/stop_camera_data_load",
+                success: function (result) {
+                    swal({title: "收集完成", icon: 'success', timer: 1500});
+                },
+                error: function (errorInfo) {
+                    swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                }
+            })
+        }
+
+
+        //資料加載 Btn (從中間的 Check 到 Total Train Data)
+        function final_data_load(flag) {
+            $(last_click_reviewfile).css('background','#fac738');
+            last_click_reviewfile = null;
+            //後端根據 參數flag 做「有裝備」或「無裝備」 的資料載入（將資料轉移至最終資料夾）
+            if (flag == 'has')
+                var list_object = $('#file_list_o');
+            else
+                var list_object = $('#file_list_x');
+
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: `/wearing/model_train/final_data_load/${flag}`,
+                beforeSend: function () {
+                    $('#data_loading').show();
+                },
+                success: function (result) {
+                    setTimeout(function () {
+                        $('#data_loading').hide()
+                    }, 1000);
+                },
+                error: function (errorInfo) {
+                    swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                }
+            })
+
+            if (flag == 'has') {
+                if (($('#file_list_o').find('p')).length > 0) {
+                    // backend_ajax();
+                    var sum = ($('#file_list_o').find('p')).length + parseInt($('#input_equd').val());
+                    $('#input_equd').val(sum);
+                    //前端將列表資料丟至modal
+                    var extendObject = $('#file_list_o').find('p').clone(true);
+                    extendObject.addClass('modal_file_o');
+
+                    extendObject.attr("onclick", 'show_train_img(this)');
+                    // console.log($(extendObject[0]))
+
+                    $('.modal_file_list').append(extendObject);
+
+                    //清空目前表單
+                    $('#file_list_o').empty();
+                    $('#file_list_o').html("<img src='../static/img/undraw_No_data.png' width='185px'/><h5 class='text-muted'>No Data</h5>");
+                    swal({
+                        title: "資料加載完成",
+                        text: "已加載資料",
+                        icon: 'success',
+                        buttons: false,
+                        timer: 1500,
+                    });
+                }
+            }
+            else {
+                if (($('#file_list_x').find('p')).length > 0) {
+                    var sum = ($('#file_list_x').find('p')).length + parseInt($('#input_unequd').val());
+                    $('#input_unequd').val(sum);
+                    //前端將列表資料丟至modal
+                    var extendObject = $('#file_list_x').find('p').clone(true);
+                    extendObject.addClass('modal_file_x');
+                    extendObject.attr("onclick", 'show_train_img(this)');
+
+                    $('.modal_file_list').append(extendObject);
+                    //清空目前表單
+                    $('#file_list_x').empty();
+                    $('#file_list_x').html("<img src='../static/img/undraw_No_data.png' width='185px'/><h5 class='text-muted'>No Data</h5>");
+                    swal({
+                        title: "資料加載完成",
+                        text: "已加載資料",
+                        icon: 'success',
+                        buttons: false,
+                        timer: 1500,
+                    });
+                }
+            }
+
+        }
+
+        // 訓練模型 跟 訓練進度追蹤
+        function model_train() {
+            swal(
+                {
+                    title: "執行前確認",
+                    text: "訓練將清空原有的模型資料！請確認是否繼續執行?",
+                    icon: "warning",
+                    buttons: true,
+                })
+                .then((confirm) => {
+                    if(confirm){
+                        //後端模型訓練動作＆清空模型
+                        click_model_train()
+                    }
+                    
+                });
+        }
+
+        function click_model_train() {
+            selected_part = $('#body_select_list').val()
+            selected_class = $('#class_select_list').val()
+            $.ajax({
+                type: 'POST',
+                url: "/wearing/model_train/train_model",
+                data: {
+                    "part": selected_part,
+                    "class": selected_class,
+                    "equd": ($('#input_equd').val() > 0) ? true : false,   // 是否有"有裝備"的dataset
+                    "unequd": ($('#input_unequd').val() > 0) ? true : false  // 是否有"無裝備"的dataset
+                },
+                beforeSend: function () {
+                    trace_train_progress()
+                    $('#model_training').show();
+                    $('#myProgress').parent().eq(0).css('z-index',9999999); 
+                },
+                success: function (result) {
+                    console.log('模型訓練完成')
+                    $('#model_loading').show();
+                    $('#model_training').hide();
+                    // 呼叫後端重新載入辨識的 subprocess
+                    $.ajax({
+                        type: 'POST',
+                        url: "/wearing/model_train/reload_detect_process",
+                        success: function (result) {
+                            console.log('辨識subprocess重啟完成')
+                            $('#myProgress').parent().eq(0).css('z-index',''); 
+                            swal({title: "模型訓練完成", icon: 'success', timer: 1800});
+                            window.location.reload()
+                        },
+                        error: function (errorInfo) {
+                            swal({title: "訓練失敗", text: '程式出錯，請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                        }
+                    });
+                },
+                error: function (errorInfo) {
+                    swal({title: "失敗", text: '異常error:請聯絡系統開發窗口協助', icon: 'error', timer: 1500});
+                }
+            });
+        }
+
+        function trace_train_progress() {
+            training_done = false
+            var elem = document.getElementById("myBar");
+            var width = 0;
+            var timer = setInterval(trace, 700);
+            function trace() {
+                if (width >= 100) {
+                    training_done = true
+                    clearInterval(timer)
+                } else {
+                    $.ajax({
+                        type: 'GET',
+                        url: "/wearing/model_train_progress",
+                        success: function (res) {
+                            if (res != 'data loading') {
+                                // $('#data_loading').hide();
+                                progress = parseFloat(res)
+                                width = progress;
+                                if (width >= 100) {
+                                    width = 100
+                                }
+                                elem.style.width = width + "%";
+                                $('#myBar').attr('aria-valuenow', width);
+                                elem.innerHTML = width + "%";
+                                console.log(progress)
+                            } else {
+
+                            }
+                        },
+                        error: function (errorInfo) {
+                            console.log('訓練過程異常，無法取得訓練進度')
+                        }
+                    });
+                }
+            }
+        }
+
+    </script>
+
+</body>
+
+
+</html>

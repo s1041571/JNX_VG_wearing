@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+  <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--ICON-->
+  <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+  <!-- jquery-smartwizard -->
+  <link rel="stylesheet" href="../static/jquery-smartwizard-master/dist/css/smart_wizard_all.min.css">
+  </script>
+  <!-- Sweet Alert -->
+  <script src="../static/sweetalert2-11.0.0/sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="../static/sweetalert2-11.0.0/sweetalert2.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+    integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../static/info_dt.css" />
+
+  <title>管制口登入系統</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Oswald:500");
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
+
+    body {
+      /* background-color: #1b1533; */
+      font-family: 'Muli', 'Noto Sans TC', '微軟正黑體';
+      /* background-repeat:no-repeat;
+            background-image: url('https://picsum.photos/id/1081/1920/1280');
+            background-size: cover; */
+
+    }
+
+    #main-left {
+      background-repeat: no-repeat;
+      background-image: url('../static/img/bg1.png');
+      background-size: cover;
+      background-position: right;
+
+    }
+
+    .btn-circle.btn-sm {
+      width: 65px;
+      height: 65px;
+      padding: 7px 10px;
+      border-radius: 35px;
+      font-size: 20px;
+      text-align: center;
+      position: fixed;
+      right: 20px;
+      z-index: 15;
+
+    }
+
+    .btn-circle.btn-sm.btn-left {
+      width: 45px;
+      height: 45px;
+      padding: 7px 10px;
+      border-radius: 35px;
+      font-size: 20px;
+      text-align: center;
+      z-index: 15;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    #home_Btn:hover,
+    #backend_Btn:hover {
+      background-color: rgba(255, 233, 111, 0.3);
+    }
+  </style>
+
+</head>
+
+<body class="overflow-hidden">
+  <div class="container-fluid">
+    <div class="row  bg-light ">
+      <!-- <a href="/admin_login"><button class="btn btn-light btn-circle btn-sm float-right"><i class="fas fa-code text-muted"></i></button></a> -->
+      <a href="/"><button class="btn btn-circle btn-sm float-right mr-5" id="home_Btn" data-bs-toggle="tooltip"
+          data-bs-placement="bottom" title="首頁"><i class="fas fa-home text-muted"></i></button></a>
+      <a href="/face/admin"><button class="btn btn-circle btn-sm float-right" id="backend_Btn"
+          data-bs-toggle="tooltip" data-bs-placement="bottom" title="後台"><i
+            class="fas fa-code text-muted"></i></button></a>
+
+      <div class="col-7 " id="main-left">
+        <div class="frame"></div>
+      </div>
+      <div class="col-5 bg-light d-flex align-middle">
+        <button class="btn btn-circle btn-sm btn-left" id="ModalBtn"></button>
+        <div class="form-signin">
+          <img class="mb-4" src="../static/img/KHAIT_LOGO(bg-b)-02.png" alt="" width="70" height="70">
+          <h1 class="h3 mb-3 fw-bold">門禁管制 Sign-in</h1>
+          <img class="mb-4" src="../static/img/faceid.gif" alt="" width="40%" style="opacity: 45%;">
+          <!-- <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div> -->
+
+          <!-- <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div> -->
+          <a href="/face/login"><button class="w-100 btn btn-lg btn-danger my-1" type="submit">進入
+              Enter</button></a>
+          <a href="/face/register"><button class="w-100 btn btn-lg btn-primary my-1" type="submit">註冊
+              Register</button></a>
+          <p class="mt-5 mb-3 text-muted">Service Window MAMCA1 8656-7390.|8656-1233.|8656-5267.</p>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bolder" id="exampleModalLabel"><i
+              class="bi bi-shield-lock-fill text-danger mr-1"></i>執行強制解鎖</h5>
+          <button type="button" class="close modal_close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label class="text-danger">此動作需要管理者權限！</label>
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">帳號 Administrator</label>
+              <input type="text" class="form-control" id="input_account">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">密碼 Password</label>
+              <input type="password" class="form-control" id="input_password">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal_close" data-dismiss="modal">取消Chanel</button>
+          <button type="button" class="btn btn-danger" onclick="unlock()">解鎖Unlock</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+  <script src="../static/bootstrap-5.0.0-beta3-dist/js/bootstrap.min.js"></script>
+  <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+  <script src="../static/jquery-smartwizard-master/dist/js/jquery.smartWizard.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+    integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#main-left').width(screen.width);
+      $('#main-left').height(screen.height);
+    });
+
+    $("#input_password").keypress(function (e) {
+      code = (e.keyCode ? e.keyCode : e.which);
+      if (code == 13) {
+        unlock();
+      }
+    });
+
+    $("#ModalBtn").click(function () {
+      $('#exampleModal').modal('show');
+    });
+    $("#exampleModal .modal_close").click(function () { $('#exampleModal').modal('hide'); });
+
+    function unlock() {
+      var id = $('#input_account').val();
+      var pwd = $('#input_password').val();
+      if(id=="")
+        Swal.fire("請輸入帳號密碼！","","warning");
+      else{
+        $.ajax({
+          type: 'POST',
+          async: false,
+          url: "/id_verify",
+          contentType: 'application/json; charset=UTF-8',
+          data: JSON.stringify(id + ',' + pwd),
+          success: function (result) {
+            if (result == 'success') {
+              Swal.fire({icon: 'success', title: '身分驗證成功', text: '處理中，請稍後...', showConfirmButton: false})
+              setTimeout(function () {
+                $.ajax({
+                  type: 'POST',
+                  async: false,
+                  url: "/face/impose_unlock",
+                  success: function (result) {
+                    Swal.fire({
+                      timer: 2500,
+                      showConfirmButton: false,
+                      title: '解鎖成功!',
+                      text: '已強制解鎖！五秒後將再次鎖上',
+                      imageUrl: "../static/img/unlock.gif",
+                      imageWidth: 100,
+                      imageHeight: 100,
+                    })
+                    //強制登出
+                    $.ajax({
+                      type: 'POST',
+                      async: false,
+                      url: "/logout",
+                      data: JSON.stringify('1'),
+                    });
+                  },
+                  error: function (errorInfo) {
+                    Swal.fire({icon: 'error', title: '執行失敗', text: '出現程序性錯誤，請再試一次或聯繫窗口協助。', showConfirmButton: false})
+                  }
+                });
+              }, 1500);
+              
+            }
+            else {
+              Swal.fire({
+                icon:'error', 
+                title:'登入失敗', 
+                html:'密碼錯誤 或 您並未擁有權限<br>如有需求，請聯絡窗口申請',
+                showConfirmButton: false,
+              })
+            }
+
+          },
+          error: function (errorInfo) {
+            Swal.fire({icon: 'error', title: '執行失敗', text: '出現程序性錯誤，請再試一次或聯繫窗口協助。', showConfirmButton: false})
+          }
+
+        });
+
+
+        $('#exampleModal').modal('hide');
+      }
+      
+    }
+  </script>
+
+
+</body>
+
+</html>

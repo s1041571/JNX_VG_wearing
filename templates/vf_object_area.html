@@ -1,0 +1,648 @@
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+    <title>管制區監控通報－物件警報模式</title>
+    <!--ICON-->
+    <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.css">
+    <!-- Sweet Alert -->
+    <script src="../static/sweetalert2-11.0.0/sweetalert2.all.min.js"></script>
+    <!--Bootstrap Table-->
+    <link rel="stylesheet" href="../static/bootstrap-table-master/dist/bootstrap-table.min.css" />
+    <!--w3 CSS-->
+    <link rel="stylesheet" href="../static/temp/w3.css" />
+
+
+    <!--Bootstrap DataTable Css -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" /> -->
+    <!--SVG.js-->
+    <script src="../static/temp/svg.min.js"></script>
+    <!--multiselect-->
+    <link rel="stylesheet" href="/static/bootstrap-multiselect/bootstrap-multiselect.min.css" />
+    <!--當前資訊List & Button CSS-->
+    <link rel="stylesheet" href="/static/temp/w3.css">
+    <link rel="stylesheet" href="../static/temp/masterpage.css">
+    <link rel="stylesheet" href="../static/temp/vd_list.css">
+    <link rel="stylesheet" href="../static/temp/3dButton.css">
+    <link rel="stylesheet" href="../static/temp/loader-curtain.css">
+
+    <style>
+        
+        .navbar-gitlab {
+            padding: 0 20px;
+            z-index: 1000;
+            margin-bottom: 0;
+            min-height: 40px;
+            max-height: 55px;
+            border: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            border-radius: 0;
+            background-color: #b6b34b;
+        }
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link.active {
+            color: #ed6355;
+            font-weight: bold;
+            font-size: 18px
+        }
+
+        .nav-link {
+            color: #999
+        }
+
+        .verticalLine {
+            border-left: thin solid rgba(0, 0, 0, 0.1);
+        }
+
+        .dataTables_filter {
+            margin-right: auto
+        }
+
+        .dropdown-item {
+            padding: 0px;
+        }
+
+        .multiselect-option {
+            padding: 0px;
+        }
+
+        #imageMap {
+            position: relative;
+        }
+
+        #imageMap #marker {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #f00;
+            border: 2px solid white;
+            border-radius: 50px;
+        }
+
+        #canvas {
+            position: absolute;
+            z-index: 100;
+            cursor: crosshair;
+            border: 1px solid #333;
+        }
+
+        #canvas2 {
+            position: absolute;
+            z-index: 100;
+            cursor: crosshair;
+            border: 1px solid #333;
+        }
+
+        #canvasSave {
+            position: absolute;
+            z-index: 20;
+        }
+
+        svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 99
+        }
+
+        svg text {
+            text-shadow: black 0.1em 0.1em 0.2em
+        }
+
+        .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            font-weight: 600;
+            font-size: 16px;
+            background-color: rgba(144, 101, 229, 0.7);
+        }
+        #input_location:disabled{
+            border:none;
+        }
+        #input_location:not([disabled]){
+            border:2px solid #fcbf49;
+        }
+        #banner{
+            background: url('../static/img/23964.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .media{
+            border-bottom: 1px solid #e7e8e8;
+            padding: 10px 0 10px 20px; 
+            margin: 10px 0;
+        }
+        .views-number, .views-number input, #info_class{
+            font-size:18px;
+        }
+    </style>
+
+
+</head>
+
+<body class="bg-light" onload="ShowTime()">
+    <div id="loading" class="loader loader-curtain is-active" data-curtain-text="Model Loading..."></div>
+    <header class="row text-left" style="padding-bottom: 75px;">
+        <div class="col-12">
+            <nav class="navbar navbar-master">
+                <span class="navbar-brand" href="#">
+                    <img src="../static/img/VG_LOGO2.png" style="width: 45px;"
+                        class="d-inline-block align-center mb-1" alt="" >
+                    <nav class="navbar-text mx-2">
+                        <ol class="breadcrumb p-0 d-flex align-items-center">
+                          <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                          <li class="breadcrumb-item">物件偵測系統</li>
+                          <li class="breadcrumb-item active">物件警報模式</li>
+                        </ol>
+                    </nav>
+                </span>
+                <ul class="nav" id="nav-btn-top">
+                    <!-- <li class="nav-item mr-1" data-toggle="tooltip" data-placement="bottom" title="回前頁"><a
+                            href="/vf/index"><i class="fas fa-arrow-left navbar-btn"></i></a></li> -->
+                    <li class="nav-item mr-1" data-toggle="tooltip" data-placement="bottom" title="首頁">
+                        <a href="/"><i class="fas fa-home navbar-btn"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div id="myTab">
+            <ul class="nav nav-tabs mx-4" id="titleTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" data-toggle="tab" href="#full-monitor" aria-selected="false" id="monitorPage">
+                        <i class="fas fa-desktop"></i>&nbsp;全螢幕監控
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" data-toggle="tab" href="#dangerArea" aria-selected="true" id="mainPage">
+                        <i class="fas fa-exclamation-triangle"></i>&nbsp;危險區域辨識
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" data-toggle="tab" href="#setting" aria-selected="false" id="settingPage">
+                        <i class="fas fa-cog"></i>&nbsp;相關設定
+                    </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" data-toggle="tab" href="#alarm-log" aria-selected="false" id="alarmlogPage">
+                        <i class="fas fa-comment-dots"></i>&nbsp;異常訊息log
+                    </a>
+                </li>
+                <li class="ml-auto">
+                    <p class="text-right my-1 px-4" style="font-size:16px;color:#495057;font-weight:500">系統時間：
+                        <label id="showbox"></label>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content mx-4 mb-2  bg-white  rounded-lg shadow-sm p-5" id="myTabContent">
+            <div class="tab-pane px-5 fade" id="full-monitor">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="row" id="monitorArea">
+                            <div class="mt-1 px-0 border ml-4" id="view0">
+                                <img src="/stream/temp" width="100%" id="monitorImg" id="video">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show active" id="dangerArea" style="position: relative;">
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="row pr-3 mb-1">
+                            <h5 class="col-auto text-black-50 ml-1 my-1 pr-1"><i class="fas fa-video w3-text-red"></i><b>&nbsp;即時環境影像</b>
+                            </h5>
+                            <div class="input-group-sm w-auto mr-auto">
+                                <select class="custom-select" id="Cam_select">
+                                    {% for i in range(1,cam_data[1]+1) %}
+                                    <option {{ 'selected' if cam_data[0]==i else '' }}>Cam{{i}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <form name="form_selectList" action="/object_detect/index" method="POST" class="mb-0">
+                                <label class="text-muted small"><i class="fas fa-building"></i>&nbsp;切換場景</label>
+                                <select id="weights_list" name="scene_list" onchange="weights_change();">
+                                    {% for w in weights_list %}
+                                    <option value="{{w}}" {{ 'selected' if w==weights else '' }}>{{w}}</option>
+                                    {% endfor %}
+                                </select>
+                                <select class="form-control" name="class_list" id="class_list" multiple="multiple">
+                                    {% for c in class_list %}
+                                        {% if c in select_class %}
+                                        <option name="class_option" value="{{c}}" selected>{{c}}</option>
+                                        {% else %}
+                                        <option name="class_option" value="{{c}}" >{{c}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+
+                                <button type="submit" class="scene_btn btn btn-primary btm-sm">切換</button>
+                            </form>
+                        </div>
+                        <div class="row" id="monitorArea">
+                            <div class="mt-1  px-0 border ml-4" id="view0">
+                                <img src="/stream/temp" width="100%" id="monitorImg" id="video">
+                            </div>
+                        </div>
+                        <!-- <button class="btn btn-outline-danger mt-3 rounded-circle p-0" style="width:30px;height:30px" data-toggle="tooltip" data-placement="bottom" title="新增多重視角" onclick="add_monitor()"><i class="fas fa-plus"></i></button>
+                        <button class="btn btn-outline-dark mt-3 rounded-circle p-0" style="width:30px;height:30px" data-toggle="tooltip" data-placement="bottom" title="取消多重視角" onclick="del_monitor()"><i class="fas fa-minus"></i></button>
+                        <button class="btn btn-outline-dark mt-3 rounded-circle p-0" style="width:30px;height:30px" data-toggle="tooltip" data-placement="bottom" title="截圖" onclick="screenshot()"><i class="fas fa-expand"></i></button> -->
+                        <hr width="1" size="100" color="#000000">
+                    </div>
+                    <!-- <div class="verticalLine mx-3"></div> -->
+                    <div class="col-md col-lg px-5">
+                        <div class="row pr-1 mb-1">
+                            <h5 class="col text-black-50 ml-1"><i class="fas fa-map"></i><b>&nbsp;當前圍籬資訊</b></h5>
+                            <div class="col-md-2 btn-group btn-group-sm mb-0">
+                                <button type="button" class="button3d btn" onclick="editInfo()"><i class="far fa-edit"
+                                        style="font-size: 16px;"></i> 註記地點</button>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center mt-2 p-3">
+                            <div class="media col-12">
+                                <!-- <span class="h4 d-flex justify-content-center align-items-center align-self-center mr-3 rounded-circle" style="background: #cfd0d0;width: 75px;height: 75px;">
+                                    <i class="fas fa-map-marker-alt text-white "></i>
+                                </span> -->
+                                <img src="../static/img/your-location.png" width="6%" class="align-self-center mr-3" alt="...">
+                                <div class="media-body row d-flex align-items-center align-self-center">
+                                    <div class="col-8">
+                                        <h5 class="mt-0 font-weight-bold">目前位置 Location</h5>
+                                        <p class="text-muted my-0">點擊右上「註記地點」按鈕可記錄當前位置</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <span class="views-number h5">
+                                            <input class="form-control text-center" id="input_location"
+                                                style="background: #fff;width: 100%;" disabled>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media col-12 media-item">
+                                <img src="../static/img/binary-code.png" width="6%" class="align-self-center mr-3" alt="...">
+                                <div class="media-body row d-flex align-items-center align-self-center">
+                                    <div class="col-8">
+                                        <h5 class="mt-0 font-weight-bold">訓練模型 Weight</h5>
+                                        <p class="text-muted my-0">當前所使用的模型權重</p>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <span class="views-number" id="info_scene">
+                                            {{weights}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media col-12 media-item">
+                                <img src="../static/img/abacus.png" width="6%" class="align-self-center mr-3" alt="...">
+                                <div class="media-body row d-flex align-items-center align-self-center">
+                                    <div class="col-8">
+                                        <h5 class="mt-0 font-weight-bold">辨識類別 Classes</h5>
+                                        <p class="text-muted my-0">當前所辨識的物件類別</p>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <button class="btn btn-light border" type="button" data-toggle="collapse" href="#info_class">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-2 alert alert-info collapse" id="info_class"></div>
+                            <div class="media col-12 media-item">
+                                <img src="../static/img/siren.png" width="6%" class="align-self-center mr-3" alt="...">
+                                <div class="media-body row d-flex align-items-center align-self-center">
+                                    <div class="col-8">
+                                        <h5 class="mt-0 font-weight-bold">違禁品數量 OBJ Count</h5>
+                                        <p class="text-muted my-0">範圍內違禁品數量超出設定值將發報警訊</p>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <span class="views-number" id="info_scene">
+                                            {{ alarm_set['alarm_threhold']['obj_max_count'] or '0' }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="tab-pane fade" id="setting">
+                <div class="row">
+                    <div class="col-md-12 col-lg-7 mr-3 my-2">
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-auto h5 mb-0">
+                                <i class="fas fa-hashtag w3-text-red"></i>&nbsp;狀態：<label id="set_status">即時影像模式</label>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-map-marker-alt w3-text-red"></i>&nbsp;<label id="site"></label>
+                            </div>
+                        </div>
+                        <canvas class="" id="canvas"></canvas>
+                        <!--width="1500vw" height="450"-->
+                        <canvas class="" id="canvas2" style="display: none;"></canvas>
+                        <!--width="1500vw" height="450"-->
+                        <canvas class="" id="canvasSave"></canvas>
+                        <div class="" id="imageMap"><img src="/stream/temp" width="100%" height="100%" id="mapPic">
+                            <div id="markArea"></div>
+                        </div>
+                        <div class="my-2">
+                            <button type="button" class="btn btn-success" id="changeSetView" onclick="loadSetView()"><i
+                                    class="fas fa-exchange-alt"></i>&nbsp;影像切換 (過往)</button>
+                            <button type="button" class="btn btn-dark" id="screenshot" onclick="screenshot()"><i
+                                    class="fas fa-expand"></i>&nbsp;截圖/動態</button>
+                            <button type="button" class="btn btn-dark" name="clear" id="deleteCanvas"><i
+                                    class="fas fa-undo-alt"></i>&nbsp;清除畫布</button>
+                            <label class="text-mute ml-3"><i
+                                    class="far fa-lightbulb w3-text-orange"></i>&nbsp;<small>按下截圖鍵後，畫面會定格，如需回到動態即時影像請再按一次截圖鍵</small></label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg my-2" id="Setting_Tabs">
+                        <ul class="nav nav-pills mb-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="pill" href="#areaSet" id="areaSetPage"
+                                    aria-selected="true" onclick="setPage_Tabs_Switch()">圍籬區域</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#alarmSet">異常警報</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#mailSet">通報群組</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="areaSet">
+                                <form action="/saveAreaCoord" method="POST">
+                                    <p class="text-muted"><mark>*請於左方框選區域</mark></p>
+                                    <div class="mt-2 row" id="markInfo">
+
+                                    </div>
+                                    <button type="button" class="btn btn-success float-right" id="saveArea_Btn"
+                                        onclick="saveAreaCoord()"><i class="fas fa-save"></i>&nbsp;儲存區域</button>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade " id="alarmSet">
+                                <div class="mt-2">
+                                    <div class="form-group row ml-2">
+                                        <h6 class="px-2 col-lg-3">
+                                            <i class="fas fa-exclamation-triangle text-warning"></i>&nbsp;物件超過數量
+                                        </h6>
+                                        <div class="col-md-6 p-0 pt-1">
+                                            <input type="number" class="form-control text-center" min="1" name="input_alarmObjNum"
+                                             value="{{alarm_set['alarm_threhold']['obj_max_count']}}"  id="input_alarmObjNum">
+                                        </div>                                    
+                                    </div>
+                                    <div class="form-group row ml-2">
+                                        <h6 class="px-2  col-lg-3">
+                                            <i class="fas fa-exclamation-triangle text-warning"></i>&nbsp;Total Frames
+                                        </h6>
+                                        <div class="col-md-6 p-0 pt-1">
+                                            <input type="number" class="form-control text-center" min="1" name="input_alarmTotalFrame"
+                                             value="{{alarm_set['alarm_threhold']['total_frame'] or '0'}}"  id="input_alarmTotalFrame">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row ml-2">
+                                        <h6 class="px-2  col-lg-3">
+                                            <i class="fas fa-exclamation-triangle text-warning"></i>&nbsp;NG Frames
+                                        </h6>
+                                        <div class="col-md-6 p-0 pt-1">
+                                            <input type="number" class="form-control text-center" min="1" name="input_alarmNgFrame"
+                                            value="{{alarm_set['alarm_threhold']['ng_frame'] or '0'}}" id="input_alarmNgFrame">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row ml-2">
+                                        <h6 class="px-2  col-lg-3">
+                                            <i class="far fa-calendar text-black-50"></i>&nbsp;發報Log 儲存天數
+                                        </h6>
+                                        <div class="col-md-6 p-0 pt-1">
+                                            <input type="number" class="form-control text-center" min="1" name="input_log_save_day"
+                                            value="{{alarm_set['log']['save_day'] or '0'}}" id="input_log_save_day">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 py-2">
+                                        <button class="btn btn-primary col-2" onclick="saveAlarmObjSetting('obj')">儲存</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="mailSet">
+                                <div class="col p-3 ml-1">
+                                    <div class="col p-0" id="hr_row"></div>
+                                    <div class="form-group col-12 my-2 ml-3" style="font-size: 17px;z-index: 10;">
+                                        <div class="form-check mb-1">
+                                            <input class="form-check-input" type="checkbox" value="link" id="check_link"
+                                            {{ 'checked' if 'link' in alarm_set['channel']['channel'] else '' }}>
+                                            <label class="form-check-label" for="check_link">Link</label>
+                                        </div>
+                                        <div class="form-check mb-1">
+                                            <input class="form-check-input" type="checkbox" value="line" id="check_line"
+                                            {{ 'checked' if 'line' in alarm_set['channel']['channel'] else '' }}>
+                                            <label class="form-check-label" for="check_line">LINE</label>
+                                        </div>
+                                        <!-- <div class="form-check mb-1">
+                                            <input class="form-check-input" type="checkbox" value="estone" id="check_estone"
+                                            {{ 'checked' if 'estone' in alarm_set['channel']['channel'] else '' }}>
+                                            <label class="form-check-label" for="check_estone">eStone</label>
+                                        </div> -->
+                                        <div class="form-check mb-1">
+                                            <input class="form-check-input" type="checkbox" value="email" id="check_mail"
+                                            {{ 'checked' if 'mail' in alarm_set['channel']['channel'] else '' }}>
+                                            <label class="form-check-label" for="check_mail">E-mail</label>
+                                        </div>
+                                        <div class="input-group col-sm-12 col-md-8 mb-3" id="mailGroup">
+                                            <div class="input-group-prepend">
+                                              <label class="input-group-text" for="mailGroupSelect">收件群組</label>
+                                            </div>
+                                            <select class="custom-select" id="mailGroupSelect">
+                                              <option selected>請選擇...</option>
+                                              {% for key,value in mail_group_dict.items() %}
+                                              {% if key in alarm_set['channel']['mail_group'] %}
+                                              <option value="{{key}}" selected>{{key}}</option>
+                                              {% else %}
+                                              <option value="{{key}}">{{key}}</option>
+                                              {% endif %}
+                                              {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 py-2">
+                                        <button class="btn btn-primary col-2" onclick="saveAlarmGroup('obj')">儲存</button>
+                                    </div>
+                                    <div id="icon_set" class="text-right">
+                                        <img src="../static/img/notification.png" width="15%" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+            <div class="tab-pane px-5  py-lg-4 fade" id="alarm-log">
+                <div class="row">
+                    <div class="col-lg-4 col-md-10 col-sm-12 mt-5 mx-auto">
+                        <h4 class="text-black-50 text-primary font-weight-bold text-center"><i class="fas fa-eye"></i> 檔案預覽框</h4>
+                        <img src="http://fakeimg.pl/1920x1153/?text=File Review" width="100%" style="border: 3px solid #cacbd5;border-radius: 19px;"
+                            id="img_review" />
+                        <p class=" text-primary text-center my-1" id="review_filename"></p>
+                    </div>
+                    <div class="col-lg-7 col-md-10 col-sm-12 mx-auto py-2">
+                        <section class="py-5 mb-2 text-center container border rounded" id="banner">
+                            <div class="row py-lg-2">
+                                <div class="col-lg-6 col-md-8 mx-auto">
+                                    <h1 class="font-weight-bold text-white">異常通報訊息記錄</h1>
+                                    <p class="lead text-muted">通報訊息 Detail Review .</p>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="row">
+                            <div class="col-lg-11 col-md-10 mx-auto my-2 text-right">
+                                <i class="far fa-calendar-alt mr-1"></i>選擇日期
+                                <select class="custom-select w-auto" id="log_dt_select">
+                                    {% for key,value in alarm_log.items() %}
+                                        {% if loop.index == 1 %}
+                                        <option value="{{key}}" selected>{{key}}</option>
+                                        {% else %}
+                                        <option value="{{key}}">{{key}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-lg-11 col-md-10 col-sm-12 mx-auto py-2">
+                                <table id="alarm_log_table"  data-toggle="table" data-pagination="true"
+                                    data-page-size="10"  data-page-list="[5, 10, 25, All]"
+                                    data-sort-name="time" data-sort-order="desc"
+                                    class="text-center" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="time" data-sortable="true">通報時間</th>
+                                            <th data-field="channel">發報頻道</th>
+                                            <th data-field="cam_id">攝影機 ID</th>
+                                            <th data-field="weight">使用模型</th>
+                                            <th data-field="classes">辨識物品</th>
+                                            <th data-field="img">圖片</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for key,items in alarm_log.items() %}
+                                        {% if loop.index == 1 %}
+                                            {% for value in items %}
+                                                <tr>
+                                                    <td>{{ value['time'] }}</td>
+                                                    <td>{{ value['channel']|upper }}</td>
+                                                    <td>{{ value['cam_id'] }}</td>
+                                                    <td>{{ value['weight']|replace('.pt','') }}</td>
+                                                    <td>{{ value['classes'] }}</td>
+                                                    <td>
+                                                        <button class="btn btn-outline-primary btn-sm" onclick="review_imgfile({{ value['img']|replace('.jpg','')}})">
+                                                            預覽圖片<i class="fas fa-image"></i>
+                                                        </button>
+                                                        <!-- <a href="/show_img/alarm_msg/{{ value['img']|replace('.jpg','') }}" target="_blank"><button class="btn btn-md btn-outline-primary">
+                                                            打開圖片<i class="fas fa-image"></i>
+                                                        </button></a> -->
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="alarm-clear-div"> 
+        <a href="#" class="btn-alarmclear">
+          <div class="--icon d-flex align-items-center justify-content-center">
+            <div class="circle-inner"></div>
+            <div class="circle-outer"></div>
+            <img src="../static/img/power-on.png" width="32" id="img-icon"/>
+          </div>
+          <div class="btn-text">警報清除</div>
+        </a>
+    </div>
+
+    <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+    <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+    <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
+    <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+    <script src="../static/bootstrap-multiselect/bootstrap-multiselect.min.js"></script>
+    <script src="../static/temp/vf_dist_api.js" type="text/javascript"></script>
+    <script src="../static/temp/vf_dist.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        // 阻止瀏覽器返回
+        // $(function(){
+        //     history.pushState(null, null, document.URL);
+        //     window.addEventListener("popstate",function(e) {  
+        //         console.log('禁止倒退');
+        //         history.pushState(null, null, document.URL);
+        //     });
+        // })
+        $(document).ready(function() {
+
+            sessionStorage.setItem("MainPageVisited", "True");  // 進入子系統頁面時設定sessionStorage
+
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#input_location').val(localStorage.getItem('obj_location'));    //填入上次記錄的地點資訊
+            //填入當前圍籬資訊
+            $('#info_class').html(`{{select_class|replace("'","")}}`);
+            //上次儲存的圍籬區域&比例尺 座標資訊
+            var bili_coordResult = "{{bili_data['coord']}}";
+            var area_coordResult = "{{area_Coord['coord']}}";
+            if (area_coordResult.length > 0) {
+                area_arr = area_coordResult.split('},');
+                area_arr.forEach(coord => {
+                    if (coord == "") {}
+                    else {
+                        coord = coord.replace('{', '');
+                        coord = coord.replace('}', '');
+                        createXYinfo(coord,"{{area_Coord['img_width']}}","{{area_Coord['img_height']}}", 'markInfo');
+                        drawSVG(coord, drawArea)
+                    }
+                });
+            }
+            if (bili_coordResult.length > 0) {
+                createXYinfo(bili_coordResult, "{{bili_data['img_width']}}","{{bili_data['img_height']}}", 'markInfo2');
+                drawSVG(bili_coordResult, drawBili)
+            }
+
+            window.history.pushState(null, null, document.URL);
+            window.addEventListener('popstate', function(event) {
+                window.location.replace(document.referrer);
+            });
+
+        });
+
+        //標示地點資訊用，並保存資料於網頁暫存，於下次開網頁時能顯示上次記錄之地點
+        function editInfo() {
+            if ($('#input_location').attr('disabled') == 'disabled') {
+                $('#input_location').removeAttr("disabled");
+            }
+            else {
+                $('#input_location').attr('disabled', 'disabled');
+                localStorage.setItem('obj_location', $('#input_location').val());
+            }
+        }
+    </script>
+</body>
+
+</html>

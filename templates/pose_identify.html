@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+  <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--ICON-->
+  <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+  <!--Bootstrap Table-->
+  <link rel="stylesheet" href="../static/bootstrap-table-master/dist/bootstrap-table.min.css">
+  <!-- Sweet Alert -->
+  <script src="../static/sweetalert2-11.0.0/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="../static/temp/pose_identify.css" />
+  <link rel="stylesheet" href="../static/temp/w3.css" />
+  <link rel="stylesheet" href="../static/temp/masterpage.css" />
+
+  <title>動作流程辨識_Vision Guard</title>
+
+  <style>
+    body {
+      background-color: #000;
+      font-family: 'Noto Sans TC', 'Muli', '微軟正黑體';
+
+    }
+
+    button {
+      font-family: "微軟正黑體";
+      font-weight: bold;
+    }
+
+    .swal-text,
+    .swal-content__input {
+      font-size: 22px;
+    }
+
+    .frame {
+      position: relative;
+      /* position: fixed;
+      left: 0;
+      top:55px;
+      width: 100%;
+      height: 100vh; */
+    }
+
+    dd .btn {
+      background-color: #01b4bc;
+      color: #fff;
+      font-weight: 600;
+      line-height: 1.25;
+      border-radius: 7px;
+      font-size: 18px;
+      margin-top: 12px;
+      padding: 10px 15px;
+    }
+
+    dd .btn:hover {
+      background-color: #fa5457;
+      color: white;
+      font-weight: 600;
+    }
+
+    /* #pose_alert {
+      background: rgba(255, 255, 255, 0.55);
+      border: white;
+      border-radius: 10px;
+      box-shadow: inset 0 0 5px rgba(255, 243, 205, 0.5);
+    } */
+  </style>
+
+
+</head>
+
+<body class="overflow-hidden">
+  <header class="row text-left" style="padding-bottom: 55px;">
+    <div class="col-12">
+        <nav class="navbar navbar-master">
+            <span class="navbar-brand text-center" href="#">
+                <img src="../static/img/VG_LOGO2.png" width="45"
+                    class="d-inline-block align-center mb-1" alt="" >
+                <nav class="navbar-text mx-2">
+                  <ol class="breadcrumb p-0 d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                    <li class="breadcrumb-item active">動作流程系統</li>
+                  </ol>
+                </nav>
+            </span>
+            <ul class="nav" id="nav-btn-top">
+              <li class="nav-item mr-1" data-toggle="tooltip" data-placement="bottom" title="首頁">
+                  <a href="/"><i class="fas fa-home navbar-btn"></i></a>
+              </li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-9 frame px-0">
+        <img class="rounded-lg" id="camera" src="/stream/temp" width="100%" height="100%">
+        <div class="col font-weight-bold" id="current_pose_tooltip" >
+          <i class="fas fa-street-view mr-1"></i> 請做：<label id="current_pose"></label>
+        </div>
+        <!-- <div class="col-12 text-center" style="position: relative;bottom: 10%;">
+          <button class="login-btn button mx-1" onclick="process_start()">辨識/START</button>
+          <button class="stop-btn button mx-1" onclick="click_cancel()" disabled>取消/Cancel</button>
+        </div> -->
+      </div>
+      <div class="col-sm-12 col-md text-center" style="background: #262e3e;">
+        <div class="img-frame">
+          <div class="angles"></div>
+          <article>
+            <span class="cycle-border"></span>
+            <span class="cycle-border"></span>
+            <span class="cycle-border"></span>
+            <span class="cycle-border"></span>
+            <img src="../static/img/pose_recognition.jpg" height="100%" class="rounded" id="body_analyze_img">
+            <!-- <img src="/face/face_stream" height="100%" class="rounded" id="face_analyze_img"> -->
+          </article>
+        </div>
+        <div class="row d-flex text-center d-flex justify-content-center" style="position: relative;top:37%">
+          <div class="col-12 d-flex justify-content-center align-items-center mt-2 text-white">
+            <div class="cycle-border spinner-border" role="status">
+            </div>
+            <span class="cycle-border text-white ml-2 fs-6">辨識中...</span>
+          </div>
+          <div class="col-11 p-3 text-white" id="recent_login_div1">
+            <div class="text-left my-1 lead" style="color:#fff;font-size: 16px;"><em># 動作流程列表</em></div>
+            <div class="row bg-white rounded-lg position-relative">
+              <div class="col-12 d-flex justify-content-center">
+                <div class="text-center rounded-circle bg-white p-3" id="log-in-icon">
+                  <img src="../static/img/list.png" class="align-middle" width="40" height="40" >
+                </div>
+              </div>
+              <div class="col-12 pt-5 pb-3">
+                <table class="table table-hover text-center" id="use_pose_table" data-toggle="table">
+                  <thead>
+                    <tr>
+                      <th data-field="id" class="center" data-width="20" data-width-unit="%">#</th>
+                      <th data-field="pose" class="center">執行動作</th>
+                      <th data-field="check" class="center">進度完成</th>
+                    </tr>
+                  </thead>
+                  <tbody id="InfoTable">
+                    {% for pose in use_pose_list %}
+                    <tr>
+                      <td class="center" data-field="id" >{{loop.index0 +1}}</td>
+                      <td class="center" data-field="pose">{{pose}}</td>
+                      <td class="align-middle" data-field="check" id="check_{{pose}}"></td>
+                    </tr>
+                    {% endfor %}
+                    <!-- <tr>
+                      <td class="center" ><img src="http://placehold.it/60x60" class="rounded-circle"></td>
+                      <td class="align-middle">111&#10005;</td>
+                    </tr>
+                    <tr>
+                      <td class="center" id="rankid1"><img src="http://placehold.it/60x60" class="rounded-circle"></td>
+                      <td class="align-middle" id="rankid1">111&#10005;</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="term">
+    <button class="btn position-absolute text-black-50 p-0 my-0" style="right: 0;margin-right: 12px;">
+      <i class="bi bi-three-dots-vertical"></i>
+    </button>
+    <dt>
+      <span id="info_dmId">動作流程辨識</span>
+    </dt>
+    <dd class="my-2">
+      <!-- A song receives an “all-kill” distinction when it simultaneously reaches the #1 spot on all Korean music charts -->
+      <!-- Status：<b class="text-black-50" id="info_dmMode">輪播模式</b> -->
+      <table id="in_out_table">
+        <tbody id="InfoTable">
+          <tr>
+            <td>攝影機：</td>
+            <td>
+              <select class="form-select w-auto mb-3" id="select_cam">
+                {% for i in range(1,cam_data[1]+1) %}
+                <option {{ 'selected' if cam_data[0]==i else '' }}>Cam{{i}}</option>
+                {% endfor %}
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Recipe：</td>
+            <td>
+              <select class="form-select w-auto mb-3" id="select_recipe">
+                {% for recipe in recipes %}
+                <option {{ 'selected' if current_recipe==recipe else '' }}>{{recipe}}</option>
+                {% endfor %}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>辨識場所：</td>
+            <td>管制口</td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn" href="/process/pose_setting"><i class="bi bi-gear-wide-connected"></i> 前往<u>動作設定頁</u> <i
+          class="bi bi-gear-wide-connected"></i> </a>
+    </dd>
+  </div>
+
+
+  <div class="id_card card toast hide" style="width: 22rem;" data-delay="3500">
+    <div class="ds-top"></div>
+    <div class="id_photo">
+      <img src="https://picsum.photos/id/669/100?grayscale" class="rounded-circle">
+    </div>
+    <div class="card-body pb-2">
+      <label class="card-title mb-0 text-black-50" style="font-size: 15px;">友 達 光 電</label>
+      <h3 class="card-title fw-bolder text-uppercase mb-2" id="id_name">Empolyee</h3>
+      <div style="margin-left: 52px;">
+        <table>
+          <tr>
+            <td style="width:5px;border:none;"><i class="fas fa-users" style="color:#ff6f68;"></i></td>
+            <td style="border:none;">MC5EI0</td>
+          </tr>
+          <tr>
+            <td style="width:5px;border-top:0.01rem #d1d8e0 solid"><i class="fas fa-map-marker-alt"
+                style="color:#ff6f68;"></i></td>
+            <td style="border-top:0.005rem #d1d8e0 solid">AUHQ-AUKH-OB</td>
+          </tr>
+        </table>
+      </div>
+      <div class="float-right mt-3">
+        <img src="../static/img/auo_logo.jpg" width="45px">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bolder" id="exampleModalLabel">辨識設定 Identify Setting</h5>
+          <button type="button" class="close modal_close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <i class="bi bi-stack mr-1" style="font-size: 1.5rem; color: cornflowerblue;"></i><label
+                for="recipient-name" class="col-form-label">辨識基準值(張數):</label>
+              <input type="text" class="form-control" id="frame_num_set" placeholder="30">
+            </div>
+            <div class="form-group">
+              <i class="bi bi-hourglass-split mr-1" style="font-size: 1.5rem; color: cornflowerblue;"></i><label
+                for="message-text" class="col-form-label">辨識時間(s):</label>
+              <input type="text" class="form-control" id="pred_time_set" placeholder="15">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal_close" data-dismiss="modal">取消Chanel</button>
+          <button type="button" class="btn btn-success" onclick="setting_change()">變更Change</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Option 2: jQuery, Popper.js, and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+  <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+  <script src="../static/temp/pose_identify.js"></script>
+
+  {% for pose in use_pose_list %}
+      <script> $use_pose_list.push('{{pose}}') </script>
+  {% endfor %}
+
+  <script type="text/javascript">
+
+    $(function() {
+      sessionStorage.setItem("MainPageVisited", "True");  // 進入子系統頁面時設定sessionStorage
+    });
+
+    // function process_start() {
+    //   recipe = select_recipe.options[select_recipe.selectedIndex].text
+    //   camid = select_cam.selectedIndex + 1
+    //   is_start = true
+    //   row_length = $('#InfoTable').find('tr:not(.no-records-found)').length
+
+    //   if(row_length > 0){
+    //     $('.login-btn').prop("disabled", true);
+    //     $('.stop-btn').prop("disabled", false);
+    //     $('.term').fadeToggle(1000);
+    //     $('.cycle-border').show();
+    //     $('#current_pose_tooltip').show();
+    //     $('#body_analyze_img').attr('src', '/process/stream')
+    //     timer_get_current_pose = setInterval(get_current_pose, 500);
+
+    //     $.ajax({
+    //       url: '/process/control_detect_process/click_start',
+    //       method: 'GET',
+    //       data: {
+    //         recipe: recipe,
+    //         camid: camid,
+    //       },
+    //       success: function (res) {
+    //         console.log('success start: recipe=' + recipe + ', camid=' + camid)
+    //       },
+    //       error: function (res) {
+    //         console.log('process start_detect error')
+    //       }
+    //     })
+    //   }
+    //   else{
+    //     Swal.fire({ 
+    //       title:"動作流程清單為空！",
+    //       text: "請先到設定頁設定動作清單。",
+    //       icon: "info"
+    //     });
+    //   }
+
+      
+    //   function get_current_pose() {
+    //     $.ajax({
+    //         type: 'GET',
+    //         url: "/process/current_pose",
+    //         success: function (res) {
+    //             console.log(res)                
+    //             if (res == "__流程完成__"){
+    //               // clearInterval(timer_get_current_pose)
+    //               if (is_start){
+    //                 click_cancel()
+    //                 is_start = false
+    //                 Swal.fire({ 
+    //                   html:"<h2 class='p-4 text-success'><strong>動作流程 辨識完成<i class='fas fa-check-circle ml-2'></i></strong></h2>",
+    //                   showConfirmButton: false,
+    //                   timer:1800
+    //                 });
+    //               }
+                  
+    //             }else{
+    //               if(res != "" && check_pose_list.indexOf(res)<0)
+    //               {
+    //                 check_pose_list.push(res);
+    //                 update_use_pose_list(res);
+    //               }
+    //               pose_label.innerHTML = res
+    //             }
+    //         },
+    //         error: function (errorInfo) {
+    //             console.log('訓練過程異常，無法取得目前動作')
+    //         }
+    //     });
+    //   }
+
+    // }
+
+
+    // function click_cancel() {
+    //   // clearInterval(timer_get_current_pose)
+      
+    //   $('.term').fadeToggle(1200);
+    //   $('.cycle-border').hide();
+    //   $('#current_pose_tooltip').hide();
+    //   $('#body_analyze_img').attr('src', '../static/img/pose_recognition.jpg')
+      
+    //   setTimeout(function () {
+    //     console.log('cancel')
+    //     pose_label.innerHTML = ""
+    //     $('.login-btn').prop("disabled", false);
+    //     $('.stop-btn').prop("disabled", true);
+    //   }, 1000)
+      
+    //   $.ajax({
+    //     type: 'GET',
+    //     url: '/process/control_detect_process/click_cancel',
+    //     success: function (res) {
+    //       console.log(res)
+    //       check_pose_list = [];
+    //       //清除畫面的動作流程清單資訊
+    //       $use_pose_list.forEach((pose, i) => {
+    //           $use_pose_table.bootstrapTable('updateCell', {
+    //             index: i,
+    //             field: 'check',
+    //             value: ''
+    //           })
+    //       });
+    //     },
+    //     error: function (res) {
+    //       console.log(res)
+    //       alert(res.responseText)
+    //     }
+    //   });
+    // }
+
+    $("#select_cam").change(function () {
+      camid = select_cam.selectedIndex + 1
+      console.log('change cam to ' + camid)
+      url = "/change_cam/" + camid
+      $.ajax({
+        url: url,
+        method: 'GET',
+        beforeSend: function(){
+            Swal.fire({ 
+              html:"切換至「" + camid + "號」攝影機<br><strong>讀取中，請稍後...</strong>",
+              toast: true,
+              showConfirmButton: false,
+              didOpen: () => {Swal.showLoading()}
+            });
+        },
+        success: function (res) {
+          console.log(res)
+          Swal.fire({
+            title: "成功切換攝影機",
+            text: "已切換至「" + camid + "號」攝影機",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1200,
+          });
+          if ($(window).height() < 1000)
+            $('.frame').height(window.height * 0.85);
+          else
+            $('.frame').height(window.height);
+
+          console.log('window: ' + $(window).height())
+          console.log('frame: ' + $('.frame').height())
+          console.log('.frame resized')
+        },
+        error: function (res) {
+          console.log(res)
+        }
+      })
+    });
+
+    $("#select_recipe").change(function () {
+      selected_recipe = select_recipe.options[select_recipe.selectedIndex].text
+      recipe = selected_recipe
+      update_recipe_config(recipe)
+      var data_rows = get_use_pose_list(recipe)
+      $use_pose_table.bootstrapTable('load', data_rows);
+      console.log('change recipe to ' + selected_recipe)
+    });
+
+    function update_recipe_config(recipe){
+      $.ajax({
+        url: '/process/api/recipe',
+        method: 'GET',
+        data: {"recipe_name": recipe},
+        success: function(res){
+          console.log("更改recipe config成功")
+        },
+        error: function(){
+          console.log("更改recipe config失敗")
+        }
+      });
+    }
+
+    function get_use_pose_list(recipe){
+      var rows = []
+      var cam_id = $('#select_cam')[0].selectedIndex+1
+      $.ajax({
+        url: '/process/api/pose',
+        method: 'GET',
+        async:false,
+        data: {
+            "recipe_name": recipe,
+        },
+        success: function (res) {
+          $use_pose_list = res.use_pose_list;
+          for (var i = 0; i < res.use_pose_list.length; i++) {
+            rows.push({
+              id: i+1,
+              pose: res.use_pose_list[i],
+              check: ''
+            })
+          }
+          console.log(rows)
+        },
+        error: function (res) {
+          console.log(res);
+        }
+      });
+
+      return rows
+    }
+
+    function update_use_pose_list(current_pose){
+      for(i=0; i<check_pose_list.length; i++)
+      {
+        if($use_pose_list[i]==current_pose){
+          $use_pose_table.bootstrapTable('updateCell', {
+            index: i,
+            field: 'check',
+            value: '執行中...'
+          })
+        }
+        else{
+          $use_pose_table.bootstrapTable('updateCell', {
+            index: i,
+            field: 'check',
+            value: '✔'
+          })
+        }
+      }
+
+      
+    }
+  </script>
+
+</body>
+
+</html>

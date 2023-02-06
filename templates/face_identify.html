@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+  <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--ICON-->
+  <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+  <!-- Sweet Alert -->
+  <script src="../static/sweetalert2-11.0.0/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="../static/temp/face_identify.css" />
+  <link rel="stylesheet" href="../static/temp/masterpage.css" />
+  <link rel="stylesheet" href="../static/temp/w3.css" />
+
+  <title>管制口登入系統－人臉辨識</title>
+
+  <style>
+    body {
+      background-color: #000;
+      font-family: 'Noto Sans TC', 'Muli', '微軟正黑體';
+    }
+
+    .btn-circle.btn-sm {
+      width: 55px;
+      height: 55px;
+      padding: 7px 10px;
+      border-radius: 35px;
+      font-size: 18px;
+      text-align: center;
+      left: 10px;
+      position: fixed;
+      opacity: 75%;
+
+    }
+
+    button {
+      font-family: "微軟正黑體";
+      font-weight: bold;
+    }
+
+    .swal-text,
+    .swal-content__input {
+      font-size: 22px;
+    }
+
+    .frame {
+      /* height: 160px;
+            width: 160px;  */
+      position: relative;
+    }
+
+    .login-btn {
+      text-align: center;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-size: 20px;
+      letter-spacing: 4px;
+      position: relative;
+      background-color: rgba(22, 160, 133, 0.65);
+      border: none;
+      color: #fff;
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+      transition-duration: 0.4s;
+      overflow: hidden;
+      box-shadow: 0 5px 15px #1b5b6b;
+      border-radius: 7px;
+    }
+
+    .login-btn:hover:not([disabled]) {
+      background: rgba(0, 242, 196, 0.8);
+      box-shadow: 0px 2px 10px 5px #1abc9c;
+      color: #fff;
+    }
+
+
+    .stop-btn {
+      z-index: 10;
+      text-align: center;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-size: 20px;
+      letter-spacing: 4px;
+      position: relative;
+      background-color: rgba(222, 91, 109, 0.75);
+      border: none;
+      color: #fff;
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+      transition-duration: 0.4s;
+      overflow: hidden;
+      box-shadow: 0 5px 15px #aa5758;
+      border-radius: 7px;
+    }
+
+    .stop-btn:hover:not([disabled]) {
+      background: rgba(255, 0, 91, 0.8);
+      box-shadow: 0px 2px 10px 5px #f375b5;
+      color: #fff;
+    }
+
+    .button:after {
+      content: "";
+      background: #feffff;
+      display: block;
+      position: absolute;
+      padding-top: 300%;
+      padding-left: 350%;
+      margin-left: -20px !important;
+      margin-top: -120%;
+      opacity: 0;
+      transition: all 0.8s
+    }
+
+    .button:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s
+    }
+
+    .button:focus {
+      outline: 0;
+    }
+
+    button:disabled {
+      background: rgba(114, 114, 114, 0.8);
+      box-shadow: none;
+    }
+  </style>
+
+</head>
+
+<body class="overflow-hidden">
+  <header class="row text-left" style="padding-bottom: 55px;" >
+    <div class="col-12">
+        <nav class="navbar navbar-master">
+            <span class="navbar-brand text-center" href="#">
+                <img src="../static/img/VG_LOGO2.png" width="45"
+                    class="d-inline-block align-center mb-1" alt="" >
+                <nav class="navbar-text mx-2">
+                  <ol class="breadcrumb p-0 d-flex align-items-center">
+                    <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                    <li class="breadcrumb-item">人臉管制系統</li>
+                    <li class="breadcrumb-item active">辨識登入(UI控制)</li>
+                  </ol>
+                </nav>
+            </span>
+            <ul class="nav mr-auto" id="nav_items_list">
+              <li class="nav-item">
+                <a class="nav-link" href="/face/io_login">辨識登入(外部IO)</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/face/register">新用戶註冊</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/face/admin">後台管理</a>
+              </li>
+            </ul>
+            <ul class="nav" id="nav-btn-top">
+                <li class="nav-item mr-1" data-toggle="tooltip" data-placement="bottom" title="首頁">
+                    <a href="/"><i class="fas fa-home navbar-btn"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-9 frame px-0">
+        <img class="rounded-lg" id="camera" src="/stream/faceIndex" width="100%" height="100%" >
+        <div class="col-12 text-center" style="position: relative;bottom: 10%;">
+          <!-- <button class="login-btn button mx-1" onclick="click_login()">Login</button>
+          <button class="stop-btn button mx-1" onclick="click_cancel()" disabled>Stop</button> -->
+        </div>
+      </div>
+      <div class="col-sm-12 col-md text-center" style="background: #262e3e;">
+        <div class="img-frame">
+          <div class="angles"></div>
+          <article>
+            <span class="cycle-border"></span>
+            <span class="cycle-border"></span>
+            <span class="cycle-border"></span>
+            <span class="cycle-border"></span>
+            <img src="../static/img/Face_recognition.jpg" height="100%" class="rounded" id="face_analyze_img">
+            <!-- <img src="/face/face_stream" height="100%" class="rounded" id="face_analyze_img"> -->
+          </article>
+        </div>
+        <div class="row d-flex text-center d-flex justify-content-center" style="position: relative;top:37%">
+          <div class="col-12 d-flex justify-content-center align-items-center mt-2 text-white">
+            <div class="cycle-border spinner-border" role="status">
+            </div>
+            <span class="cycle-border text-white ml-2 fs-6">辨識中...</span>
+          </div>
+          <div class="col-11 mt-4 p-3 text-white" id="recent_login_div1">
+            <div class="text-left my-1 lead" style="color:#d56df8;font-size: 16px;"><em>最近通關出入記錄</em></div>
+            <div class="row bg-white rounded-lg position-relative">
+              <div class="col-12 d-flex justify-content-center">
+                <div class="text-center rounded-circle bg-white p-3" id="log-in-icon">
+                  <img src="../static/img/log-in.png" class="align-middle" width="40" height="40" >
+                </div>
+              </div>
+              <div class="col-12 pt-5 pb-3">
+                <table class="table-hover text-center" id="recent_login_list" >
+                  <thead>
+                    <tr>
+                      <th class="center">進出人員</th>
+                      <th class="center">登入時間</th>
+                    </tr>
+                  </thead>
+                  <tbody id="InfoTable">
+                    <!-- <tr>
+                      <td class="center" ><img src="http://placehold.it/60x60" class="rounded-circle"></td>
+                      <td class="align-middle">111&#10005;</td>
+                    </tr>
+                    <tr>
+                      <td class="center" id="rankid1"><img src="http://placehold.it/60x60" class="rounded-circle"></td>
+                      <td class="align-middle" id="rankid1">111&#10005;</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+ 
+  
+  <div class="term term-cam">
+    <button id="ModalBtn" class="btn position-absolute text-black-50 p-0 my-0" style="right: 0;margin-right: 12px;">
+      <i class="fas fa-cog"></i>
+    </button>
+    <dt class="mb-2">
+      <span id="info_dmId">人臉辨識</span>
+    </dt>
+    <dd>
+      <table id="in_out_table">
+        <tbody>
+          <tr>
+            <td>攝影機：</td>
+            <td>
+              <select class="form-select w-auto mb-3" id="select_cam">
+                {% for i in range(1,cam_data[1]+1) %}
+                <option {{ 'selected' if cam_data[0]==i else '' }}>Cam{{i}}</option>
+                {% endfor %}
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>虛擬圍籬：</td>
+            <td class="align-item-center py-0"><button class="btn btn-sm btn-primary" onclick="open_fence_modal()">設定圍籬</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </dd>
+  </div>
+  
+  <!-- 辨識結果 跳出訊息toast-->
+  <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 25%; bottom: 20;">
+    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2500">
+      <div class="toast-header">
+        <i class="fas fa-sign-in-alt text-success"></i>&nbsp;
+        <strong class="mr-auto">系統訊息</strong>
+        <small id="login_time">now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        <strong class="text-success h5">登入成功！ </strong>
+        Welcome, <strong id="login_member" class="h5 text-success "></strong>.
+      </div>
+    </div>
+    <div id="FailToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2500">
+      <div class="toast-header">
+        <i class="fas fa-sign-in-alt text-dark"></i>&nbsp;
+        <strong class="mr-auto">系統訊息</strong>
+        <small id="login_time2">now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        <strong class="text-danger h5">登入失敗！您未在人員進出名單內</strong>
+        <br>如有進出需求，請向管制口提出申請。
+      </div>
+    </div>
+    <div id="Fail2Toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2500">
+      <div class="toast-header">
+        <i class="fas fa-sign-in-alt text-dark"></i>&nbsp;
+        <strong class="mr-auto">系統訊息</strong>
+        <small id="login_time2">now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        <strong class="text-danger h5">登入失敗！辨識超時...</strong>
+        <br>請重新登入，謝謝。
+      </div>
+    </div>
+  </div>
+  <!-- 辨識結果 ID卡-->
+  <div class="id_card card toast hide" style="width: 22rem;" data-delay="3500">
+    <div class="ds-top"></div>
+    <div class="id_photo">
+      <img src="https://picsum.photos/id/669/100?grayscale" id="id_photo" class="rounded-circle">
+    </div>
+    <div class="card-body">
+      <img src="../static/img/auo_logo.jpg" width="75">
+      <h5 class="card-title my-0 text-black-50 font-weight-bold" style="letter-spacing: 4px;">友 達 光 電</h5>
+      <hr class="my-2">
+      <h3 class="card-title fw-bolder text-uppercase mb-2" id="id_name">Empolyee</h3>
+      <!-- <div style="margin-left: 52px;">
+        <table>
+          <tr>
+            <td style="width:5px;border:none;"><i class="fas fa-users" style="color:#ff6f68;"></i></td>
+            <td style="border:none;">MC5EI0</td>
+          </tr>
+          <tr>
+            <td style="width:5px;border-top:0.01rem #d1d8e0 solid"><i class="fas fa-map-marker-alt"
+                style="color:#ff6f68;"></i></td>
+            <td style="border-top:0.005rem #d1d8e0 solid">AUHQ-AUKH-OB</td>
+          </tr>
+        </table>
+      </div> -->
+      <!-- <div class="float-right mt-3">
+        <img src="../static/img/auo_logo.jpg" width="45px">
+      </div> -->
+    </div>
+
+  </div>
+  <!-- 辨識設定 Modal-->
+  <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bolder" id="exampleModalLabel">辨識設定 Identify Setting</h5>
+          <button type="button" class="close modal_close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <i class="bi bi-stack mr-1" style="font-size: 1.5rem; color: cornflowerblue;"></i><label
+                for="recipient-name" class="col-form-label">辨識基準值(張數):</label>
+              <input type="text" class="form-control" id="frame_num_set" value="{{identify_frame}}">
+            </div>
+            <div class="form-group">
+              <i class="bi bi-hourglass-split mr-1" style="font-size: 1.5rem; color: cornflowerblue;"></i><label
+                for="message-text" class="col-form-label">辨識時間(s):</label>
+              <input type="text" class="form-control" id="pred_time_set" value="{{identify_time}}">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal_close" data-dismiss="modal">取消Chanel</button>
+          <button type="button" class="btn btn-success" onclick="setting_change()">變更Change</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 圍籬 Model -->
+  <div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true" id="vf-modal">
+    <div class="modal-dialog  modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row  d-flex justify-content-start align-items-center">
+                    <div class="col ">
+                        <h3 class="fw-bolder my-1">
+                            <i class="fas fa-draw-polygon" style="font-size: 23px;color:#f48b53"></i>
+                            虛擬圍籬設定
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-lg-7 mr-1 ">
+                        <p class="text-right my-1"><i class="fas fa-map-marker-alt w3-text-red"></i>&nbsp;
+                            <label id="site"></label>
+                        </p>
+                        <canvas id="canvas"></canvas>
+                        <!--width="1500vw" height="450"-->
+                        <canvas id="canvas2" style="display: none;"></canvas>
+                        <!--width="1500vw" height="450"-->
+                        <canvas id="canvasSave"></canvas>
+                        <div id="imageMap"><img src="/stream/faceFence" width="100%"  id="mapPic">
+                            <div id="markArea"></div>
+                        </div>
+
+                    </div>
+                    <div class="col-md col-lg" id="Setting_Tabs">
+                      <div class="tab-pane fade show active" id="areaSet">
+                        <form class="form-inline mb-2">
+                          <div class="form-group">
+                            <div class="custom-control custom-switch">
+                              <input type="checkbox" class="custom-control-input" id="switch_fence">
+                              <label class="custom-control-label h5" for="switch_fence">啟用虛擬圍籬</label>
+                          </div>
+                        </form>
+                        </div>
+
+                        <p class="text-muted"><mark>*請於左方框選區域</mark></p>
+                        <div class="mt-2 row" id="markInfo">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="mx-auto my-3">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消返回</button>
+                    <button type="button" class="btn btn-primary" onclick="saveAreaCoord()">儲存區域</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+  </div>
+
+
+  <!-- Option 2: jQuery, Popper.js, and Bootstrap JS -->
+  <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+  <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/temp/svg.min.js"></script>
+  <script src="../static/temp/face_identify.js"></script>
+  {% if fence_setting['fence_enable'] == "false" %}
+    <script>$('#switch_fence').prop("checked", false);</script>
+  {% else %}
+    <script>$('#switch_fence').prop("checked", true);</script>
+  {% endif %}
+  <script>
+    var area_coordResult = "{{fence_setting['coord']}}";
+    if (area_coordResult.length > 0) {
+        area_arr = area_coordResult.split('},');
+        area_arr.forEach(coord => {
+            if (coord == "") {}
+            else {
+                coord = coord.replace('{', '');
+                coord = coord.replace('}', '');
+                createXYinfo(coord,"{{fence_setting['img_width']}}","{{fence_setting['img_height']}}", 'markInfo');
+                drawSVG(coord, drawArea)
+            }
+        });
+    }
+  </script>
+  <script>
+    
+    // 阻止瀏覽器返回
+    // $(function(){
+    //     history.pushState(null, null, document.URL);
+    //     history.pushState('forward', null, '');
+    //     window.addEventListener("popstate",function(e) {  
+    //         console.log('禁止倒退');
+    //         history.pushState(null, null, document.URL);
+    //     });
+    // })
+    
+    $(document).ready(function () {
+
+      sessionStorage.setItem("MainPageVisited", "True");  // 進入子系統頁面時設定sessionStorage
+
+      $('.frame').width(window.screen.availWidth*0.75);
+      $('.frame').height($(window).height()*0.95);
+      $('#recent_login_div').css('max-height', $(window).height()*0.5)
+      $('#recent_login_list tbody').css('max-height', $('#recent_login_div').height()*0.85)
+      $('.cycle-border').hide();
+      $('[data-toggle="tooltip"]').tooltip();
+      is_start = false
+    });
+
+    $(window).resize(function () {
+      $('.frame').width(window.screen.availWidth*0.75);
+      $('.frame').height($(window).height()*0.95);
+    });
+
+    var select_cam = document.getElementById("select_cam");
+
+    $("#select_cam").change(function () {
+      camid = select_cam.selectedIndex + 1
+      console.log('change cam to ' + camid)
+      url = "/change_cam/" + camid
+      $.ajax({
+        url: url,
+        method: 'GET',
+        beforeSend: function(){
+            Swal.fire({ 
+              html:"切換至「" + camid + "號」攝影機<br><strong>讀取中，請稍後...</strong>",
+              toast: true,
+              showConfirmButton: false,
+              didOpen: () => {Swal.showLoading()}
+            });
+        },
+        success: function (res) {
+          console.log(res)
+          Swal.fire({
+            title: "成功切換攝影機",
+            text: "已切換至「" + camid + "號」攝影機",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1200,
+          });
+          // $('.frame').resize();
+          if ($(window).height() < 1000)
+            $('.frame').height(window.height * 0.85);
+          else
+            $('.frame').height(window.height);
+
+          console.log('window: ' + $(window).height())
+          console.log('frame: ' + $('.frame').height())
+          console.log('.frame resized')
+        },
+        error: function (res) {
+          console.log(res)
+        }
+      })
+    });
+
+    $("#ModalBtn").click(function () {
+      $('#exampleModal').modal('show');
+    });
+
+    $("#exampleModal .modal_close").click(function () { $('#exampleModal').modal('hide'); });
+
+    timer_get_identify_result = setInterval(get_identify_result, 500);
+
+    // function click_login() {
+    //   is_start = true
+    //   $('.login-btn').prop("disabled", true);
+    //   $('.stop-btn').prop('disabled', false);
+    //   $('.cycle-border').show();
+    //   $('.term-cam').fadeToggle(1000);
+    //   $('#face_analyze_img').attr('src', '/face/stream');
+    //   timer_get_identify_result = setInterval(get_identify_result, 500);
+    //   $.ajax({
+    //     type: 'GET',
+    //     url: "/face/control_detect_process/click_login",
+    //     contentType: 'application/json; charset=UTF-8',
+    //     success: function (result) {
+    //       // alert(result);
+    //     },
+    //     error: function (errorInfo) {
+    //       alert("失敗, error:" + errorInfo.message);
+    //     }
+    //   });
+    // }
+
+    // function click_cancel() {
+    //   clearInterval(timer_get_identify_result);
+    //   $('.cycle-border').hide();
+    //   $('.term-cam').fadeToggle(1000);
+    //   $('#face_analyze_img').attr('src', '../static/img/Face_recognition.jpg')
+    //   $.ajax({
+    //     type: 'GET',
+    //     url: "/face/control_detect_process/click_reload",
+    //     contentType: 'application/json; charset=UTF-8',
+    //     // data: JSON.stringify(user),
+    //     success: function (result) {
+    //       $('.login-btn').prop('disabled', false);
+    //       $('.stop-btn').prop('disabled', true);
+    //       Swal.fire({
+    //         title: result,
+    //         showConfirmButton: false,
+    //         timer: 1100,
+    //         imageUrl: "../static/img/stop-button.png",
+    //         imageWidth: 100,
+    //         imageHeight: 100,
+    //       });
+    //     },
+    //     error: function (errorInfo) {
+    //       alert("失敗，請聯絡窗口");
+    //     }
+    //   });
+    // }
+    
+    function get_identify_result(){
+      $.ajax({
+        type: 'GET',
+        url: "/face/identify_result",
+        success: function (res) {
+          console.log(res)
+          if(res.result != null){
+            if (is_start){
+              clearInterval(timer_get_identify_result);
+              is_start = false
+            }
+            $('.login-btn').prop("disabled", false);
+            $('.stop-btn').prop("disabled", true);
+            // $('.term-cam').fadeToggle(1000);
+            $('.cycle-border').hide();
+            $('#face_analyze_img').attr('src', '../static/img/Face_recognition.jpg')
+            // var user_id = id_info[0].substring(1, id_info[0].length - 1);
+            // var login_time = id_info[1].replace(' ', '').substring(1, id_info[1].length - 3);
+            if (res.result == 'Fail') {
+              Swal.fire({
+                timer: 2000,
+                showConfirmButton: false,
+                background: 'rgba(255,255,255,0)',
+                backdrop: 'rgba(255,255,255,0)',
+                imageUrl: "../static/img/check_ng.gif",
+                imageWidth: 350,
+                imageHeight: 350,
+              })
+              $('#FailToast').toast('show');
+              $('#login_time2').text(res.time);
+            }
+            else if (res.result == 'Timeout') {
+              Swal.fire({
+                timer: 2000,
+                showConfirmButton: false,
+                background: 'rgba(255,255,255,0)',
+                backdrop: 'rgba(255,255,255,0)',
+                imageUrl: "../static/img/timeout.gif",
+                imageWidth: 350,
+                imageHeight: 350,
+              })
+              $('#Fail2Toast').toast('show');
+              $('#login_time2').text(res.time);
+            }
+            else {
+              Swal.fire({
+                timer: 2000,
+                showConfirmButton: false,
+                background: 'rgba(255,255,255,0)',
+                backdrop: 'rgba(255,255,255,0)',
+                imageUrl: "../static/img/check_ok.gif",
+                imageWidth: 350,
+                imageHeight: 350,
+              })
+              $("#login_member").text(res.result);
+              $("#id_name").text(res.result);
+              $('#id_photo').attr('src',"/show_photo?sys=face&path=face_base/" + res.result + ".jpg")
+              $('#login_time').text(res.time);
+              $('#liveToast').toast('show');
+              $('.id_card').toast('show');
+              createNewRow(res.result, res.time);
+            }
+          }                
+        },
+        error: function (errorInfo) {
+          alert("失敗, error:" + errorInfo.message);
+        }
+      });
+    }
+
+    function setting_change() {
+      var frame_num = $('#frame_num_set').val();
+      var pred_time = $('#pred_time_set').val();
+      $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/face/Login_Setting_Change",
+        contentType: 'application/json; charset=UTF-8',
+        data: JSON.stringify(frame_num + ',' + pred_time),
+        success: function (result) {
+          Swal.fire({title:"設定"+ result, icon: 'success', toast: true,  showConfirmButton: false, timer:1300})
+          $('#exampleModal').modal('hide');
+
+        },
+        error: function (errorInfo) {
+          alert("失敗, error:" + errorInfo.message);
+        }
+      });
+    }
+
+    var rowMaxNum = 10;
+    function createNewRow(name, time) {
+      if ($('#recent_login_list tr').length >= 20) {
+        $("#recent_login_list tr:first-child").remove();
+        $("#recent_login_list tr:first-child").remove();
+        if (rowMaxNum == 0)
+          rowMaxNum = 10;
+      }
+
+      for (i = 0; i < 2; i++) {
+        var num = document.getElementById("recent_login_list").rows.length; //表格當前的行數
+        var rowNum = num;
+        var tr = document.createElement('tr');
+        var objHTML = "";
+
+        if (i == 0) {
+          tr.id = 'row_' + rowMaxNum.toString();
+          document.getElementById("InfoTable").appendChild(tr);
+          var td = document.getElementById('row_' + rowMaxNum.toString());
+          objHTML += "<td id='rankid1' rowspan='2'><img src='/show_photo?sys=face&path=face_base/" + name + ".jpg' class='rounded-circle' width='60' height='60'></td>";
+          objHTML += "<td class='center align-middle' id='rankid1'><b>" + name + "</b><br><em class='fs-6 text-muted'>" + time + "</em></td>";
+
+        }
+        else {
+          tr.id = 'row2_' + rowMaxNum.toString();
+          document.getElementById("InfoTable").appendChild(tr);
+          var td = document.getElementById('row2_' + rowMaxNum.toString());
+          // objHTML += "<td class='pl-2 center text-black-50' id='rankPC1' style='font-size: 13px;'>" + time + "</td>";
+
+        }
+
+        td.innerHTML = objHTML;
+
+      }
+      rowMaxNum--;
+    }
+  </script>
+
+
+</body>
+
+</html>

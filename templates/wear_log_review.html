@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="Enterport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--ICON-->
+    <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <!-- Sweet Alert -->
+    <script src="../static/sweetalert-master/sweetalert.min.js"></script>
+    
+    <link rel="stylesheet" href="../static/temp/masterpage.css"/>
+    <!--Bootstrap Table-->
+    <link rel="stylesheet" href="../static/bootstrap-table-master/dist/bootstrap-table.min.css" />
+    <!--w3 CSS-->
+    <link rel="stylesheet" href="../static/temp/w3.css" />
+    <!-- Loader Css-->
+    <link rel="stylesheet" href="../static/temp/loader-curtain.css" />
+
+    <title>裝備穿戴偵測_Vision Guard</title>
+    <style>
+        body {
+            font-family: 'Muli', 'Noto Sans TC', '微軟正黑體';
+        }
+
+        #banner{
+            background: url('../static/img/23964.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body class="bg-light py-2">
+    <header class="row text-left" style="padding-bottom: 75px;">
+        <div class="col-12">
+            <nav class="navbar navbar-master">
+                <span class="navbar-brand text-center" href="#">
+                    <img src="../static/img/VG_LOGO2.png" width="45"
+                        class="d-inline-block align-center mb-1" alt="" >
+                    <nav class="navbar-text mx-2">
+                      <ol class="breadcrumb p-0 d-flex align-items-center">
+                        <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                        <li class="breadcrumb-item"><a href="/wearing/index">裝備偵測系統</a></li>
+                        <li class="breadcrumb-item active">異常發報訊息</li>
+                      </ol>
+                    </nav>
+                </span>
+                <ul class="nav mr-auto" id="nav_items_list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/wearing/index">穿戴辨識</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/wearing/wear_setting">功能設定</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/wearing/model_OPT">模型優化</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/wearing/model_train">模型訓練</a>
+                    </li>
+                </ul>
+                <ul class="nav" id="nav-btn-top">
+                    <li class="nav-item mr-1" data-toggle="tooltip" data-placement="bottom" title="首頁">
+                        <a href="/"><i class="fas fa-home navbar-btn"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row p-4">
+            <div class="col-lg-4 col-md-10 col-sm-12 mt-5 mx-auto">
+                <h4 class="text-black-50 text-primary font-weight-bold text-center"><i class="fas fa-eye"></i> 檔案預覽框</h4>
+                <img src="http://fakeimg.pl/1920x1153/?text=File Review" width="100%" style="border: 3px solid #cacbd5;border-radius: 19px;"
+                    id="img_review" />
+                <p class=" text-primary text-center my-1" id="review_filename"></p>
+            </div>
+            <div class="col-lg-7 col-md-10 col-sm-12 mx-auto py-2">
+                <section class="py-5 mb-2 text-center container border rounded" id="banner">
+                    <div class="row py-lg-2">
+                        <div class="col-lg-6 col-md-8 mx-auto">
+                            <h1 class="font-weight-bold text-white">異常通報訊息記錄</h1>
+                            <p class="lead text-muted">通報訊息 Detail Review .</p>
+                        </div>
+                    </div>
+                </section>
+                <div class="row">
+                    <div class="col-lg-11 col-md-10 mx-auto my-2 text-right">
+                        <i class="far fa-calendar-alt mr-1"></i>選擇日期
+                        <select class="custom-select w-auto" id="log_dt_select">
+                        {% for key,value in alarm_log.items() %}
+                            {% if loop.index == 1 %}
+                            <option value="{{key}}" selected>{{key}}</option>
+                            {% else %}
+                            <option value="{{key}}">{{key}}</option>
+                            {% endif %}
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-lg-11 col-md-10 col-sm-12 mx-auto py-2">
+                        <table id="alarm_log_table"  data-toggle="table" data-pagination="true"
+                            data-page-size="10"  data-page-list="[5, 10, 25, All]"
+                            data-sort-name="time" data-sort-order="desc"
+                            class="text-center" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th data-field="time" data-sortable="true">通報時間</th>
+                                    <th data-field="channel">發報頻道</th>
+                                    <th data-field="cam_id">攝影機 ID</th>
+                                    <th data-field="parts">辨識部位</th>
+                                    <th data-field="classes">辨識類別</th>
+                                    <th data-field="img">圖片</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               {% for key,items in alarm_log.items() %}
+                                    {% if loop.index == 1 %}
+                                        {% for value in items %}
+                                            <tr>
+                                                <td>{{ value['time'] }}</td>
+                                                <td>{{ value['channel']|upper }}</td>
+                                                <td>{{ value['cam_id'] }}</td>
+                                                <td>{{ value['parts'] }}</td>
+                                                <td>{{ value['classes'] }}</td>
+                                                <td class="d-flex justify-content-center">
+                                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                                        <div class="btn-group mr-2" role="group">
+                                                        {% for img in value['img'] %}
+                                                        <button class="btn btn-sm btn-info border" onclick="review_imgfile('{{img|replace('.png','')}}')">
+                                                            圖 {{loop.index}}
+                                                        </button>
+                                                        {% endfor %}
+                                                        </div>                  
+                                                    </div>                                      
+                                                    <!-- <button class="btn btn-outline-primary btn-sm" onclick="review_imgfile({{ value['img']|replace('.jpg','')}})">
+                                                        預覽圖片<i class="fas fa-image"></i>
+                                                    </button> -->
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+    <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+    <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+
+    <script>
+        $('#log_dt_select').change(function(){
+            var selected_item = $('#log_dt_select').find("option:selected").text()
+            update_alarm_log_json(selected_item);
+            $('#img_review').attr('src','http://fakeimg.pl/1920x1153/?text=File Review');
+            $('#review_filename').html('');
+        });
+
+        //更新 DataTable資料來源: log_json 
+        function update_alarm_log_json(selected_item){
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: "/wearing/log_review",
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify(1),
+                success: function (result) {
+                    // var selected_item = $("#log_dt_select").find("option:selected").text()
+                    if(selected_item == null)
+                        selected_item = Object.keys(result)[Object.keys(result).length-1]
+                    var data = []
+                    var index = 0
+                    $("#log_dt_select option").remove();
+
+                    Object.keys(result).forEach(function(key) {
+                        $("#log_dt_select").append($('<option>', {
+                            value: key,
+                            text: key
+                        }));
+
+                        $(`#log_dt_select option[value=${selected_item}]`).attr('selected','selected');
+
+                        if(key == selected_item){
+                            var img_col =""
+                            result[key].forEach(function(item_dict) {
+                                img_col = `<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                            <div class="btn-group mr-2" role="group">`
+                                item_dict['img'].forEach(function(img,index) {
+                                    img_col += `<button class="btn btn-sm btn-info border" onclick="review_imgfile('${img.replace('.png','')}')">
+                                        圖 ${index+1}</button>`
+                                });
+                                img_col+="</div></div>"
+                                item_dict['img'] = img_col
+                            });
+                            data = result[key]
+                        }
+                        index++;
+                    });
+                    $('#alarm_log_table').bootstrapTable('destroy')
+                    $('#alarm_log_table').bootstrapTable({data: data});
+                    // $('#alarm_log_table').bootstrapTable('load', data);
+
+                },
+                error: function (errorInfo) {
+                    Swal.fire({ title: "更新失敗, error:" +errorInfo.message ,icon: 'error',showConfirmButton: false, timer: 1500,toast: true});
+                }
+            });
+        }
+
+        function review_imgfile(filename){
+            $('#img_review').attr('src', `/wearing/show_img/alarm_img/${filename}`);
+            $('#review_filename').html(`${filename}.jpg`);
+        }
+    </script>
+</body>
+
+
+</html>

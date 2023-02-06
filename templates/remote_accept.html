@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+    <head>
+        <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="Enterport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--ICON-->
+        <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.css">
+        
+        <!-- Sweet Alert -->
+        <script src="../static/sweetalert-master/sweetalert.min.js"></script>
+        <!-- <link rel="stylesheet" href="../static/info_dt.css"/> -->
+        <!--Bootstrap Table-->
+        <link rel="stylesheet" href="../static/bootstrap-table-master/dist/bootstrap-table.min.css"/>
+        <!-- <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script> -->
+        <!--w3 CSS-->
+        <link rel="stylesheet" href="../static/temp/w3.css"/>
+        <link rel="stylesheet" href="../static/temp/monitor_a.css"/>
+        <!--Bootstrap Table-->
+        <link rel="stylesheet" href="../static/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.css"/>
+
+        <title>遠端即時監控_Vision Guard</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Oswald:500");
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+            @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+            @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
+            @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+            
+            body{
+                font-family:'Muli','Noto Sans TC', '微軟正黑體';
+            }
+
+            #msg_div::-webkit-scrollbar {
+                width: 8px;
+                height: 5px;
+            }
+            #msg_div::-webkit-scrollbar-thumb {
+                /*滚动条里面小方块--纯色*/
+                /*border-radius: 10px;
+                box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+                background: rgba(23,161,230,1);*/
+                /*滚动条里面小方块--变化色*/
+                border-radius: 8px;
+                background-color: #B0BEC5;
+                /* background-image: -webkit-linear-gradient( 45deg
+                , rgba(255, 255, 255, 0.2) 25%, transparent 25%
+                , transparent 50%, rgba(255, 255, 255, 0.2) 50%
+                , rgba(255, 255, 255, 0.2) 75%, transparent 75%
+                , transparent ); */
+
+                background-image: -webkit-linear-gradient( 45deg
+                , rgba(255, 255, 255, 0.2) 10%, transparent 10%
+                , transparent 20%, rgba(255, 255, 255, 0.2) 20%
+                , rgba(255, 255, 255, 0.2) 30%, transparent 30%
+                , transparent 40%, rgba(255, 255, 255, 0.2) 40%
+                , rgba(255, 255, 255, 0.2) 50%, transparent 50%
+                , transparent 60%, rgba(255, 255, 255, 0.2) 60%
+                , rgba(255, 255, 255, 0.2) 70%, transparent 70%
+                , transparent 80%, rgba(255, 255, 255, 0.2) 80%
+                , rgba(255, 255, 255, 0.2) 90%, transparent 90%
+                , transparent );
+            }
+
+            #msg_div::-webkit-scrollbar-track {
+                /*滚动条里面轨道*/
+                box-shadow: inset 0 0 5px rgba(220, 222, 224, 0.75);
+                border-radius: 10px;
+                background: #ededed;
+            }
+            .msg_content{
+                border:none;
+                /* min-width: 120%; */
+                width: 100%;
+                /* word-break:break-all; */
+                padding: 0px 10px;
+            }
+
+            
+            .msg_content:focus{
+                border:none;
+                outline: none;
+            }
+            #music_time,#music_to,#music_date
+            {
+                font-size: 15px;
+            }
+        </style>
+    </head>
+    <body class="bg-light py-2">
+        <div class="container-fluid">
+            <div class="row pb-3 text-left">
+                <div class="col-12">
+                    <nav class="navbar navbar-light bg-light">
+                        <span class="navbar-brand" href="#">
+                          <img src="../static/img/KHAIT_LOGO(bg-b)-02.png" width="60" height="60" class="d-inline-block align-center mb-1" alt="" style="opacity: 95%;border-radius:19px;">
+                          <strong class=" h4 fw-bolder page-title">遠端即時監控/ 接收端<img class="m-1" src="../static/img/{{EQPT}}.png" width="30"/></strong>
+                        </span>
+                        <ul class="nav" id="nav-btn-top">
+                            <li class="nav-item mr-1"><a href="/"><i class="fas fa-home text-muted"></i></a></li>
+                            <!-- <li class="nav-item mr-1" id="logout_Btn" ><i class="fas fa-sign-out-alt  text-muted"></i></li> -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="row px-1 mx-2 align-items-start">
+                <div class="col-md-6 col-lg-5" >
+                    <div class="headings d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold"><i class="bi bi-chat-square-text-fill w3-text-cyan mr-1"></i>文字留言區</h5>
+                        <form action="/monitor_accept" method="POST">
+                            <div class="input-group date w-auto">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                </div>
+                                <input type="text" id="input_date" name="date" class="form-control text-center" placeholder="選擇日期">
+                                <div class="input-group-append">
+                                    <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    <div id="msg_div" style="overflow-y: scroll;overflow-x: hidden;height: 700px;">
+                        {% if not MsgDict %}
+                        <div class="card pt-2 px-3 pb-1 mb-2 bg-light">
+                            <div class="card-body text-center">
+                                <img src="../static/img/No data.gif" width="60%"/>
+                                <h3 class="card-title fw-bolder mt-0">No Data ...</h3>
+                            </div>
+                        </div>
+                        {% else %}
+                            {% for key, value in MsgDict.items() %}
+                                {% for e in value['msg'] %}
+                                <div class="card pt-2 px-3 pb-1 mb-2" >
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="user d-flex flex-row align-items-center">
+                                            <img src="/show/{{key}}" width="45" height="45" class="user-img rounded-circle mr-2"> 
+                                            <span >
+                                                <label class="font-weight-bold text-primary msg_from" style="margin-left: 7px;margin-top: 10px;">{{key}}</label> 
+                                                <textarea class="font-weight-bold msg_content" style="resize: none;border:0px;" value="" readonly>{{value['msg'][loop.index0]}}</textarea>
+                                            </span> 
+                                        </div> 
+                                        <label id="msg_date">{{value['time'][loop.index0]}}</label>
+                                    </div>
+                                    <div class="action d-flex justify-content-between mt-1 align-items-center">
+                                        <div class="icons align-items-center"> </div>
+                                        <div class="reply" style="padding-left: 35px;">
+                                            <label onclick="delMsg(this)"><i class="fas fa-times mr-1"></i>Remove</label> <span class="dots mx-1"></span> 
+                                            <label onclick="copyText(this)"><i class="fas fa-paste mr-1"></i>Copy</label>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <!-- <div class="card p-3 mt-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/C4egmYM.jpg" width="30" class="user-img rounded-circle mr-2"> <span><label class="font-weight-bold text-primary">olan_sams</label> <label class="font-weight-bold">Loving your work and profile! </label></span> </div> <label>3 days ago</label>
+                        </div>
+                        <div class="action d-flex justify-content-between mt-2 align-items-center">
+                            <div class="reply px-4"> <label>Remove</label> <span class="dots"></span> <label>Reply</label> <span class="dots"></span> <label>Translate</label> </div>
+                            <div class="icons align-items-center"> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
+                        </div>
+                    </div>
+                    <div class="card p-3 mt-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/0LKZQYM.jpg" width="30" class="user-img rounded-circle mr-2"> <span><label class="font-weight-bold text-primary">rashida_jones</label> <label class="font-weight-bold">Really cool Which filter are you using? </label></span> </div> <label>3 days ago</label>
+                        </div>
+                        <div class="action d-flex justify-content-between mt-2 align-items-center">
+                            <div class="reply px-4"> <label>Remove</label> <span class="dots"></span> <label>Reply</label> <span class="dots"></span> <label>Translate</label> </div>
+                            <div class="icons align-items-center"> <i class="fa fa-user-plus text-muted"></i> <i class="fa fa-star-o text-muted"></i> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
+                        </div>
+                    </div>
+                    <div class="card p-3 mt-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="user d-flex flex-row align-items-center"> <img src="https://i.imgur.com/ZSkeqnd.jpg" width="30" class="user-img rounded-circle mr-2"> <span><label class="font-weight-bold text-primary">simona_rnasi</label> <label class="font-weight-bold">Thanks </label></span> </div> <label>3 days ago</label>
+                        </div>
+                        <div class="action d-flex justify-content-between mt-2 align-items-center">
+                            <div class="reply px-4"> <label>Remove</label> <span class="dots"></span> <label>Reply</label> <span class="dots"></span> <label>Translate</label> </div>
+                            <div class="icons align-items-center"> <i class="fa fa-check-circle-o check-icon text-primary"></i> </div>
+                        </div>
+                    </div> -->
+                </div>
+
+                <div class="col-md-6 col-lg-7 justify-content-center">
+                    <div class="headings d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold"><i class="fas fa-bullhorn w3-text-cyan mr-1"></i>語音留言區</h5>
+                    </div>
+                    <div class="text-center">
+                        <marquee behavior="alternate" class="w3-text-pink w-50 mb-2">留言聽完後不需要的話，請順手刪除，謝謝 <i class="far fa-laugh"></i></marquee>
+                        <br>
+                        {% if Music_list %}
+                        <img src="../static/img/Headphone (1).gif" width="45%"/>
+                        <div  hidden id="value_div">{% for i in Music_list %}{{ i +';'}}{% endfor %}</div>
+                        <h3 hidden class="mt-3" id = "music_name">{{ Music_list[0] }}</h3><br>
+                        <h4 class="mt-3">
+                            <span class="mx-1"><i class="w3-text-blue-gray far fa-calendar mr-1"></i><label id="music_date"></label></span>
+                            <span class="mx-1"><i class="w3-text-blue-gray bi bi-person-fill mr-1"></i><label id="music_to"></label></span>
+                            <span class="mx-1"><i class="w3-text-blue-gray far fa-clock mr-1"></i><label id="music_time"></label></span>
+                        </h4><br>
+                        <audio controls id="audio">
+                            <!-- <source src="../static/audio_get/{{ Music_list[0] }}.mp3" type="audio/mpeg"> -->
+                            <source src="../cdn/{{ Music_list[0] }}.mp3" type="audio/mpeg">
+                            <!-- <source src=" {{ url_for('get_audio', filename='{{ Music_list[0] }}.mp3') }}" type="audio/mpeg"> -->
+                           
+                        </audio>
+                        <p></p>
+                        <ul class="nav justify-content-center" id="nav-btn">
+                            <li class="nav-item">
+                                <button class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="上一則" onclick="top_music()"><i class="fas fa-backward"></i></button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="下一則" onclick="next_music()"><i class="fas fa-forward"></i></button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="刪除留言" onclick="del_audio()"><i class="fas fa-trash"></i></button>
+                            </li>
+                            <li class="nav-item">
+                            </li>
+                        </ul>
+                        {% else %}
+                        <img src="../static/img/No data.gif" width="80%"/>
+                        <label class="h4">無資料 .....</label>
+                        {% endif %}
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="col-12 text-center fixed-bottom" style="opacity: 65%;z-index: -10;bottom: 0;">
+                <p class="mt-5 mb-3 text-muted fixed-bottom">© MCF0A2–先進製造二課</p>
+            </div>
+        </div>
+
+        
+
+
+
+
+
+
+
+        <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+        <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+        <script src="../static/bootstrap-5.0.0-beta3-dist/js/bootstrap.min.js"></script>
+        <script src="../static/bootstrap-5.0.0-beta3-dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+        <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
+        <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+        <script src="../static/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="../static/bootstrap-datepicker-master/dist/locales/bootstrap-datepicker.zh-TW.min.js"></script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+                $('#bs-table-train').bootstrapTable({
+                    height:  100,
+                });
+
+                $('.input-group.date').datepicker({
+                    format: "yyyy/mm/dd",
+                    language: "zh-TW",
+                    todayBtn: "linked",
+
+
+                });
+
+                var music_list_name = "{{ Music_list[0] }}";
+                var music_list = music_list_name.split('_');
+                $('#music_to').html(music_list[1]);
+                var date = music_list[0].slice(0,4)+"-"+ music_list[0].slice(4,6)+"-"+ music_list[0].slice(6,8);
+                var time = music_list[2].slice(0,2)+":"+ music_list[2].slice(2,4)+":"+ music_list[2].slice(4,6);
+                $('#music_date').html(date);
+                $('#music_time').html(time);
+                // if($(this).height() < 1000)
+                //     $('.frame').height(screen.height*0.8);
+                // else
+                //     $('.frame').height(screen.height*0.9);
+            });
+            
+            
+
+            function getMusicName(music_str)
+            {
+                var music_list_name = music_str;
+                var music_list = music_list_name.split('_');
+                var date = music_list[0].slice(0,4)+"-"+ music_list[0].slice(4,6)+"-"+ music_list[0].slice(6,8);
+                var time = music_list[2].slice(0,2)+":"+ music_list[2].slice(2,4)+":"+ music_list[2].slice(4,6);
+                var result =new Array(date,music_list[1],time,music_list_name);
+                return result;
+            }
+
+            var value_music = document.getElementById("value_div").innerHTML;//获取隐藏div标签中的值
+            var x = value_music.split(";");//形成js中数组的形式
+            var audio = document.getElementById("audio");
+            var music = new Array(x.length-1);//减1是为了去掉数组中文字为空的。
+            music = x;
+            var num = 0;
+            var music_name = document.getElementById("music_name");
+
+            function top_music() {
+                num = (num +(x.length-2))% (x.length-1);
+                if(typeof(music[num])==="undefined" || music[num]===""){
+                    $("#audio").attr("src","/static/audio_get/" + music[1] + ".mp3");
+                    // audio.src = "/static/audioBase/{{EQPT}}/" + music[1] + ".mp3";
+                    // music_name.innerHTML = music[1];
+                    var reslut_name = getMusicName(music[1]);
+                    $('#music_date').html(reslut_name[0]);
+                    $('#music_to').html(reslut_name[1]);
+                    $('#music_time').html(reslut_name[2]);
+                    $('#music_name').html(reslut_name[3]);
+                    
+                    // audio.play();
+                }else {
+                    $("#audio").attr("src","/static/audio_get/" + music[num] + ".mp3");
+                    // audio.src = "/static/audioBase/{{EQPT}}/" + music[num] + ".mp3";
+                    // music_name.innerHTML = music[num];
+                    var reslut_name = getMusicName(music[num]);
+                    $('#music_date').html(reslut_name[0]);
+                    $('#music_to').html(reslut_name[1]);
+                    $('#music_time').html(reslut_name[2]);
+                    $('#music_name').html(reslut_name[3]);
+                    // audio.play();
+                }
+            }
+            
+            function next_music() {
+                num = (num +(x.length+1))% (x.length);
+                if(typeof(music[num])==="undefined" || music[num]===""){
+                    $("#audio").attr("src","/static/audio_get/" + music[0]+".mp3");
+                    // audio.src ="/static/audioBase/{{EQPT}}/" + music[2]+".mp3";
+                    // music_name.innerHTML = music[0];
+                    var reslut_name = getMusicName(music[0]);
+                    $('#music_date').html(reslut_name[0]);
+                    $('#music_to').html(reslut_name[1]);
+                    $('#music_time').html(reslut_name[2]);
+                    $('#music_name').html(reslut_name[3]);
+                    // audio.play();
+                }else {
+                    $("#audio").attr("src","/static/audio_get/" + music[num]+".mp3");
+                    // audio.src ="/static/audioBase/{{EQPT}}/" + music[num]+".mp3";
+                    // music_name.innerHTML = music[num];
+                    var reslut_name = getMusicName(music[num]);
+                    $('#music_date').html(reslut_name[0]);
+                    $('#music_to').html(reslut_name[1]);
+                    $('#music_time').html(reslut_name[2]);
+                    $('#music_name').html(reslut_name[3]);
+                    // audio.play();
+                }
+            }
+
+            function del_audio(){
+                swal({
+                    title: "刪除語音訊息",
+                    text: "是否要刪除此則語音訊息？",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    })
+                    .then((willSend) => {
+                    if (willSend) {
+                        $.ajax({
+                            type: 'POST',
+                            async: false,
+                            url: "/del_audioMsg",
+                            contentType: 'application/json; charset=UTF-8',
+                            data: JSON.stringify($('#music_name').html()),
+                            success: function (result) {
+                                if(result == 'success'){
+                                    swal({title:"刪除成功",
+                                            text:"已刪除該則留言，一去不復返~",
+                                            icon:"success",
+                                            buttons: false,
+                                            timer: 1500,
+                                    });
+                                    setTimeout(function(){
+                                        location.reload();
+                                    },2000);
+                                }
+                                else{
+                                    swal({title:"刪除失敗",icon:"error",timer:1200});
+                                }
+                                
+                            },
+                            error: function (errorInfo) {
+                                alert("失敗, 異常error:請聯絡系統開發窗口協助");
+                            }
+                            
+                        });
+                    }
+                    else{
+                        swal({text:"好的，再考慮一下吧～",timer:1200});
+                    }
+                });
+            
+
+                
+            }
+       
+            function copyText(obj){
+                var parentDOM =obj.parentNode.parentNode.parentNode;
+                var copyObj = parentDOM.querySelector('.msg_content');
+                copyObj.select();
+                copyObj.setSelectionRange(0, 99999);
+                document.execCommand("copy");
+                swal({text:'已複製',timer:850,buttons:false});
+            }
+
+            function delMsg(obj){
+                swal({
+                    title: "刪除此訊息",
+                    text: "確認要刪除此則訊息？",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    })
+                    .then((willSend) => {
+                    if (willSend) {
+                        var parentDOM =obj.parentNode.parentNode.parentNode;
+                        var from = parentDOM.querySelector('.msg_from').innerHTML;
+                        var date_str = parentDOM.querySelector('#msg_date').innerHTML;
+                        date_array = date_str.split(' ');
+                        var msg = parentDOM.querySelector('.msg_content').value;
+                        // parentDOM.remove();
+                        $.ajax({
+                            type: 'POST',
+                            async: false,
+                            url: "/del_textMsg",
+                            contentType: 'application/json; charset=UTF-8',
+                            data: JSON.stringify(from+','+msg+','+date_array[0]),
+                            success: function (result) {
+                                swal({title:"刪除成功",
+                                            text:"已刪除該則留言，一去不復返~",
+                                            icon:"success",
+                                            buttons: false,
+                                            timer: 1500,
+                                    });
+                                setTimeout(function(){
+                                    location.reload();
+                                },2000);
+                            },
+                            error: function (errorInfo) {
+                                alert("失敗, 異常error:請聯絡系統開發窗口協助");
+                            }
+                            
+                        });
+
+                        
+                    }
+                    else{
+                        swal({text:"好的，再考慮一下吧～",timer:1200});
+                    }
+                });
+
+
+                
+            }
+       
+       
+       </script>
+    </body>
+
+
+</html>

@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="Enterport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--ICON-->
+    <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.css">
+
+    <!-- Sweet Alert -->
+    <script src="../static/sweetalert2-11.0.0/sweetalert2.all.min.js"></script>
+    <!-- <link rel="stylesheet" href="../static/info_dt.css"/> -->
+    <link rel="stylesheet" href="../static/temp/monitor.css" />
+    <!--Bootstrap Table-->
+    <link rel="stylesheet" href="../static/bootstrap-table-master/dist/bootstrap-table.min.css" />
+    <!-- <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script> -->
+    <!--w3 CSS-->
+    <link rel="stylesheet" href="../static/temp/w3.css" />
+    <!-- This Page CSS -->
+    <link rel="stylesheet" href="../static/temp/masterpage.css" />
+
+    <title>遠端即時監控_Vision Guard</title>
+    <style>
+        body {
+            font-family: 'Muli', 'Noto Sans TC', '微軟正黑體';
+        }
+        .bootstrap-table .fixed-table-container .table tbody tr.selected td {
+            background-color: lemonchiffon;
+        }
+    </style>
+</head>
+
+<body class="bg-light py-2">
+    <header class="row text-left" style="padding-bottom: 75px;">
+        <div class="col-12">
+            <nav class="navbar navbar-master">
+                <span class="navbar-brand text-center">
+                    <img src="../static/img/VG_LOGO2.png" width="45" class="d-inline-block align-center mb-1">
+                    <nav class="navbar-text mx-2">
+                      <ol class="breadcrumb p-0">
+                        <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                        <li class="breadcrumb-item"><a href="/remote/index">遠端即時監控</a></li>
+                        <li class="breadcrumb-item active">監控端<img class="mx-1" src="../static/img/{{EQPT}}.png" width="30" /></li>
+                      </ol>
+                    </nav>
+                </span>
+                <ul class="nav"  id="nav-btn-top">
+                    <li class="nav-item w-auto" data-toggle="tooltip" data-placement="bottom" title="設備切換">
+                        <select class="form-select form-select-sm " id="EQPT_select">
+                            <option value="A">設備A</option>
+                            <option value="B">設備B</option>
+                            <option value="C">設備C</option>
+                            <option value="D">設備D</option>
+                        </select>
+                    </li>
+                    <a href="/remote/index">
+                        <li class="nav-item mr-1 navbar-btn" data-toggle="tooltip" data-placement="bottom" title="回前頁">
+                            <i class="fas fa-arrow-left"></i>
+                        </li>
+                    </a>
+                    <a href="/">
+                        <li class="nav-item mr-1 navbar-btn" data-toggle="tooltip" data-placement="bottom" title="首頁">
+                            <i class="fas fa-home"></i>
+                        </li>
+                    </a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row px-1 mx-2 align-items-start">
+            <div class="col-md-5 col-lg-4 ">
+                <label class="h5  ml-1"><i class="bi bi-chat-square-text-fill w3-text-cyan mr-1"></i>文字留言區</label>
+                <div class="accordion my-2" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="my-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    收件者名單<i class="bi bi-caret-down-fill ml-1"></i>&nbsp;
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <div class="card-body p-3 m-0" id="select_list" style="height:450px;">
+                                <table class="text-center" id="bs-table-train" data-toggle="table"
+                                    data-click-to-select="true" data-height="420">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="state" data-checkbox="true"></th>
+                                            <th data-field="id" scope="col">請選擇收件者</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        <tr>
+                                            <td></td>
+                                            <td id="user_col" onclick="editContent(this)" name="id"
+                                                style="padding:12px 20%;">
+                                                <img id="user_pic" src='../static/img/{{EQPT}}.png'
+                                                    class='rounded-circle mx-3' width='60' height='60'>訪客
+                                            </td>
+                                        </tr>
+                                        {% for v in train_js %}
+                                        <tr>
+                                            <td></td>
+                                            <td id="user_col" onclick="editContent(this)" name="id"
+                                                style="padding:12px 20%;">
+                                                <img id="user_pic" src='/remote/show_face/{{v.id}}'
+                                                    class='rounded-circle mx-3' width='60' height='60'>{{v.id}}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-right my-3">
+                    <div class="form-inline">
+                        <img src="../static/img/{{EQPT}}.png" class="rounded-circle mr-1" width='65' height='65'
+                            style="border: 3px solid #fff;box-shadow: 1px 1px 6px rgba(96, 105, 119,0.2);">
+                        <textarea id="text_msg" class="form-control col" style="height: 100px;width: 90%;"></textarea>
+                    </div>
+                    <button class="btn btn-primary my-2" style="border-radius: 8px;" onclick="send_message()"><i
+                            class="fas fa-paper-plane mr-2"></i>送出</button>
+                </div>
+
+
+            </div>
+            <div class="col-md col-lg">
+                <div class="d-flex  justify-content-between">
+                    <label class="h5 ml-1"><i class="bi bi-aspect-ratio-fill w3-text-cyan mr-1"></i>即時監控畫面</label>
+                    <div class="d-flex">
+                        <span class="p-2"><i class="fas fa-video text-black-50"></i></span>
+                        <select class="form-select w-auto" id="Cam_select">
+                            <option {{ 'selected' if current_camid==1 else '' }}>Cam01</option>
+                            <option {{ 'selected' if current_camid==2 else '' }}>Cam02</option>
+                            <option {{ 'selected' if current_camid==3 else '' }}>Cam03</option>
+                            <option {{ 'selected' if current_camid==4 else '' }}>Cam04</option>
+                            <option {{ 'selected' if current_camid==5 else '' }}>Cam05</option>
+                        </select>
+                    </div>
+
+                </div>
+                <img class="my-2 rounded-lg" src="/stream/temp" width="100%" />
+                <ul class="nav mt-2 float-right" id="nav-btn">
+                    <li class="nav-item">
+                        <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="傳送語音訊息"
+                            onclick="record()"><i class="fas fa-microphone"></i></button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="錄影"
+                            id="recBtn" onclick="record_vid()"><i class="fas fa-video"></i></button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="截圖"
+                            onclick="screen_shot()"><i class="far fa-image"></i></button>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 text-center fixed-bottom" style="opacity: 65%;z-index: -10;bottom: 0;">
+                <p class="mt-5 mb-3 text-muted fixed-bottom">© MCF0A2–先進製造二課</p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+    <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+    <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+    <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.js"></script>
+    <script src="../static/jquery-smartwizard-master/dist/js/jquery.smartWizard.min.js"></script>
+    <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/xiangyuecn/Recorder@latest/recorder.mp3.min.js"></script>
+    <script>
+        var select_cam = document.getElementById("Cam_select");
+        var camid = select_cam.selectedIndex + 1
+
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#bs-table-train').bootstrapTable({
+                height: 100,
+            });
+            // $("#EQPT_select select").val("{{EQPT}}").change();;
+            $('#EQPT_select option[value={{EQPT}} ]').attr('selected', 'selected');
+            $('#bs-table-train').bootstrapTable('check', 0);
+
+            // if($(this).height() < 1000)
+            //     $('.frame').height(screen.height*0.8);
+            // else
+            //     $('.frame').height(screen.height*0.9);
+        });
+
+        Date.prototype.yyyymmdd = function () {
+            var mm = this.getMonth() + 1; // getMonth() is zero-based
+            var dd = this.getDate();
+
+            return [this.getFullYear(),
+            (mm > 9 ? '' : '0') + mm,
+            (dd > 9 ? '' : '0') + dd
+            ].join('');
+        };
+        // $(window).resize(function() {
+        //     if($(this).height() < 1000)
+        //         $('.frame').height(screen.height*0.8);
+        //     else
+        //         $('.frame').height(screen.height*0.9);
+        // });
+
+        $('#logout_Btn').click(function () {
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: "/logout",
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify('1'),
+                success: function (result) {
+                    Swal.fire({
+                        title: "登出成功",
+                        text: "保持良好的登出習慣~",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1200,
+                    });
+                    setTimeout(function () {
+                        window.location.replace('/client_login');
+                    }, 1500);
+                },
+                error: function (errorInfo) {
+                    Swal.fire({title:"登出失敗, 異常error:請聯絡系統開發窗口協助", toast:true, icon:'error'});
+                }
+
+            });
+
+        });
+
+
+        $('#EQPT_select').on('change', function () {
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: "/remote/change_EQPT",
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify(this.value),
+                success: function (result) {
+                    Swal.fire({
+                        title: "設備切換",
+                        text: "您已更改設備 , 正幫您切換設備...",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1200,
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                },
+                error: function (errorInfo) {
+                    Swal.fire({title:"送出失敗, 異常error:請聯絡系統開發窗口協助", toast:true, icon:'error' });
+                }
+            });
+        });
+
+        $('#Cam_select').on('change', function () {
+            camid = select_cam.selectedIndex + 1
+            console.log('change cam to ' + camid)
+            url = "/change_cam/" + camid
+            $.ajax({
+                url: url,
+                method: 'GET',
+                beforeSend: function(){
+                    Swal.fire({ 
+                        html:"切換至「" + camid + "號」攝影機<br><b>處理中，請稍後...</b>",
+                        showConfirmButton: false,
+                        toast: true,
+                        didOpen: () => {Swal.showLoading()}
+                    });
+                },
+                success: function (res) {
+                    console.log(res)
+                    Swal.fire({
+                        title: "成功切換攝影機",
+                        text: "已切換至「" + camid + "號」攝影機",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1200,
+                    });
+                },
+                error: function (res) {
+                    console.log(res)
+                }
+            })
+        });
+
+        var audio_flag = 0
+        var rec;
+
+        function record() {
+            var ids = $.map($('#bs-table-train').bootstrapTable('getSelections'), function (row) {
+                return row.id
+            })
+
+            var Recipients = '';
+            if (ids.length > 0) {
+                ids.forEach(s => {
+                    s = s.substring(s.indexOf('>') + 1, s.length)
+                    Recipients += s + ','
+                });
+                Recipients = Recipients.substring(0, Recipients.length - 1);
+
+
+                if (audio_flag == 0) {
+                    rec = Recorder({
+                        type: "mp3", sampleRate: 16000, bitRate: 16
+                    });
+                    rec.open(function () {//打开麦克风授权获得相关资源
+                        //dialog&&dialog.Cancel(); 如果开启了弹框，此处需要取消
+                        rec.start(); //此处可以立即开始录音，但不建议这样编写，因为open是一个延迟漫长的操作，通过两次用户操作来分别调用open和start是推荐的最佳流程
+                        Swal.fire('Start Audio Recording...', '開始錄音，請對麥克風講話 \n要停止錄音，請再按一次「錄音鍵」', 'info');
+                        audio_flag = 1;
+                        //success&&success();
+                    }, function (msg, isUserNotAllow) {//用户拒绝未授权或不支持
+                        //dialog&&dialog.Cancel(); 如果开启了弹框，此处需要取消
+                        console.log((isUserNotAllow ? "UserNotAllow，" : "") + "无法录音:" + msg);
+                        Swal.fire('User Not Allow Record！', '您拒絕存取麥克風權限，這將導致無法使用錄音功能。', 'error');
+                    });
+                    // rec.start();
+
+
+                }
+                else if (audio_flag == 1) {
+                    Swal.fire({
+                        title: "訊息送出確認",
+                        text: "是否要發送此則語音訊息？",
+                        icon: "warning",
+                        showConfirmButton: true,
+                        confirmButtonColor:'#d33',
+                        dangerMode: true,
+                    })
+                        .then((willSend) => {
+                            if (willSend) {
+                                rec.stop(function (blob, duration) {
+                                    var form = new FormData();
+                                    var d = new Date();
+                                    var date = d.toISOString().slice(0, 10).replace(/-/g, "");
+                                    var ds = (new Date()).toTimeString().slice(0, 8).replace(/[^0-9]/g, "");
+                                    var filename = date + "_" + Recipients + '_' + ds + '.mp3';
+                                    form.append("audiofile", blob, filename); //參數,值,檔案名 //和普通form表单并无二致，后端接收到upfile参数的文件，文件名为recorder.mp3
+                                    form.append("persons", Recipients);
+                                    //...其他表单参数
+                                    $.ajax({
+                                        url: "/remote/saveAudioMsg"//上传接口地址
+                                        , type: "POST"
+                                        , contentType: false //让xhr自动处理Content-Type header，multipart/form-data需要生成随机的boundary
+                                        , processData: false //不要处理data，让xhr自动处理
+                                        , data: form
+                                        , success: function (v) {
+                                            Swal.fire({ title: '已送出語音訊息', text: '收到！我們會盡快幫你傳遞你的留言～', icon: "success" });
+                                        }
+                                        , error: function (s) {
+                                            Swal.fire("上傳失敗", s);
+                                        }
+                                    });
+                                    rec.close();//释放录音资源，当然可以不释放，后面可以连续调用start；但不释放时系统或浏览器会一直提示在录音，最佳操作是录完就close掉
+                                    rec = null;
+
+                                });
+                            }
+                            else {
+                                Swal.fire({ text: "好的～ 此段語音訊息將不會被送出", timer: 1200, toast:true, icon:'info' });
+                                rec.stop();
+                                rec.close();//释放录音资源，当然可以不释放，后面可以连续调用start；但不释放时系统或浏览器会一直提示在录音，最佳操作是录完就close掉
+                                rec = null;
+                            }
+
+                            audio_flag = 0;
+                        });
+
+                }
+
+            }
+            else {
+                Swal.fire({ text: '請先選擇收件者！', toast: true, icon:'warning' });
+            }
+
+
+
+
+        }
+
+        function send_message() {
+            var ids = $.map($('#bs-table-train').bootstrapTable('getSelections'), function (row) {
+                return row.id
+            })
+
+            var Recipients = '';
+            ids.forEach(s => {
+                s = s.substring(s.indexOf('>') + 1, s.length)
+                Recipients += s + ','
+            });
+            Recipients = Recipients.substring(0, Recipients.length - 1);
+
+            var msg_content = $('#text_msg').val();
+
+            if (ids.length > 0) {
+                if (msg_content.length == 0) {
+                    // swal({title:'請輸入訊息',icon:"warning",dangerMode: true ,timer:1100});
+                    Swal.fire({ text: '欄位空白無法送出，請輸入訊息！',icon:"warning", timer: 1200, toast:true });
+
+                }
+                else {
+                    $.ajax({
+                        type: 'POST',
+                        async: false,
+                        url: "/remote/send_msg",
+                        contentType: 'application/json; charset=UTF-8',
+                        data: JSON.stringify('{"person":"' + Recipients + '","msg":"' + msg_content + '"}'),
+                        success: function (result) {
+                            Swal.fire({
+                                title: "訊息成功送出",
+                                text: "已發送留言訊息！",
+                                icon: "success",
+                                showConfirmButton: false,
+                                timer: 1200,
+                            });
+                            //清空目前輸入框內容
+                            $('#text_msg').val("");
+                        },
+                        error: function (errorInfo) {
+                            Swal.fire({title:"送出失敗, 異常error:請聯絡系統開發窗口協助", toast:true, icon:'error' });
+                        }
+
+                    });
+                }
+            }
+            else {
+                Swal.fire({ text: '請記得選擇收件者！', timer: 1200, toast:true, icon:'warning' });
+            }
+
+        }
+
+        function screen_shot() {
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: "/screenShot",
+                contentType: 'application/json; charset=UTF-8',
+                success: function (result) {
+                    $.ajax({
+                        type: 'POST',
+                        async: false,
+                        url: "/remote/saveRemotePic",
+                        contentType: 'application/json; charset=UTF-8',
+                        success: function (result) {
+                            Swal.fire({
+                                title: "影像保存成功",
+                                text: "   ",
+                                icon: "success",
+                                showConfirmButton: false,
+                                timer: 1200,
+                            });
+                        },
+                        error: function (errorInfo) {
+                            Swal.fire({title:"失敗, 異常error:請聯絡系統開發窗口協助", toast:true, icon:'error'});
+                        }
+
+                    });
+
+                },
+                error: function (errorInfo) {
+                    alert("失敗, 異常error:請聯絡系統開發窗口協助");
+                }
+
+            });
+        }
+
+        function record_vid() {
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: "/remote/saveRemoteVID",
+                contentType: 'application/json; charset=UTF-8',
+                success: function (result) {
+                    if (result == 'rec') {
+                        $('#recBtn').html("<i class='far fa-stop-circle' id='rec_icon'></i>");
+                        Swal.fire({
+                            title: "已開始錄製",
+                            text: "要停止錄製，請再按一次「錄影」鍵",
+                            icon: "info",
+                        });
+                    }
+                    else if (result == 'success') {
+                        $('#recBtn').html("<i class='fas fa-video'></i>");
+
+                        Swal.fire({
+                            title: "錄製完成",
+                            text: "錄製影片已存檔！",
+                            icon: "success",
+                            showConfirmButton: false,
+                            timer: 1200,
+                        });
+                    }
+                },
+                error: function (errorInfo) {
+                    Swal.fire({title:"失敗, 異常error:請聯絡系統開發窗口協助", toast:true, icon:'error'});
+                }
+
+            });
+        }
+
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,1065 @@
+<!doctype html>
+<html lang="en" style="height: 100%">
+
+<head>
+    <link rel="icon" href="../static/img/enter.ico" type="image/x-icon" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="Enterport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--ICON-->
+    <link rel="stylesheet" href="../static/bootstrap_icons-1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/fontawesome-free-5.15.3-web/css/all.css">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../static/bootstrap-5.0.0-beta3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <!-- Sweet Alert -->
+    <script src="../static/sweetalert-master/sweetalert.min.js"></script>
+    <!-- <link rel="stylesheet" href="../static/info_dt.css"/> -->
+    <link rel="stylesheet" href="../static/temp/monitor.css" />
+    <!--w3 CSS-->
+    <link rel="stylesheet" href="../static/temp/w3.css" />
+    <!-- dragula -->
+    <link rel="stylesheet" href="../static/temp/masterpage.css" />
+
+    <title>動作流程辨識_Vision Guard</title>
+    <style>
+        body {
+            font-family: 'Muli', 'Noto Sans TC', '微軟正黑體';
+        }
+
+        .bootstrap-table .fixed-table-container .table tbody tr.selected td {
+            background-color: lemonchiffon;
+        }
+
+        marquee {
+            /* IE10、Firefox and Opera，IE9以及更早的版本不支持 */
+            animation-name: breath;
+            /* 动画名称 */
+            animation-duration: 3200ms;
+            /* 动画时长3秒 */
+            animation-timing-function: ease-in-out;
+            /* 动画速度曲线：以低速开始和结束 */
+            animation-iteration-count: infinite;
+            /* 播放次数：无限 */
+
+            /* Safari and Chrome */
+            -webkit-animation-name: breath;
+            /* 动画名称 */
+            -webkit-animation-duration: 3200ms;
+            /* 动画时长3秒 */
+            -webkit-animation-timing-function: ease-in-out;
+            /* 动画速度曲线：以低速开始和结束 */
+            -webkit-animation-iteration-count: infinite;
+            /* 播放次数：无限 */
+        }
+
+        @keyframes breath {
+            from {
+                opacity: 0.1;
+            }
+
+            /* 动画开始时的不透明度 */
+            50% {
+                opacity: 1;
+            }
+
+            /* 动画50% 时的不透明度 */
+            to {
+                opacity: 0.1;
+            }
+
+            /* 动画结束时的不透明度 */
+        }
+
+        @-webkit-keyframes breath {
+            from {
+                opacity: 0.1;
+            }
+
+            /* 动画开始时的不透明度 */
+            50% {
+                opacity: 1;
+            }
+
+            /* 动画50% 时的不透明度 */
+            to {
+                opacity: 0.1;
+            }
+
+            /* 动画结束时的不透明度 */
+        }
+
+        #hr_row {
+            background-image: linear-gradient(to right, rgba(40, 167, 69, 1) 0%, rgba(40, 167, 69, 0.4) 20%, rgba(40, 167, 69, 0) 100%);
+            width: 100%;
+            height: 3px;
+        }
+
+        .kanban-card {
+            cursor: pointer;
+        }
+
+        /* jack add */
+        .process-setting-div {
+            display: none
+        }
+
+        #imageMap {
+            position: relative;
+        }
+
+        #imageMap #marker {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #f00;
+            border: 2px solid white;
+            border-radius: 50px;
+        }
+
+        #canvas {
+            position: absolute;
+            z-index: 100;
+            cursor: crosshair;
+            border: 1px solid #333;
+        }
+
+        #canvas2 {
+            position: absolute;
+            z-index: 100;
+            cursor: crosshair;
+            border: 1px solid #333;
+        }
+
+        #canvasSave {
+            position: absolute;
+            z-index: 20;
+        }
+
+        svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 99
+        }
+
+        svg text {
+            text-shadow: black 0.1em 0.1em 0.2em
+        }
+        .list-group-item.active{
+            background:#28a745;
+        }
+    </style>
+
+
+
+</head>
+
+<body class="bg-light py-2">
+    <header class="row text-left" style="padding-bottom: 75px;">
+        <div class="col-12">
+            <nav class="navbar navbar-master">
+                <span class="navbar-brand text-center" href="#">
+                    <img src="../static/img/VG_LOGO2.png" width="45"
+                        class="d-inline-block align-center mb-1" alt="" >
+                    <nav class="navbar-text mx-2">
+                      <ol class="breadcrumb p-0 d-flex align-items-center">
+                        <li class="breadcrumb-item"><a href="/">V·GUARD</a></li>
+                        <li class="breadcrumb-item"><a href="/process/index">動作流程系統</a></li>
+                        <li class="breadcrumb-item active">動作設定</li>
+                      </ol>
+                    </nav>
+                </span>
+                <ul class="nav mr-auto" id="nav_items_list">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/process/index">動作辨識</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:click_add_pose()">動作模型新增</a>
+                    </li>
+                </ul>
+                <ul class="nav" id="nav-btn-top">
+                    <li class="nav-item mr-1" data-toggle="tooltip" data-placement="bottom" title="首頁">
+                        <a href="/"><i class="fas fa-home navbar-btn"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <div class="row px-1 mx-2  mb-3 d-flex justify-content-between">
+            <div class="col form-inline">
+                <div class="form-group">
+                    <label class="mr-1 h5"><i class="fas fa-at mr-1 text-primary"></i>Recipe</label>
+                    <!-- jack add -->
+
+                    <!-- <select class="form-select w-auto" id="RC_select" >
+                        {% for r in recipes_pose_config.keys() %}
+                            {% if r==first_recipe %}
+                                <option value={{r}} href="#{{r}}-pose-list" id='RC_select_title' selected>{{r}}</option>
+                            {% else %}
+                                <option value={{r}} href="#{{r}}-pose-list">{{r}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select> -->
+
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-expanded="true" id='RC_select_title'>{{first_recipe}}</a>
+                            <ul class="dropdown-menu" id='RC_select'>
+                                {% for r in recipes_pose_config.keys() %}
+                                <li class="dropdown-item" data-toggle="tab" href="#{{r}}-pose-list">{{r}}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+
+
+
+
+                </div>
+                <button class="btn btn-sm btn-secondary mt-1  mx-sm-1" onclick="write_Recipe('add')"><i
+                        class="bi bi-plus"></i>新增</button>
+                <button class="btn btn-sm btn-secondary mt-1  mr-sm-1" onclick="delete_recipe()"><i
+                        class="bi bi-dash"></i>刪除</button>
+                <button class="btn btn-sm btn-secondary mt-1  mr-sm-1" onclick="write_Recipe('update')"><i
+                        class="bi bi-cursor-text"></i>重新命名</button>
+                <div id="input_recipe_add">
+                    <input id="input_recipe_add_name" class="form-control" placeholder="輸入名稱" />
+                    <button class="btn btn-sm btn-danger mx-1" onclick="write_Recipe('do add')">新增</button>
+                </div>
+                <div id="input_recipe_update">
+                    <input id=input_recipe_update_name class="form-control" placeholder="輸入名稱" />
+                    <button class="btn btn-sm btn-danger mx-1" onclick="write_Recipe('do update')">重新命名</button>
+                </div>
+            </div>
+            <div class="col text-right">
+                <button class="btn btn-md py-2 fw-bold btn-warning" onclick="click_add_pose()">動作模型新增<i
+                        class="fas fa-chevron-right ml-sm-2"></i></button>
+            </div>
+        </div>
+        <div class="row my-4  mx-2 ">
+            <div class="col-12">
+                <label class="h5  ml-1"><i class="fas fa-child mr-1 text-success"
+                        style="font-size: 23px;"></i>已登入動作</label>
+            </div>
+            <div class="col-12 p-0 mx-3" id="hr_row"></div>
+        </div>
+        <div class="row px-1 mx-2 align-items-start">
+            <div class=" col-lg-auto py-4 " style="border-radius: 10px;">
+                <!-- jack add -->
+                <!-- 選擇不同的 pose 然後可以做設定 -->
+                <h6 class="my-0 text-center text-muted">動作列表</h6>
+                <hr class="my-2">
+                <div class="tab-content pose-tabContent" id="tabContent">
+                    {% for recipe, pose_config in recipes_pose_config.items() %}
+                    <div class="tab-pane fade" id="{{recipe}}-pose-list">
+                        <div class="list-group text-center" style="font-size: 16px;">
+                            {% if pose_config['pose_list']|length == 0 %}
+                            <li id="nopose_tab" class="list-group-item list-group-item-action" data-toggle="tab"
+                                href="#{{recipe}}-nopose">尚未新增動作</li>
+                            {% endif %}
+                            {% for pose in pose_config['pose_list'] %}
+                            <li class="list-group-item list-group-item-action" data-toggle="tab"
+                                href="#{{recipe}}-{{pose}}-setting">{{pose}}</li>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="text-right mt-2">
+                    <button class="btn btn-danger" onclick="click_delete_pose()"><i class="bi bi-x"></i>刪除動作</button>
+                </div>
+                
+            </div>
+            <div class="col-sm col-md col-lg-3 px-0 text-center">
+                <h5 class="text-black-50 text-primary font-weight-bold"><i class="fas fa-eye"></i> 檔案預覽框</h5>
+                <img src="http://fakeimg.pl/1920x1153/?text=File Review" width="90%" height="20%" 
+                    style="border: 3px solid #cacbd5;border-radius: 19px;max-height: 700px;" id="img_review"/>
+                <p class=" text-success text-center my-1" id="review_filename"></p>
+            </div>
+            <div class="col-sm col-md col-lg-3 text-center">
+                <img class="my-2 rounded-lg" src="../static/img/openpose-bg1.png" width="90%" />
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg mb-3">
+                <marquee direction="up" scrollamount="3" behavior="slide" class="w3-text-blue mb-2 h5"><i
+                        class="far fa-hand-point-left"></i> 請依動作給予相對的肢體節點權重參數</marquee>
+                <br>
+
+                <!-- jack add -->
+                <div class="tab-content" id="tabContent">
+                    {% for recipe, pose_config in recipes_pose_config.items() %}
+                    {% if pose_config['pose_list']|length == 0 %}
+                    <div class="tab-pane fade" id="{{recipe}}-nopose">
+                        <!-- 若目前沒有 pose 要放一個空的 tab -->
+                    </div>
+                    {% endif %}
+                    {% for pose, setting in pose_config['pose_setting'].items() %}
+                    <div class="tab-pane fade" id="{{recipe}}-{{pose}}-setting">
+
+                        <!-- 選擇要用哪些輸入 -->
+                        <div class="my-2">
+                            <label class="h6 text-muted"><i class="bi bi-caret-right-fill"></i>輸入設定</label>
+                            <select class="form-select w-auto mb-3" id='{{recipe}}-{{pose}}-select-input'>
+                                <option {{ 'selected' if setting['input']==0 else '' }}>dist</option>
+                                <option {{ 'selected' if setting['input']==1 else '' }}>XY</option>
+                                <option {{ 'selected' if setting['input']==2 else '' }}>dist & XY</option>
+                            </select>
+                        </div>
+
+                        <div class="my-2">
+                            <a class="h6 text-muted" data-toggle="collapse" aria-expanded="true"
+                                href="#keypoint_setting"><i class="bi bi-caret-right-fill"></i>肢體各節點參數設定</a>
+                        </div>
+                        <div class="btn-group ml-1" role="group">
+                            <button type="button" class="btn btn-sm btn-secondary"
+                                id="{{recipe}}-{{pose}}-all-select-btn"
+                                onclick="select_or_cancel(this, 'select')">全選</button>
+
+                            <button type="button" class="btn btn-sm btn-secondary"
+                                id="{{recipe}}-{{pose}}-cancel-select-btn"
+                                onclick="select_or_cancel(this, 'cancel')">取消全選</button>
+                        </div>
+                        <br>
+
+                        <!-- 選擇要用那些關節點 -->
+                        <div class="form-row align-items-center ml-1 my-3 collapse show" id="keypoint_setting">
+                            {% for i, kpt_selected in setting['keep_point'] %}
+                            <div class="col-2 my-1">
+                                {% if kpt_selected %}
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input"
+                                        id="kpt-chkbox-{{recipe}}-{{pose}}-{{i}}"
+                                        name="{{recipe}}-{{pose}}-ckbox-keypoint" checked>
+                                    <label class="custom-control-label"
+                                        for="kpt-chkbox-{{recipe}}-{{pose}}-{{i}}">節點{{i}}</label>
+                                </div>
+                                {% else %}
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input"
+                                        id="kpt-chkbox-{{recipe}}-{{pose}}-{{i}}"
+                                        name="{{recipe}}-{{pose}}-ckbox-keypoint">
+                                    <label class="custom-control-label"
+                                        for="kpt-chkbox-{{recipe}}-{{pose}}-{{i}}">節點{{i}}</label>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+
+
+                        <!-- 選擇相似度的拉桿 -->
+                        {% set pose_thres = setting['conf_thres'] %}
+                        <p></p>
+                        <div class="my-2">
+                            <label class="h6 text-muted"><i class="bi bi-caret-right-fill"></i>相似度設定</label>
+                        </div>
+                        <div class="form-group text-center">
+                            <label class="h5 fw-bold">相似度 Threshold<span class="badge  badge-primary ml-1 p-1"
+                                    id='{{recipe}}-{{pose}}-threshold-label'>{{pose_thres}}</span></label>
+                            <div class="form-inline">
+                                <input type="range" class="slider-threshold" id='{{recipe}}-{{pose}}-threshold-slider'
+                                    style="width: 87%;" value="{{pose_thres}}" min="0" max="100">
+
+                                <input class="form-control input-threshold" id='{{recipe}}-{{pose}}-threshold-input' type="number"
+                                    value="{{pose_thres}}" min="0" max="100" style="width: 13%;" />
+                                <!-- form-control -->
+                            </div>
+                        </div>
+                        <!-- 框選虛擬圍籬 -->
+                        {% set fence_enable = setting['fence_enable'] %}
+                        {% set fence_area_data = setting['fence_area_data'] %}
+                        <div class="my-2">
+                            <label class="h6 text-muted"><i class="bi bi-caret-right-fill"></i>增設虛擬圍籬</label>
+                        </div>
+                        <div class="form-row ml-1 my-3">
+                            <span class="m-1 text-muted"><i class="bi bi-question-circle"></i> 如需更換場域/攝影機，請重新建立動作</span>
+                            <div class="input-group mb-3 d-flex align-items-center">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-light">綁定攝影機</span>
+                                </div>
+                                <input type="text" class="form-control col-sm col-md-3 input_cam_id" id="cam_id_{{setting['cam_id']}}" value="Cam0{{setting['cam_id']}}" readonly>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary" onclick="review_file()"><i class="fas fa-eye"></i> 預覽建檔圖片</button>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch ml-4">
+                                <input class="form-check-input" type="checkbox" {{ 'checked' if fence_enable=='True' else '' }} role="switch" id="switch_fence">
+                                <label class="form-check-label" for="switch_fence">虛擬圍籬功能</label>
+                                <button type="button" class="btn btn-sm btn-dark" onclick="open_fence_modal({{fence_area_data}})">設定區域</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="click_save_pose_setting(this)"
+                            id="{{recipe}}-{{pose}}-save-btn">儲存Save</button>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-12 text-center fixed-bottom" style="opacity: 65%;z-index: -10;bottom: 0;">
+                <p class="mt-5 mb-3 text-muted fixed-bottom">© MCF0A2–先進製造二課</p>
+            </div>
+        </div>
+        <div class="row mt-5 mb-4  mx-2 ">
+            <div class="col-12">
+                <label class="h5  ml-1"><i class="fas fa-list-ul mr-1 text-success"
+                        style="font-size: 23px;"></i>流程設定</label>
+            </div>
+            <div class="col-12 p-0 mx-3" id="hr_row"></div>
+        </div>
+
+        <!-- jack add -->
+        {% for recipe, pose_config in recipes_pose_config.items() %}
+        {% set unknown_thres = pose_config['unknown_thres'] %}
+        {% set use_list = pose_config['use_pose_list'] %}
+        {% set nonuse_list = pose_config['nonuse_pose_list'] %}
+        <div class="process-setting-div" id="{{recipe}}-process-setting">
+            <div class="row mb-4 d-flex justify-content-center align-items-center " style="margin: 0 120px;">
+                <!-- 使用拉桿設定 目前 recipe 的整個流程的 unknown threshold -->
+                <div class="form-group text-center">
+                    <label class="h5 fw-bold">物件辨識最低相似度 Threshold
+                        <span class="badge  badge-primary ml-1 p-1"
+                            id='{{recipe}}-threshold-label'>{{unknown_thres}}</span>
+                    </label>
+                    <div class="form-inline">
+                        <input type="range" class="form-control-range w-75  m-auto slider-threshold"
+                            id="{{recipe}}-threshold-slider" value="{{unknown_thres}}" min="0" max="100">
+                        <input class="form-control input-threshold" type="number" style="width: 8%;" id="{{recipe}}-threshold-input"
+                            value="{{unknown_thres}}" min="0" max="100" />
+                    </div>
+                </div>
+
+                <!-- 使用字卡方塊拖曳，改變流程的順序 -->
+                <div class="col-12 text-center mt-4 mb-2">
+                    <span class="badge badge-primary mx-1">Tip</span><label
+                        class="text-muted">請拖曳、排序方塊，自訂辨識動作流程清單。</label>
+                </div>
+
+                <!-- 左邊的所有剩餘的 pose 的區塊 -->
+                <div class="col-md col-lg">
+                    <div class="card text-center" style="border-color: #FFDD94;">
+                        <div class="card-header fw-bold"
+                            style="background: #FFDD94;border-bottom-color: #FFDD94;color:#bd8600;font-size: 18px;">
+                            ALL POSE
+                        </div>
+
+                        <div class="card-body" id="{{recipe}}_all_pose">
+                            {% for pose in nonuse_list %}
+                            <div class="alert alert-info kanban-card" role="alert">{{pose}}</div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div style="width: 25px;margin: auto;font-size: 18px;" class="text-center p-0">
+                    <i class="bi bi-arrow-right-square-fill"></i>
+                    <i class="bi bi-arrow-left-square-fill"></i>
+                </div>
+
+                <!-- 右邊目前正在使用的 pose 的區塊 -->
+                <div class="col-md col-lg">
+                    <div class="card text-center" style="border-color: #FA897B;">
+                        <div class="card-header fw-bold"
+                            style="background: #FA897B;border-bottom-color: #FA897B;color:#d11e08;font-size: 18px;">
+                            SELECTED POSE
+                        </div>
+
+                        <div class="card-body" id="{{recipe}}_select_pose">
+                            {% for pose in use_list %}
+                            <div class="alert alert-info kanban-card" role="alert">{{pose}}</div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 確定儲存流程設定 的按鈕 -->
+                <div class="col-12 text-center my-4">
+                    <button class="btn btn-md  btn-primary" onclick="click_save_process_setting()">儲存設定</button>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="row mb-3">
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+
+    </div>
+
+
+    <!-- 圍籬 Model -->
+    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true" id="vf-modal">
+        <div class="modal-dialog  modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row  d-flex justify-content-start align-items-center">
+                        <div class="col ">
+                            <h3 class="fw-bolder my-1">
+                                <i class="fas fa-draw-polygon" style="font-size: 23px;color:#f48b53"></i>
+                                虛擬圍籬設定
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-7 mr-1 ">
+                            <p class="text-right my-1"><i class="fas fa-map-marker-alt w3-text-red"></i>&nbsp;
+                                <label id="site"></label>
+                            </p>
+                            <canvas id="canvas"></canvas>
+                            <!--width="1500vw" height="450"-->
+                            <canvas id="canvas2" style="display: none;"></canvas>
+                            <!--width="1500vw" height="450"-->
+                            <canvas id="canvasSave"></canvas>
+                            <div id="imageMap"><img src="/stream/poseFence" width="100%"  id="mapPic">
+                                <div id="markArea"></div>
+                            </div>
+
+                        </div>
+                        <div class="col-md col-lg" id="Setting_Tabs">
+                            <div class="tab-pane fade show active" id="areaSet">
+                                <form>
+                                    <p class="text-muted"><mark>*請於左方框選區域</mark></p>
+                                    <div class="mt-2 row" id="markInfo">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="mx-auto my-3">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                        <button type="button" class="btn btn-primary" onclick="saveAreaCoord()">儲存</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--Bootstrap : jQuery, Popper.js, and Bootstrap JS-->
+    <!-- jack add -->
+    <script src="../static/bootstrap-4.6.0-dist/jquery-3.6.0.js"></script>
+    <script src="../static/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/jquery-smartwizard-master/dist/js/jquery.smartWizard.min.js"></script>
+    <script src="../static/bootstrap-table-master/dist/bootstrap-table.min.js"></script>
+    <script src="../static/dragula-master/dragula.js"></script>
+    <script src="../static/temp/svg.min.js"></script>
+    <script src="../static/temp/pose_setting.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+            $('#bs-table-train').bootstrapTable({
+                height: 100,
+            });
+            $('#input_recipe_add').hide();
+            $('#input_recipe_update').hide();
+
+            // jack add
+            // $(".dropdown-menu .dropdown-item li a")[0].click();
+            // $(".nav nav-tabs .nav-item dropdown a")[0].click();
+
+            // if($(this).height() < 1000)
+            //     $('.frame').height(screen.height*0.8);
+            // else
+            //     $('.frame').height(screen.height*0.9);
+        });
+
+
+        $('.pose-tabContent .tab-pane .list-group li').on('mouseup', function () {
+            filename = $(this).html();
+            review_file(filename);
+        });
+
+        // 使用拉桿調整 pose threshold 的 input range
+        $('.slider-threshold').on('change', function () {
+            threshold = this.value
+            // {{recipe}}-{{pose}}-threshold-slider
+            label_id = this.id.replace('slider', 'label')
+            input_id = this.id.replace('slider', 'input')
+            // console.log(label_id)
+            // console.log(this)
+
+            var thres_label = document.getElementById(label_id)
+            var thres_input = document.getElementById(input_id)
+
+            thres_label.innerHTML = threshold
+            thres_input.value = threshold
+            console.log('change pose threshold: ' + threshold)
+        });
+
+        // 輸入 pose threshold 的輸入框
+        $('.input-threshold').on('change', function () {
+            threshold = this.value
+            // {{recipe}}-{{pose}}-threshold-input
+            label_id = this.id.replace('input', 'label')
+            slider_id = this.id.replace('input', 'slider')
+
+            var thres_label = document.getElementById(label_id)
+            var thres_slider = document.getElementById(slider_id)
+
+
+            thres_slider.value = threshold  // 先給 拉桿 值，他會先篩選上下限，篩選後再取出值設定給 input 跟 label
+            threshold = thres_slider.value
+
+            thres_label.innerHTML = threshold
+            this.value = threshold
+
+            console.log('change pose threshold: ' + threshold)
+        });
+
+
+
+        // jack add
+        function write_Recipe(type) {
+            if (type == 'add') {
+                $('#input_recipe_add').toggle();
+                $('#input_recipe_update').hide();
+            } else if (type == 'update') {
+                $('#input_recipe_update').toggle();
+                $('#input_recipe_add').hide();
+            } else if (type == 'do add') {
+                var name = document.getElementById('input_recipe_add_name').value
+                if (/^\d/.test(name)) {
+                    // 數字開頭 不符合規則
+                    // alert('recipe 開頭不能是數字')
+                    swal({title:"recipe 開頭不能是數字", icon:"info"});
+                } else {
+                    $.ajax({
+                        url: '/process/api/recipe',
+                        method: 'POST',
+                        data: {
+                            "name": name
+                        },
+                        success: function (res) {
+                            console.log('success add recipe...');
+                            window.location.reload();
+                        },
+                        error: function (res) {
+                            console.log('fail to add recipe...')
+                            swal({title:"新增失敗", text:"fail to add recipe...", icon:"error", timer:1200, buttons: false});
+                        }
+                    })
+                    $('#input_recipe_add').hide();
+                }
+            } else if (type == 'do update') {
+                var old_name = recipe_selete.text
+                var new_name = document.getElementById('input_recipe_update_name').value
+
+                if (/^\d/.test(new_name)) {
+                    // 數字開頭 不符合規則
+                    swal({title:"recipe 開頭不能是數字", icon:"info"});
+                } else {
+                    $.ajax({
+                        url: '/process/api/recipe',
+                        method: 'PATCH',
+                        data: {
+                            "old_name": old_name,
+                            "new_name": new_name
+                        },
+                        success: function (res) {
+                            console.log('success change recipe name...')
+                            sessionStorage.setItem('recipe_select', new_name);
+                            window.location.reload();
+                        },
+                        error: function (res) {
+                            console.log('fail to change recipe name...')
+                            swal({title:"更新失敗", text:"fail to change recipe name...", icon:"error", timer:1200, buttons: false});
+                        }
+                    })
+                    $('#input_recipe_update').hide();
+                }
+            }
+
+        }
+
+        function delete_recipe() {
+            var name = recipe_selete.text
+            swal({
+                title: "刪除Recipe",
+                text: "確定要刪除當前Recipe?",
+                icon: "info",
+                buttons: true,
+            })
+            .then((res) => {
+                if(res){
+                    $.ajax({
+                        url: '/process/api/recipe',
+                        method: 'DELETE',
+                        data: {
+                            "name": name,
+                        },
+                        success: function (res) {
+                            console.log('success delete recipe ...')
+                            sessionStorage.setItem('recipe_select','');
+                            swal({title:"刪除成功", text:"success to delete recipe, reload page...", icon:"success", timer:1500, buttons: false});
+                            window.location.reload();
+                        },
+                        error: function (res) {
+                            console.log('fail to delete recipe ...')
+                            swal({title:"刪除失敗", text:"fail to delete recipe ...", icon:"error", timer:1200, buttons: false});
+                        }
+                    })
+                }
+            })
+            
+        }
+
+        var recipe_selete = document.getElementById("RC_select_title")
+        $('#RC_select .dropdown-item').on('click', function () {
+            var recipe = this.textContent
+            var previous_recipe = recipe_selete.text
+            sessionStorage.setItem('recipe_select', recipe);
+            console.log('recipe change to:', recipe)
+            console.log('#' + recipe + '-pose-list')
+            recipe_selete.text = recipe
+            //清除預覽圖片
+            $('#img_review').attr('src',"http://fakeimg.pl/1920x1153/?text=File Review");
+
+            // 選擇上方的 recipe 的下拉市選單時， process setting 區塊要跟著改變
+            show_and_hide_ps_setting(recipe, previous_recipe)
+
+            // 設定下方的方塊 可以拖曳
+            set_drag_card(recipe)
+
+
+            click_first_pose_item(recipe)
+        });
+
+        function show_and_hide_ps_setting(recipe, previous_recipe) {
+            process_setting_id = recipe + '-process-setting'
+            ps_div = $('#' + process_setting_id)
+            ps_div.show()
+
+            if (previous_recipe != null) {
+                hide_ps_id = previous_recipe + '-process-setting'
+                hide_ps_div = $('#' + hide_ps_id)
+                hide_ps_div.hide()
+            }
+        }
+
+        var dragulaCards = null
+        function set_drag_card(recipe) {
+            drag_card_id_all = recipe + "_all_pose"
+            drag_card_id_select = recipe + "_select_pose"
+
+            dragulaCards = dragula([
+                document.querySelector('#' + drag_card_id_all),
+                document.querySelector('#' + drag_card_id_select),
+            ])
+
+            dragulaCards.on('drop', function (el, target, source, sibling) {
+                // console.log(source); // from
+                // console.log(target); // to
+                // console.log(sibling); // next card
+            })
+        }
+
+    </script>
+
+    <!-- jack add -->
+    <script>
+        function init() {
+            var first_recipe = recipe_selete.text
+            var tab_id = '#' + first_recipe + '-pose-list'
+            var someTabTriggerEl = document.querySelector(tab_id)
+            var tab = new bootstrap.Tab(someTabTriggerEl)
+            tab.show()
+            console.log('init show pose list...')
+
+
+            click_first_pose_item(first_recipe)
+            console.log('init show pose setting...')
+
+            show_and_hide_ps_setting(first_recipe)
+            console.log('init show process setting...')
+
+            // 設定下方的方塊 可以拖曳
+            set_drag_card(first_recipe)
+        }
+        init()
+
+        function click_first_pose_item(recipe) {
+            var tab_id = '#' + recipe + '-pose-list'
+            try {
+                selector_pose_items = tab_id + ' li'
+                first_pose_item = $(selector_pose_items)[0]
+                $(first_pose_item).removeClass('active')
+                first_pose_item.click()
+                console.log('click_first_pose_item ...')
+            } catch (error) {
+                tab_id = '#nopose_tab'
+                // tab = $(tab_id)
+                // tab.tab('show')
+                tab = document.querySelector(tab_id)
+                tab = new bootstrap.Tab(tab)
+                console.log(tab)
+                tab.show()
+
+                console.log('no pose ...')
+            }
+        }
+
+
+        // function get_selected_keypoint(){
+        //     var markedCheckbox = document.getElementsByName('ckbox_keypoint')
+        //     var kpt_list = []
+        //     for (const [index, checkbox] of markedCheckbox.entries()) {
+        //         if (checkbox.checked){
+        //             kpt_list.push(index)
+        //             // console.log('loop: ' + index)
+        //         }
+        //     }
+        //     console.log(kpt_list)
+        //     return kpt_list
+        // }
+
+        function click_save_pose_setting(btn) {
+            post_fix = 'save-btn'
+            recipe = btn.id.split('-')[0]
+            pose = btn.id.split('-')[1]
+            var setting_pane_id = btn.id.replace(post_fix, 'setting')
+
+            // 取得使用者選擇的 要用的 輸入 (dist, XY, dist+XY)  
+            var select_input_id = btn.id.replace(post_fix, 'select-input')
+            var select_input = document.getElementById(select_input_id)
+            var input_index = select_input.selectedIndex
+
+            // 取得使用者選擇的目前動作 要採用的關節點
+            var ckbox_keypoint_name = btn.id.replace(post_fix, 'ckbox-keypoint')
+            var keypoint_checkbox = document.getElementsByName(ckbox_keypoint_name)
+
+            var kpt_list = []
+            for (const [index, checkbox] of keypoint_checkbox.entries()) {
+                if (checkbox.checked) {
+                    kpt_list.push(index)
+                }
+            }
+
+            // 取得使用者設定的 目前動作 偵測的門檻值
+            var threshold_slider_id = btn.id.replace(post_fix, 'threshold-slider')
+            var thres_slider = document.getElementById(threshold_slider_id)
+            var pose_confidence_threshold = thres_slider.value
+            
+            // 取得圍籬設定
+            var fence_enable = $(btn).parent().find("#switch_fence").prop('checked')
+            // 取圍籬座標資訊
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: '/process/get_fence_data',
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify({
+                    recipe: recipe,
+                    pose: pose,
+                }),
+                success: function (result) {
+                    console.log('success get fence coord...');
+                    if(fence_enable==true && result[3].trim() =='[]')   //確認啟用狀態要有座標資訊
+                        swal({title:"請確認虛擬圍籬！", text: "啟用虛擬圍籬，請記得框選圍籬區域再進行儲存", icon:"warning"})
+                    else
+                    {
+                        fence_setting = result  //取得設定檔的圍籬資訊 result型態為 dict
+                        fence_setting[0] = fence_enable //更新圍籬啟用狀態
+                        // 儲存設定
+                        $.ajax({
+                            url: '/process/save_pose_setting',
+                            method: 'POST',
+                            contentType: 'application/json; charset=utf-8',
+                            data: JSON.stringify({
+                                recipe: recipe,
+                                pose: pose,
+                                input: input_index,
+                                kpt_list: kpt_list,
+                                thres: pose_confidence_threshold,
+                                fence_setting: fence_setting
+                            }),
+                            success: function (res) {
+                                console.log(res)
+                                swal({title:"設定儲存成功", text: res, icon:"success", timer:1500 , buttons:false});
+                            },
+                            error: function (res) {
+                                console.log(res)
+                                swal({title:"設定儲存失敗", text: res, icon:"error", timer:1500 , buttons:false});
+                            }
+                        })
+                        console.log('######### save config... #########')
+                        console.log(`recipe/pose: ${recipe}/${pose}`)
+                        console.log('save input index: ' + input_index)
+                        console.log('save use key points: ' + kpt_list)
+                        console.log('save pose confidence threshold: ' + pose_confidence_threshold)
+                        console.log('##################################')
+
+                    }
+                },
+            });
+        
+        }
+
+        function click_add_pose() {
+            recipe_name = recipe_selete.text
+            window.location = '/process/pose_add?recipe_name=' + recipe_name
+        }
+
+        function click_delete_pose() {
+            recipe_name = recipe_selete.text
+            div_pose_list = document.getElementById(recipe_name + '-pose-list')
+            selected_pose_item = div_pose_list.getElementsByClassName('list-group-item list-group-item-action active')[0]
+            selected_pose_name = selected_pose_item.textContent;
+            cam_id = $('#tabContent .active').children().find('.input_cam_id')[0].id.split('_')[2];
+            swal({
+                title: "刪除動作",
+                text: "確定要刪除當前動作?",
+                icon: "info",
+                buttons: true,
+            })
+            .then((res) => {
+                if(res){
+                    $.ajax({
+                        url: '/process/api/pose',
+                        method: 'DELETE',
+                        data: {
+                            "recipe_name": recipe_name,
+                            "pose_name": selected_pose_name,
+                            "cam_id": cam_id
+                        },
+                        success: function (res) {
+                            console.log(selected_pose_name);
+                            console.log(res)
+                            swal({title:"動作刪除成功", text: res, icon:"success", timer:1500 , buttons:false});
+                            div_pose_list.getElementsByClassName('list-group')[0].removeChild(selected_pose_item)
+                            $(`#${recipe_name}-${selected_pose_name}-setting`).remove();
+                            $(`.kanban-card:contains('${selected_pose_name}')`).filter(function() {
+                                if($(this).text() === `${selected_pose_name}`){
+                                    $(this).remove();
+                                }
+                            }); 
+                        },
+                        error: function (res) {
+                            console.log(res)
+                            swal({title:"動作刪除失敗", text: res, icon:"error", timer:1200 , buttons:false});
+                        }
+                    })
+                }
+            })
+            
+        }
+
+        function click_save_process_setting() {
+            recipe_name = recipe_selete.text
+
+            // 取得使用者 採用的動作 及 流程順序
+            selected_pose_list_id = recipe_name + '_select_pose'
+            selected_items = document.getElementById(selected_pose_list_id).getElementsByClassName('alert alert-info kanban-card')
+            selected_poses = []
+            for (const item of selected_items) {
+                pose_name = item.textContent
+                selected_poses.push(pose_name)
+            }
+
+            // 取得使用者設定的 目前動作 偵測的門檻值
+            threshold_label_id = document.getElementById(recipe_name + "-threshold-label")
+            unknown_threshold = threshold_label_id.innerHTML
+
+            $.ajax({
+                url: '/process/save_process_setting',
+                method: 'POST',
+                data: {
+                    recipe: recipe_name,
+                    process_order: selected_poses,
+                    unknown_threshold: unknown_threshold
+                },
+                success: function (res) {
+                    console.log(res)
+                    swal({title:"設定儲存功能", text: res, icon:"success", timer:1500 , buttons:false});
+                },
+                error: function (res) {
+                    console.log(res)
+                    swal({title:"設定儲存失敗", text: res, icon:"error", timer:1200 , buttons:false});
+                }
+            })
+
+            console.log('######### save porcess setting... #########')
+            console.log(`recipe: ${recipe_name}`)
+            console.log('save pose order: ' + selected_poses)
+            console.log('save unknown_threshold: ' + unknown_threshold)
+            console.log('##################################')
+        }
+
+        function select_or_cancel(btn, type) {
+            if (type == "select") {
+                var ckbox_keypoint_name = btn.id.replace('all-select-btn', 'ckbox-keypoint')
+                var keypoint_checkbox = document.getElementsByName(ckbox_keypoint_name)
+                for (const ckbox of keypoint_checkbox) {
+                    ckbox.checked = true
+                }
+            } else if (type == "cancel") {
+                var ckbox_keypoint_name = btn.id.replace('cancel-select-btn', 'ckbox-keypoint')
+                var keypoint_checkbox = document.getElementsByName(ckbox_keypoint_name)
+
+                for (const ckbox of keypoint_checkbox) {
+                    ckbox.checked = false
+                }
+            }
+        }
+
+        $(function(){
+            //切換至上次停留的標籤頁
+            var recipe = sessionStorage.getItem('recipe_select');
+            if(recipe == ""){
+                // recipe被刪除後 以select list第一項開始
+                recipe = $('#RC_select .dropdown-item').eq(0).html();
+                previous_recipe = null;
+                // 選擇上方的 recipe 的下拉市選單時， process setting 區塊要跟著改變
+                show_and_hide_ps_setting(recipe, previous_recipe)
+
+                // 設定下方的方塊 可以拖曳
+                set_drag_card(recipe)
+
+                click_first_pose_item(recipe)
+            }
+            else if(recipe != $('#RC_select .dropdown-item').eq(0).html() && recipe != null){
+                var previous_recipe = recipe_selete.text
+                console.log('recipe change to:', recipe)
+                console.log('#' + recipe + '-pose-list')
+                recipe_selete.text = recipe
+
+
+                $(`#${recipe}-pose-list`).addClass('active').addClass('show');
+                $(`#${previous_recipe}-pose-list`).removeClass('active');
+                // 選擇上方的 recipe 的下拉市選單時， process setting 區塊要跟著改變
+                show_and_hide_ps_setting(recipe, previous_recipe)
+
+                // 設定下方的方塊 可以拖曳
+                set_drag_card(recipe)
+
+                click_first_pose_item(recipe)
+                
+            }
+            
+        });
+    </script>
+</body>
+
+
+
+</html>
