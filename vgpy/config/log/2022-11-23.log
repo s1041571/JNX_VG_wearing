@@ -1,0 +1,311 @@
+2022-11-23 10:55:47.493 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 10:55:53.951 [main.py] INFO    | 進入VG主頁
+2022-11-23 10:55:57.389 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 10:56:30.439 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:02:15.277 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 11:06:49.922 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:07:59.222 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:08:03.540 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 11:08:39.504 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:08:45.462 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 11:08:48.739 [face_api.py] INFO    | 進入人臉管制(IO)登入頁
+2022-11-23 11:08:53.025 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 11:08:57.197 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 11:10:10.914 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 11:10:15.150 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:10:17.747 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:10:20.366 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 11:10:20.449 [main.py] ERROR   | main:terminate current subprocess failed, 'NoneType' object has no attribute 'terminate'
+2022-11-23 11:10:21.372 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 11:10:21.610 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:10:22.990 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:10:24.294 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:10:37.550 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:10:40.047 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-11-23 11:10:41.298 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:10:44.271 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:11:40.885 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 11:11:47.117 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:11:48.049 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:11:49.461 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:13:43.723 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 11:16:38.780 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:16:41.509 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:29:13.233 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 11:29:15.706 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:29:16.538 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:29:17.578 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:32:01.012 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 11:32:04.859 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:32:07.041 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:32:10.301 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 11:32:10.304 [main.py] ERROR   | main:terminate current subprocess failed, 'NoneType' object has no attribute 'terminate'
+2022-11-23 11:32:10.330 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:32:10.867 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:32:22.677 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:32:24.316 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:33:13.322 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:33:24.310 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 11:33:24.319 [main.py] ERROR   | main:terminate current subprocess failed, 'NoneType' object has no attribute 'terminate'
+2022-11-23 11:33:24.367 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:33:25.015 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:33:28.890 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:33:31.640 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:33:35.405 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:37:21.687 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 11:37:53.078 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:38:13.993 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:38:16.054 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:38:57.953 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 11:43:17.725 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 11:43:38.702 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:43:41.025 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:44:19.608 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 11:44:24.339 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:44:39.083 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:44:44.364 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:46:27.085 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:46:47.856 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 11:46:48.400 [main.py] ERROR   | main:terminate current subprocess failed, 'NoneType' object has no attribute 'terminate'
+2022-11-23 11:46:54.710 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:47:03.214 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:47:11.628 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-11-23 11:47:21.270 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-11-23 11:47:50.068 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-11-23 11:47:58.840 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 11:47:58.846 [main.py] INFO    | 關閉成功
+2022-11-23 11:47:58.869 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:48:00.169 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:48:02.283 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:53:59.309 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 11:55:54.623 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:56:00.892 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:56:28.334 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 11:56:28.388 [main.py] ERROR   | main:terminate current subprocess failed, 'NoneType' object has no attribute 'terminate'
+2022-11-23 11:56:29.287 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:56:30.832 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:56:32.043 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-11-23 11:56:42.123 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-11-23 11:57:08.625 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-11-23 11:57:21.676 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 11:57:21.693 [main.py] INFO    | 關閉成功
+2022-11-23 11:57:21.727 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:57:23.013 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:57:24.822 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 11:57:49.886 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 11:57:49.933 [main.py] ERROR   | main:terminate current subprocess failed, 'NoneType' object has no attribute 'terminate'
+2022-11-23 11:57:50.517 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:57:51.804 [main.py] INFO    | 進入VG主頁
+2022-11-23 11:57:58.180 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 13:16:32.237 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 13:16:37.732 [main.py] INFO    | 進入VG主頁
+2022-11-23 13:16:40.138 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 13:35:25.728 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 13:35:27.064 [main.py] INFO    | 進入VG主頁
+2022-11-23 13:35:29.192 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 13:35:30.099 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 13:35:30.155 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 13:35:38.001 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 13:35:42.963 [face_api.py] INFO    | 辨識登入門檻值設定變更成功
+2022-11-23 13:36:13.882 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 13:36:22.713 [face_backend.py] INFO    | 人臉:註冊人臉資料 建檔成功
+2022-11-23 13:36:24.222 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 13:36:27.478 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 13:36:27.554 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 13:36:27.557 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 13:50:40.920 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 13:50:43.433 [main.py] INFO    | 進入VG主頁
+2022-11-23 13:50:48.288 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 13:50:49.117 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 13:50:49.177 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 13:50:59.468 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 13:51:08.477 [face_backend.py] INFO    | 人臉:註冊人臉資料 建檔成功
+2022-11-23 13:51:09.716 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 13:51:13.434 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 13:51:13.517 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 13:51:13.520 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 13:52:00.945 [face_model_train.py] ERROR   | 人臉:用來訓練人臉模型的照片沒偵測到人, [Errno 2] No such file or directory: '/home/adlink/vg/vgpy/face/image/face/face_train/yy.txt'
+2022-11-23 13:58:50.486 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 13:58:53.538 [main.py] INFO    | 進入VG主頁
+2022-11-23 13:59:08.498 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 13:59:09.562 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 13:59:09.637 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 13:59:15.588 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 13:59:22.386 [face_backend.py] INFO    | 人臉:註冊人臉資料 建檔成功
+2022-11-23 13:59:24.626 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 13:59:29.047 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 13:59:29.134 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 13:59:29.137 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 14:00:14.787 [face_model_train.py] ERROR   | 人臉:用來訓練人臉模型的照片沒偵測到人, [Errno 2] No such file or directory: '/home/adlink/vg/vgpy/face/image/face/face_train/yy.txt'
+2022-11-23 14:26:20.875 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:26:28.133 [main.py] INFO    | 進入VG主頁
+2022-11-23 14:26:36.827 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 14:26:37.826 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:26:37.892 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 14:26:42.356 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 14:26:48.287 [face_backend.py] INFO    | 人臉:註冊人臉資料 建檔成功
+2022-11-23 14:27:09.586 [face_backend.py] INFO    | 人臉:註冊人臉資料 建檔成功
+2022-11-23 14:28:34.999 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:28:36.149 [main.py] INFO    | 進入VG主頁
+2022-11-23 14:28:38.895 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 14:28:39.898 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:28:39.972 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 14:28:52.556 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:32:24.083 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:34:45.539 [main.py] INFO    | 進入VG主頁
+2022-11-23 14:34:48.562 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 14:34:49.579 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:34:49.651 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 14:34:59.748 [face_api.py] INFO    | 辨識登入門檻值設定變更成功
+2022-11-23 14:34:59.752 [face_backend.py] INFO    | 人臉:收到[CLICK_CHANGE_SETTING]的signal
+2022-11-23 14:34:59.927 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:35:02.900 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:39:51.087 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:39:53.181 [main.py] INFO    | 進入VG主頁
+2022-11-23 14:39:56.311 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 14:39:57.120 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:39:57.177 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 14:40:04.385 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:40:10.285 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:41:14.523 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:41:15.987 [main.py] INFO    | 進入VG主頁
+2022-11-23 14:41:18.199 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 14:41:19.225 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:41:19.273 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 14:43:53.305 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:43:55.893 [main.py] INFO    | 進入VG主頁
+2022-11-23 14:43:57.681 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 14:43:58.543 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:43:58.597 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 14:47:36.877 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 14:47:36.881 [main.py] ERROR   | main:terminate current subprocess failed, 'Thread' object has no attribute 'terminate'
+2022-11-23 14:47:36.918 [main.py] INFO    | 進入VG主頁
+2022-11-23 14:47:40.115 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 14:47:40.913 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:47:40.959 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 14:48:23.118 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:54:28.714 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:54:42.525 [main.py] INFO    | 進入VG主頁
+2022-11-23 14:54:44.196 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 14:54:45.068 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 14:54:45.114 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 14:54:49.843 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 14:54:53.207 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 14:55:19.221 [face_backend.py] INFO    | 人臉:註冊人臉資料 建檔成功
+2022-11-23 14:55:24.657 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 14:55:28.080 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 14:55:28.158 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 14:55:28.160 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 14:56:17.930 [face_model_train.py] ERROR   | 人臉:用來訓練人臉模型的照片沒偵測到人, [Errno 2] No such file or directory: '/home/adlink/vg/vgpy/face/image/face/face_train/yy.txt'
+2022-11-23 14:57:31.947 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:06:15.381 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:07:04.324 [main.py] INFO    | 進入VG主頁
+2022-11-23 15:07:07.388 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 15:07:08.234 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:07:08.287 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 15:07:39.656 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-23 15:07:39.657 [main.py] ERROR   | main:terminate current subprocess failed, 'Thread' object has no attribute 'terminate'
+2022-11-23 15:07:39.666 [main.py] INFO    | 進入VG主頁
+2022-11-23 15:07:41.674 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 15:07:42.413 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:07:42.460 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 15:07:43.929 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 15:07:47.365 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 15:07:47.461 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 15:07:47.465 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 15:08:33.577 [face_model_train.py] ERROR   | 人臉:用來訓練人臉模型的照片沒偵測到人, [Errno 2] No such file or directory: '/home/adlink/vg/vgpy/face/image/face/face_train/yy.txt'
+2022-11-23 15:12:00.933 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:12:05.473 [main.py] INFO    | 進入VG主頁
+2022-11-23 15:12:07.440 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 15:12:08.194 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:12:08.243 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 15:12:18.970 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:12:24.974 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:12:25.817 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 15:12:28.879 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 15:12:28.963 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 15:12:28.967 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 15:13:10.125 [face_model_train.py] ERROR   | 人臉:用來訓練人臉模型的照片沒偵測到人, [Errno 2] No such file or directory: '/home/adlink/vg/vgpy/face/image/face/face_train/yy.txt'
+2022-11-23 15:20:10.235 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:20:10.501 [main.py] INFO    | 進入VG主頁
+2022-11-23 15:20:14.136 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 15:20:14.905 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:20:14.980 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 15:20:19.862 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 15:20:22.319 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 15:20:25.796 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 15:20:25.894 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 15:20:25.897 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 15:21:12.369 [face_model_train.py] ERROR   | 人臉:用來訓練人臉模型的照片沒偵測到人, [Errno 2] No such file or directory: '/home/adlink/vg/vgpy/face/image/face/face_train/yy.txt'
+2022-11-23 15:25:01.513 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:25:38.840 [main.py] INFO    | 進入VG主頁
+2022-11-23 15:25:40.807 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 15:25:41.639 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:25:41.741 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 15:25:43.083 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 15:25:46.017 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 15:36:14.242 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:37:35.130 [main.py] INFO    | 進入VG主頁
+2022-11-23 15:37:37.938 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 15:37:38.721 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:37:38.809 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 15:37:43.507 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 15:37:47.444 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 15:37:47.539 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 15:37:47.550 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 15:38:35.991 [face_model_train.py] ERROR   | 人臉:用來訓練人臉模型的照片沒偵測到人, [Errno 2] No such file or directory: '/home/adlink/vg/vgpy/face/image/face/face_train/yy.txt'
+2022-11-23 15:41:26.068 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:41:37.333 [main.py] INFO    | 進入VG主頁
+2022-11-23 15:41:39.555 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 15:41:40.507 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:41:40.588 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 15:41:44.933 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 15:41:47.889 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 15:41:47.979 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 15:41:47.982 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 15:42:29.110 [face_model_train.py] ERROR   | 人臉:用來訓練人臉模型的照片沒偵測到人, [Errno 2] No such file or directory: '/home/adlink/vg/vgpy/face/image/face/face_train/labels/labels/yy.txt'
+2022-11-23 15:43:48.725 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:43:50.269 [main.py] INFO    | 進入VG主頁
+2022-11-23 15:43:52.427 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 15:43:53.236 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:43:53.288 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 15:43:57.620 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 15:44:00.849 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 15:44:00.934 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 15:44:00.938 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 15:53:00.276 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:53:02.077 [main.py] INFO    | 進入VG主頁
+2022-11-23 15:53:04.323 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 15:53:05.072 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:53:05.155 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 15:53:07.123 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 15:53:10.871 [face_api.py] INFO    | 已訓練的人臉照片資料 刪除成功
+2022-11-23 15:53:10.875 [face_backend.py] INFO    | 人臉:收到[RELOAD_FRATURE]的signal
+2022-11-23 15:53:10.876 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:53:14.947 [face_api.py] INFO    | 已訓練的人臉照片資料 刪除成功
+2022-11-23 15:53:14.950 [face_backend.py] INFO    | 人臉:收到[RELOAD_FRATURE]的signal
+2022-11-23 15:53:14.952 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 15:53:16.528 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 15:53:28.158 [face_backend.py] INFO    | 人臉:註冊人臉資料 建檔成功
+2022-11-23 15:53:30.055 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 15:53:32.218 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 15:53:32.334 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 15:53:32.338 [face_backend.py] INFO    | 人臉:訓練中...
+2022-11-23 16:19:53.979 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 16:19:55.724 [main.py] INFO    | 進入VG主頁
+2022-11-23 16:19:58.052 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-23 16:19:58.882 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 16:19:58.934 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2022-11-23 16:20:02.720 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 16:20:07.372 [face_api.py] INFO    | 已訓練的人臉照片資料 刪除成功
+2022-11-23 16:20:07.377 [face_backend.py] INFO    | 人臉:收到[RELOAD_FRATURE]的signal
+2022-11-23 16:20:07.379 [face_detector.py] INFO    | 人臉:沒找到已訓練過的人臉，創建空白的list
+2022-11-23 16:20:08.828 [face_api.py] INFO    | 進入人臉管制(IO)登入頁
+2022-11-23 16:20:09.940 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 16:20:11.412 [face_api.py] INFO    | 進入人臉註冊頁
+2022-11-23 16:20:18.634 [face_backend.py] WARNING | 人臉:註冊人臉資料 建檔失敗，該人名已經註冊過
+2022-11-23 16:20:25.973 [face_backend.py] INFO    | 人臉:註冊人臉資料 建檔成功
+2022-11-23 16:20:27.544 [face_api.py] INFO    | 進入人臉模型訓練頁
+2022-11-23 16:20:30.240 [face_api.py] INFO    | 執行人臉模型訓練
+2022-11-23 16:20:30.376 [face_backend.py] INFO    | 人臉:人臉模型訓練subprocess啟動
+2022-11-23 16:20:30.390 [face_backend.py] INFO    | 人臉:訓練中...

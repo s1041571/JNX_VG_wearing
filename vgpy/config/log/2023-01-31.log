@@ -1,0 +1,315 @@
+2023-01-31 09:40:22.745 [main.py] INFO    | 進入VG主頁
+2023-01-31 09:43:07.605 [main.py] INFO    | 進入VG主頁
+2023-01-31 09:43:11.058 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-31 09:43:13.684 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 09:47:13.302 [main.py] INFO    | 進入VG主頁
+2023-01-31 09:47:16.069 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-31 09:47:28.464 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2023-01-31 09:48:21.015 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 09:48:21.146 [main.py] INFO    | 關閉成功
+2023-01-31 09:48:21.552 [main.py] INFO    | 進入VG主頁
+2023-01-31 09:48:42.962 [main.py] INFO    | 進入VG主頁
+2023-01-31 09:48:45.832 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-31 09:48:48.887 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 09:50:36.512 [face_api.py] INFO    | 進入人臉註冊頁
+2023-01-31 09:50:44.955 [face_api.py] INFO    | 進入人臉註冊頁
+2023-01-31 09:50:51.754 [face_api.py] INFO    | 進入人臉模型訓練頁
+2023-01-31 09:50:56.020 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 09:51:56.571 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 09:52:08.955 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 09:52:08.956 [main.py] ERROR   | main:terminate current subprocess failed, 'Thread' object has no attribute 'terminate'
+2023-01-31 09:52:08.978 [main.py] INFO    | 進入VG主頁
+2023-01-31 09:52:09.853 [main.py] INFO    | 進入VG主頁
+2023-01-31 09:52:11.407 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-31 09:52:12.226 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 09:53:11.326 [face_api.py] INFO    | 進入人臉模型訓練頁
+2023-01-31 09:53:13.955 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 09:54:04.050 [face_api.py] INFO    | 進入人臉管制(IO)登入頁
+2023-01-31 09:54:06.231 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 09:54:08.512 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 09:54:08.515 [main.py] ERROR   | main:terminate current subprocess failed, 'Thread' object has no attribute 'terminate'
+2023-01-31 09:54:08.535 [main.py] INFO    | 進入VG主頁
+2023-01-31 09:54:09.350 [main.py] INFO    | 進入VG主頁
+2023-01-31 09:54:32.205 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-31 09:54:33.242 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 10:03:08.577 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 10:03:08.577 [main.py] ERROR   | main:terminate current subprocess failed, 'Thread' object has no attribute 'terminate'
+2023-01-31 10:03:08.593 [main.py] INFO    | 進入VG主頁
+2023-01-31 10:03:09.515 [main.py] INFO    | 進入VG主頁
+2023-01-31 10:03:17.267 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-31 10:03:18.461 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 10:03:58.630 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 10:03:58.634 [main.py] ERROR   | main:terminate current subprocess failed, 'Thread' object has no attribute 'terminate'
+2023-01-31 10:03:58.655 [main.py] INFO    | 進入VG主頁
+2023-01-31 10:06:17.336 [main.py] INFO    | 進入VG主頁
+2023-01-31 10:06:20.570 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-31 10:06:21.559 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 10:06:31.253 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 10:06:31.253 [main.py] ERROR   | main:terminate current subprocess failed, 'Thread' object has no attribute 'terminate'
+2023-01-31 10:06:31.272 [main.py] INFO    | 進入VG主頁
+2023-01-31 10:07:08.889 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-31 10:07:09.966 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 10:08:44.110 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 10:08:44.113 [main.py] ERROR   | main:terminate current subprocess failed, 'Thread' object has no attribute 'terminate'
+2023-01-31 10:08:44.151 [main.py] INFO    | 進入VG主頁
+2023-01-31 10:08:44.985 [main.py] INFO    | 進入VG主頁
+2023-01-31 10:13:57.961 [main.py] INFO    | 進入VG主頁
+2023-01-31 10:14:00.781 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-31 10:14:02.444 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 10:18:51.639 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 10:26:43.157 [main.py] INFO    | 進入VG主頁
+2023-01-31 10:26:47.304 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-31 10:26:49.310 [main.py] INFO    | 進入VG主頁
+2023-01-31 10:26:51.654 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-31 10:26:55.580 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 11:42:22.370 [main.py] INFO    | 進入VG主頁
+2023-01-31 11:42:29.121 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-31 11:42:40.653 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2023-01-31 11:44:04.165 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2023-01-31 11:44:46.047 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:44:49.105 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:44:51.802 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:44:57.342 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:45:00.240 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:45:02.509 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:45:05.432 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:45:09.135 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:45:11.371 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:45:13.640 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:45:16.966 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:46:57.249 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:47:01.443 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:47:04.567 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:47:06.917 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:47:09.286 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:48:59.680 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:49:03.803 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:49:09.458 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:49:12.161 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:49:15.769 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:49:19.538 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:49:22.331 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:49:44.333 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:49:51.665 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:49:55.640 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:50:03.853 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:50:09.273 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:50:12.879 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:50:16.789 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:50:27.277 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 11:50:27.283 [main.py] INFO    | 關閉成功
+2023-01-31 11:50:27.416 [main.py] INFO    | 進入VG主頁
+2023-01-31 11:50:28.658 [main.py] INFO    | 進入VG主頁
+2023-01-31 11:50:30.260 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-31 11:50:46.648 [vf_api.py] INFO    | 測距/物件:進入物件監控系統
+2023-01-31 11:51:37.921 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2023-01-31 11:51:44.950 [vf_backend.py] INFO    | 測距/物件:收到[SETTING_PAGE_ON]的signal
+2023-01-31 11:51:54.326 [vf_api.py] INFO    | 測距/物件:虛擬圍籬設定成功
+2023-01-31 11:51:54.331 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_OBJ_AREAS]的signal
+2023-01-31 11:52:07.660 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:08.052 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:08.464 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:08.867 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:09.296 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:09.704 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:10.119 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:10.605 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:11.257 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:11.973 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:12.550 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:13.083 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:14.460 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:15.158 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:15.783 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:16.419 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:17.026 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:17.525 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:18.288 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:19.335 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:20.105 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:20.830 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:21.739 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:22.267 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:22.855 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:23.421 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:24.044 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:24.476 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:24.971 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:25.586 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:26.108 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:26.636 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:27.133 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:27.695 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:28.227 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:28.692 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:29.206 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:29.805 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:30.442 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:30.983 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:31.545 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:32.034 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:32.599 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:33.100 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:33.577 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:34.005 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:52:34.455 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 11:53:56.673 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 11:53:56.676 [main.py] INFO    | 關閉成功
+2023-01-31 11:53:56.698 [main.py] INFO    | 進入VG主頁
+2023-01-31 11:53:57.825 [main.py] INFO    | 進入VG主頁
+2023-01-31 11:54:22.904 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-01-31 11:54:38.397 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-01-31 11:55:24.522 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-01-31 11:55:24.530 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-01-31 11:55:24.531 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-01-31 11:55:31.737 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2023-01-31 11:55:34.009 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2023-01-31 12:00:07.387 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2023-01-31 12:00:12.067 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 12:00:12.070 [main.py] INFO    | 關閉成功
+2023-01-31 12:00:12.109 [main.py] INFO    | 進入VG主頁
+2023-01-31 12:00:12.993 [main.py] INFO    | 進入VG主頁
+2023-01-31 12:00:14.351 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-01-31 12:00:27.869 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-01-31 12:01:00.916 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-01-31 12:01:00.938 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-01-31 12:01:00.940 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-01-31 12:03:46.012 [main.py] INFO    | 進入VG主頁
+2023-01-31 12:03:48.806 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-01-31 12:04:00.199 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-01-31 12:05:07.693 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-01-31 12:05:07.719 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-01-31 12:05:07.720 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-01-31 12:05:15.423 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2023-01-31 12:05:18.296 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2023-01-31 13:02:48.047 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:02:52.327 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-31 13:03:02.448 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2023-01-31 13:04:31.715 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2023-01-31 13:04:48.641 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:04:52.730 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:04:55.781 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:04:59.899 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:05:20.918 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 13:05:20.925 [main.py] INFO    | 關閉成功
+2023-01-31 13:05:20.958 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:05:22.027 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:05:24.808 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-31 13:05:40.400 [vf_api.py] INFO    | 測距/物件:進入物件監控系統
+2023-01-31 13:06:09.209 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2023-01-31 13:06:10.639 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2023-01-31 13:06:56.281 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:06:56.673 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:06:57.090 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:06:57.458 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:06:57.855 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:06:58.237 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:06:58.660 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:06:59.079 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:06:59.443 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:06:59.927 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:00.619 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:01.483 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:01.949 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:02.325 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:02.760 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:03.136 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:03.556 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:03.969 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:04.564 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:04.908 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:05.448 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:05.832 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:06.654 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:07.021 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:07.391 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:07.823 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:08.247 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:08.703 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:09.158 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:09.602 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:10.028 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:10.610 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:11.172 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:11.496 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:11.905 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:12.269 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:12.696 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:13.132 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:13.527 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:14.014 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:14.398 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:14.892 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:15.282 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:15.669 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:16.154 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:16.503 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:16.927 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:17.360 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:17.811 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:07:18.265 [speech_out_play.py] ERROR   | 測距/物件:播放音檔失敗, [Errno 12] Cannot allocate memory
+2023-01-31 13:08:01.801 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 13:08:01.802 [main.py] INFO    | 關閉成功
+2023-01-31 13:08:01.831 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:08:02.998 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:08:04.354 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-31 13:08:06.511 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-31 13:09:14.954 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 13:09:14.960 [main.py] ERROR   | main:terminate current subprocess failed, 'Thread' object has no attribute 'terminate'
+2023-01-31 13:09:14.983 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:09:15.721 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:09:25.617 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:09:27.404 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:09:29.939 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:10:36.544 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:10:39.980 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-01-31 13:10:49.571 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-01-31 13:11:36.638 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-01-31 13:11:36.701 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-01-31 13:11:36.702 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-01-31 13:11:45.874 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2023-01-31 13:11:48.250 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2023-01-31 13:18:02.978 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 13:18:02.986 [main.py] INFO    | 關閉成功
+2023-01-31 13:18:03.018 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:18:08.599 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-01-31 13:18:22.824 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-01-31 13:18:48.684 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-01-31 13:18:48.691 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-01-31 13:18:48.692 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-01-31 13:18:51.623 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2023-01-31 13:18:54.828 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2023-01-31 13:24:24.561 [main.py] INFO    | 進入VG主頁
+2023-01-31 13:24:41.384 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-01-31 13:24:49.757 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-01-31 13:25:43.169 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-01-31 13:25:43.178 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-01-31 13:25:43.180 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-01-31 13:25:49.641 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2023-01-31 13:25:52.694 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2023-01-31 14:23:55.895 [main.py] INFO    | 進入VG主頁
+2023-01-31 14:23:59.779 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-01-31 14:24:11.086 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-01-31 14:25:14.906 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-01-31 14:25:15.022 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-01-31 14:25:15.023 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-01-31 14:25:31.825 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2023-01-31 14:25:33.523 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2023-01-31 14:32:07.240 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 14:32:07.306 [main.py] INFO    | 關閉成功
+2023-01-31 14:32:07.373 [main.py] INFO    | 進入VG主頁
+2023-01-31 14:32:08.868 [main.py] INFO    | 進入VG主頁
+2023-01-31 14:32:10.795 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-01-31 14:32:25.565 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-01-31 14:32:51.409 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-01-31 14:32:51.417 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-01-31 14:32:51.418 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-01-31 14:32:53.986 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2023-01-31 14:32:56.345 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2023-01-31 14:34:41.997 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-31 14:34:42.004 [main.py] INFO    | 關閉成功
+2023-01-31 14:34:43.229 [main.py] INFO    | 進入VG主頁
+2023-01-31 14:34:44.213 [main.py] INFO    | 進入VG主頁
+2023-01-31 14:34:50.792 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-31 14:35:06.096 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2023-01-31 14:35:35.373 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal

@@ -1,0 +1,145 @@
+2022-10-20 08:50:14.874 [main.py] INFO    | 進入VG主頁
+2022-10-20 08:50:17.039 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 08:50:17.171 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 08:57:37.262 [main.py] INFO    | 進入VG主頁
+2022-10-20 08:57:40.189 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 08:57:48.245 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 08:58:10.340 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 09:06:48.942 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:06:52.269 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 09:07:01.280 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 09:07:11.547 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-10-20 09:07:11.551 [main.py] INFO    | 關閉成功
+2022-10-20 09:07:11.618 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:07:12.201 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:07:18.857 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:07:33.126 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:07:34.690 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 09:07:43.383 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 09:07:56.943 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 09:10:31.200 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:24:12.772 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:24:15.735 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 09:24:24.727 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 09:24:38.663 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 09:25:03.812 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-10-20 09:25:03.813 [main.py] INFO    | 關閉成功
+2022-10-20 09:25:03.867 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:25:04.722 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:25:07.984 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:25:09.626 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 09:25:20.835 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 09:25:33.896 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 09:26:35.498 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:26:37.616 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 09:26:46.295 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 09:26:59.364 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 09:29:07.492 [vf_backend.py] INFO    | 測距/物件:收到[SETTING_PAGE_ON]的signal
+2022-10-20 09:29:14.991 [vf_backend.py] INFO    | 測距/物件:收到[SETTING_PAGE_ON]的signal
+2022-10-20 09:29:19.022 [vf_backend.py] INFO    | 測距/物件:收到[SETTING_PAGE_ON]的signal
+2022-10-20 09:29:19.366 [vf_backend.py] INFO    | 測距/物件:收到[SETTING_PAGE_ON]的signal
+2022-10-20 09:29:22.412 [vf_backend.py] INFO    | 測距/物件:收到[SETTING_PAGE_ON]的signal
+2022-10-20 09:41:33.321 [vf_backend.py] INFO    | 測距/物件:收到[SETTING_PAGE_ON]的signal
+2022-10-20 09:41:39.911 [vf_backend.py] INFO    | 測距/物件:收到[SETTING_PAGE_ON]的signal
+2022-10-20 09:41:45.766 [vf_backend.py] INFO    | 測距/物件:收到[SETTING_PAGE_ON]的signal
+2022-10-20 09:44:16.061 [main.py] INFO    | 進入VG主頁
+2022-10-20 09:44:18.395 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 09:44:27.822 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 09:44:41.856 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:24:49.018 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:24:53.556 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 10:25:02.464 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:25:17.194 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:34:08.063 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:34:10.697 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 10:34:19.582 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:34:35.118 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:35:25.287 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-10-20 10:35:25.289 [main.py] INFO    | 關閉成功
+2022-10-20 10:35:25.318 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:35:27.130 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 10:35:37.786 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:35:51.488 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:36:09.966 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:36:54.786 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-10-20 10:36:54.798 [main.py] INFO    | 關閉成功
+2022-10-20 10:36:54.857 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:36:56.851 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 10:37:07.186 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:37:21.098 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:37:37.188 [vf_api.py] INFO    | 測距/物件:比例尺設定成功
+2022-10-20 10:37:43.808 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-10-20 10:37:43.809 [main.py] INFO    | 關閉成功
+2022-10-20 10:37:43.824 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:37:45.916 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 10:37:55.514 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:38:09.201 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:38:30.879 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-10-20 10:38:30.880 [main.py] INFO    | 關閉成功
+2022-10-20 10:38:30.902 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:38:31.522 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:38:36.160 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:38:37.577 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 10:38:47.104 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:39:00.210 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:39:43.314 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-10-20 10:39:43.329 [main.py] INFO    | 關閉成功
+2022-10-20 10:39:43.374 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:39:50.430 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 10:40:00.122 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:40:14.754 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:40:55.850 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-10-20 10:40:55.851 [main.py] INFO    | 關閉成功
+2022-10-20 10:40:55.873 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:40:57.574 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 10:41:07.598 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:41:21.416 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:48:12.508 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:48:14.424 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 10:48:23.286 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:48:36.909 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:54:50.284 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:54:52.975 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 10:55:02.964 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 10:55:16.761 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 10:59:08.528 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-10-20 10:59:08.535 [main.py] INFO    | 關閉成功
+2022-10-20 10:59:08.559 [main.py] INFO    | 進入VG主頁
+2022-10-20 10:59:59.634 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 11:00:11.710 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 11:00:25.332 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 11:04:52.998 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 11:05:10.667 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 11:05:13.051 [main.py] INFO    | 進入VG主頁
+2022-10-20 11:05:15.754 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 11:05:16.035 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 11:05:41.021 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 11:05:41.702 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 11:06:58.611 [main.py] INFO    | 進入VG主頁
+2022-10-20 11:07:00.459 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 11:07:10.114 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 11:07:25.346 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 11:13:32.228 [main.py] INFO    | 進入VG主頁
+2022-10-20 11:13:34.537 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 11:13:44.946 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 11:13:59.645 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 11:30:18.681 [main.py] INFO    | 進入VG主頁
+2022-10-20 11:30:23.284 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 11:30:33.618 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 11:30:48.028 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 11:34:46.878 [main.py] INFO    | 進入VG主頁
+2022-10-20 11:34:53.347 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 11:35:03.642 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 11:35:18.128 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 11:38:17.052 [main.py] INFO    | 進入VG主頁
+2022-10-20 11:38:19.116 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 11:38:29.240 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 11:38:43.107 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 12:02:39.559 [main.py] INFO    | 進入VG主頁
+2022-10-20 12:02:42.248 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 12:02:52.567 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 12:03:05.951 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-10-20 13:14:01.592 [main.py] INFO    | 進入VG主頁
+2022-10-20 13:14:04.372 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-10-20 13:14:15.293 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-10-20 13:14:30.352 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal

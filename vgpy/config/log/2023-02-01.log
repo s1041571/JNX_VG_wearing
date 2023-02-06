@@ -1,0 +1,7 @@
+2023-02-02 09:10:39.348 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-02-02 09:10:39.378 [main.py] INFO    | 關閉成功
+2023-02-02 09:10:39.447 [main.py] INFO    | 進入VG主頁
+2023-02-02 09:10:40.443 [main.py] INFO    | 進入VG主頁
+2023-02-02 09:10:42.194 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-02-02 09:11:41.742 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2023-02-02 09:11:41.981 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined

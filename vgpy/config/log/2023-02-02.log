@@ -1,0 +1,23 @@
+2023-02-02 09:10:57.111 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-02-02 09:11:26.188 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-02-02 09:11:26.209 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-02-02 09:11:26.209 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-02-02 09:11:40.132 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2023-02-02 14:49:06.431 [main.py] INFO    | 進入VG主頁
+2023-02-02 14:49:35.332 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-02-02 14:59:10.904 [main.py] INFO    | 進入VG主頁
+2023-02-02 14:59:12.939 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-02-02 14:59:21.546 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-02-02 14:59:48.069 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-02-02 14:59:48.070 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-02-02 14:59:48.071 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-02-02 14:59:50.489 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2023-02-02 14:59:50.607 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2023-02-02 16:08:19.939 [main.py] INFO    | 進入VG主頁
+2023-02-02 16:08:22.534 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2023-02-02 16:08:30.558 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2023-02-02 16:08:47.381 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2023-02-02 16:08:47.382 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2023-02-02 16:08:47.382 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2023-02-02 16:08:52.805 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2023-02-02 16:08:53.306 [wearing_api.py] INFO    | 穿戴: 進入辨識頁

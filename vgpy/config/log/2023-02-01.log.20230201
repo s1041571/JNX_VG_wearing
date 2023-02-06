@@ -1,0 +1,4 @@
+2023-02-01 17:27:57.202 [main.py] INFO    | 進入VG主頁
+2023-02-01 17:28:00.646 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-02-01 17:28:12.779 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2023-02-01 17:30:03.073 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal

@@ -1,0 +1,76 @@
+{
+    "detect_part": [
+        "head",
+        "hand",
+        "body"
+    ],
+    "detect_setting": {
+        "head": {
+            "en": [
+                "glasses"
+            ],
+            "zh": [
+                "glasses"
+            ],
+            "conf_thres": [
+                0.5
+            ],
+            "detect_class": [
+                "glasses"
+            ]
+        },
+        "hand": {
+            "en": [
+                "gloves"
+            ],
+            "zh": [
+                "gloves"
+            ],
+            "conf_thres": [
+                0.5
+            ],
+            "detect_class": []
+        },
+        "body": {
+            "en": [
+                "clothes"
+            ],
+            "zh": [
+                "clothes"
+            ],
+            "conf_thres": [
+                0.5
+            ],
+            "detect_class": [
+                "clothes"
+            ]
+        },
+        "foot": {
+            "en": [],
+            "zh": [],
+            "conf_thres": [],
+            "detect_class": []
+        }
+    },
+    "fence_enable": "false",
+    "sampling_setting": {
+        "sampling_rate": 5,
+        "max_quantity": 100
+    },
+    "alarm_setting": {
+        "channel": [],
+        "mail_group": "",
+        "log_save_day": 32
+    },
+    "train_args_setting": {
+        "min_lr": 0.0002,
+        "resize_shape": [
+            64,
+            64
+        ],
+        "train_epoch": 5,
+        "train_batch_size": 2,
+        "opt_epoch": 50,
+        "opt_batch_size": 256
+    }
+}

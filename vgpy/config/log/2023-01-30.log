@@ -1,0 +1,32 @@
+2023-01-30 16:54:44.914 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:00:49.507 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-30 17:00:57.067 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2023-01-30 17:01:15.695 [vf_api.py] ERROR   | 測距/物件:虛擬圍籬設定失敗, OpenCV(4.6.0) /io/opencv/modules/imgcodecs/src/loadsave.cpp:801: error: (-215:Assertion failed) !_img.empty() in function 'imwrite'
+
+2023-01-30 17:23:13.987 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:23:17.369 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-30 17:23:30.227 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2023-01-30 17:39:12.159 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:39:13.423 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:39:15.055 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-30 17:39:30.340 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2023-01-30 17:43:01.081 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:43:02.449 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:43:03.745 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-30 17:43:14.840 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2023-01-30 17:49:04.032 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:49:05.306 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:49:07.994 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2023-01-30 17:49:21.998 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2023-01-30 17:50:41.589 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-30 17:50:41.666 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2023-01-30 17:50:41.749 [main.py] INFO    | 關閉成功
+2023-01-30 17:50:41.808 [main.py] INFO    | 關閉成功
+2023-01-30 17:50:41.896 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:50:42.205 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:50:44.249 [main.py] INFO    | 進入VG主頁
+2023-01-30 17:50:47.971 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-30 17:50:51.079 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
+2023-01-30 18:03:20.835 [main.py] INFO    | 進入VG主頁
+2023-01-30 18:03:23.337 [face_backend.py] INFO    | 人臉: subprocess啟動
+2023-01-30 18:03:25.019 [face_api.py] INFO    | 進入人臉管制(UI)登入頁

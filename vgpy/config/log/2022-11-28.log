@@ -1,0 +1,566 @@
+2022-11-28 15:56:21.207 [main.py] INFO    | 進入VG主頁
+2022-11-28 15:56:25.061 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 15:56:35.265 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 15:56:54.082 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 15:56:54.085 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 15:56:54.085 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 15:56:57.752 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 15:56:58.636 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 15:57:02.362 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:02.633 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:02.845 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:03.049 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:03.445 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:03.811 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:04.186 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:04.399 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:04.590 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:04.912 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:05.102 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:05.480 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:05.666 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:05.847 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:06.031 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:06.218 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:06.393 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:06.568 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:06.747 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:06.930 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:07.133 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:07.320 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:07.511 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:07.698 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:07.910 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:08.085 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:08.265 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:08.444 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:08.629 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:08.825 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:09.004 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:09.191 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:09.390 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:09.575 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:09.761 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:09.947 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:10.127 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:10.312 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:10.493 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:10.671 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:10.859 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:11.063 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:11.260 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:11.460 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 15:57:11.671 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:04:44.204 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:04:48.996 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:04:57.489 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:05:13.926 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:05:13.955 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:05:13.956 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:05:17.901 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:05:18.474 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:06:48.592 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:06:51.401 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:07:00.057 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:07:14.055 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:07:14.061 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:07:14.062 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:07:16.198 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:07:16.960 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:07:37.114 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 16:07:41.111 [wearing_api.py] INFO    | 進入模型訓練頁
+2022-11-28 16:07:43.193 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 16:07:47.925 [wearing_api.py] INFO    | 穿戴: 開始使用攝影機收集訓練照片
+2022-11-28 16:07:48.161 [wearing_api.py] INFO    | 穿戴: 收到[START_COLLECT]的signal
+2022-11-28 16:11:00.750 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:11:03.180 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:11:11.849 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:11:27.190 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:11:27.202 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:11:27.202 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:11:33.027 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:11:34.037 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:11:37.200 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:37.440 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:37.638 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:37.854 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:38.058 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:38.227 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:38.401 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:38.574 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:38.736 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:38.897 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:39.053 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:39.214 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:39.374 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:39.550 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:39.715 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:39.879 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:40.066 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:40.096 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 16:11:40.292 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:11:43.607 [wearing_api.py] INFO    | 進入模型訓練頁
+2022-11-28 16:11:44.988 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 16:11:47.868 [wearing_api.py] INFO    | 穿戴: 開始使用攝影機收集訓練照片
+2022-11-28 16:11:47.871 [wearing_api.py] INFO    | 穿戴: 收到[START_COLLECT]的signal
+2022-11-28 16:12:11.277 [wearing_api.py] INFO    | 穿戴: 停止收集資料
+2022-11-28 16:12:11.284 [wearing_api.py] INFO    | 穿戴: 收到[END_COLLECT]的signal
+2022-11-28 16:12:11.286 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:12:11.357 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的收集資料
+2022-11-28 16:12:13.066 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:12:13.079 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:12:13.079 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:12:24.565 [wearing_api.py] INFO    | 穿戴: 開始使用攝影機收集訓練照片
+2022-11-28 16:12:24.568 [wearing_api.py] INFO    | 穿戴: 收到[START_COLLECT]的signal
+2022-11-28 16:12:37.595 [wearing_api.py] INFO    | 穿戴: 開始使用攝影機收集訓練照片
+2022-11-28 16:12:37.598 [wearing_api.py] INFO    | 穿戴: 收到[START_COLLECT]的signal
+2022-11-28 16:12:41.599 [wearing_api.py] INFO    | 穿戴: 停止收集資料
+2022-11-28 16:12:41.601 [wearing_api.py] INFO    | 穿戴: 收到[END_COLLECT]的signal
+2022-11-28 16:12:41.602 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:12:41.607 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的收集資料
+2022-11-28 16:12:41.613 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的收集資料
+2022-11-28 16:12:42.446 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:12:42.451 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:12:42.453 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:12:46.709 [wearing_api.py] INFO    | 穿戴: 開始使用攝影機收集訓練照片
+2022-11-28 16:12:46.710 [wearing_api.py] INFO    | 穿戴: 收到[START_COLLECT]的signal
+2022-11-28 16:13:21.616 [wearing_api.py] INFO    | 穿戴: 停止收集資料
+2022-11-28 16:13:21.617 [wearing_api.py] INFO    | 穿戴: 收到[END_COLLECT]的signal
+2022-11-28 16:13:21.619 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:13:21.711 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的收集資料
+2022-11-28 16:13:22.569 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:13:22.578 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:13:22.579 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:13:38.805 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 16:13:40.497 [wearing_api.py] INFO    | 穿戴: 進入模型優化頁
+2022-11-28 16:13:41.864 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備資料
+2022-11-28 16:13:45.163 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:13:45.794 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:45.971 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:46.147 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:46.319 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:46.480 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:46.642 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:46.802 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:46.968 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:47.138 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:47.301 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:48.322 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:48.645 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:48.966 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:49.283 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:49.616 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:49.785 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:49.942 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:50.246 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:50.542 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:50.823 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:13:50.979 [main.py] ERROR   | main:cannot get result_queue, name 'ProcessVar' is not defined
+2022-11-28 16:15:59.775 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:16:02.319 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:16:11.057 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:16:26.142 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:16:26.158 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:16:26.159 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:16:29.110 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:16:30.036 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:16:33.321 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:33.510 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:33.635 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:33.750 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:33.870 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:33.985 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:34.101 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:34.215 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:34.330 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:34.444 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:34.564 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:34.681 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:34.796 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:36.062 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:36.349 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:36.640 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:36.921 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:37.038 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:37.304 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:37.420 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:37.535 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:37.659 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:37.779 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:37.908 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:38.025 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:38.155 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:38.271 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:38.389 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:38.509 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:38.658 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:38.979 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:39.094 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:39.212 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:39.325 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:39.443 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:39.563 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:39.690 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:39.817 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:39.928 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:40.045 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:40.157 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:40.274 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:40.386 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:40.500 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:40.760 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:40.884 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:41.162 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:41.445 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:41.568 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:41.697 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:41.821 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:41.945 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:42.063 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:42.178 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:42.311 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:42.432 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:42.569 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:42.712 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:42.754 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 16:16:42.863 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:43.007 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:43.179 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:43.359 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:43.585 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:43.889 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:44.078 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:44.240 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:44.396 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:44.539 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:44.718 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:44.844 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:44.964 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:45.078 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:45.192 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:45.878 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:45.998 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:46.124 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:46.254 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:46.380 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:46.517 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:46.558 [wearing_api.py] INFO    | 進入模型訓練頁
+2022-11-28 16:16:46.679 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:46.807 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:46.967 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:47.158 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:47.306 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:47.461 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:47.591 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:47.742 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:48.237 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:48.403 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:48.479 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 16:16:48.544 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:48.710 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:48.918 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:49.057 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:49.185 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:49.300 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:49.420 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:49.541 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:49.661 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:49.785 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:49.898 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:50.025 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:50.131 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:50.234 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:50.339 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:50.440 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:50.540 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:50.647 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:50.756 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:50.867 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:50.988 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:51.098 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:51.199 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:51.301 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:51.400 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:51.501 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:51.601 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:51.704 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:51.990 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:52.108 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:52.212 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:52.311 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:52.410 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:52.511 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:52.763 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:52.862 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:52.961 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:53.059 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:53.163 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:53.263 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:53.361 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:53.460 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:53.560 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:53.658 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:53.757 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:53.857 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:53.953 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:54.051 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:54.147 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:54.245 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:54.346 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:54.447 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:54.547 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:54.646 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:54.749 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:54.847 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:54.952 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:55.053 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:55.152 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:55.253 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:55.351 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:55.449 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:55.547 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:55.644 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:55.744 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:55.848 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:55.951 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:56.049 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:56.152 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:56.251 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:56.349 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:56.464 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:56.735 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:56.887 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:57.025 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:57.130 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:57.239 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:57.345 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:57.444 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:57.545 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:57.653 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:16:57.676 [wearing_api.py] INFO    | 穿戴: 開始使用攝影機收集訓練照片
+2022-11-28 16:16:57.771 [wearing_api.py] INFO    | 穿戴: 收到[START_COLLECT]的signal
+2022-11-28 16:16:57.796 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:17:21.575 [wearing_api.py] INFO    | 穿戴: 停止收集資料
+2022-11-28 16:17:21.578 [wearing_api.py] INFO    | 穿戴: 收到[END_COLLECT]的signal
+2022-11-28 16:17:21.587 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:17:21.598 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的收集資料
+2022-11-28 16:17:22.954 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:17:22.959 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:17:22.960 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:17:27.199 [wearing_api.py] INFO    | 穿戴: 前端要取 Total Train Data 的資料
+2022-11-28 16:21:22.375 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:21:25.299 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:21:34.414 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:21:59.670 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:21:59.679 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:21:59.679 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:22:04.899 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:22:05.790 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:22:10.666 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:11.004 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:11.295 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:11.566 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:11.843 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:12.158 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:12.476 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:12.747 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:13.030 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:13.308 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:13.643 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:13.918 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:14.223 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:14.523 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:14.811 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:15.115 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:15.241 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:15.366 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:15.500 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:22:15.784 [main.py] ERROR   | main:cannot get result_queue, only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices
+2022-11-28 16:27:33.503 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:27:36.503 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:27:45.766 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:28:14.314 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:28:14.323 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:28:14.323 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:28:19.637 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:28:20.685 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:30:11.913 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:30:13.763 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:30:22.708 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:30:50.369 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:30:50.380 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:30:50.381 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:30:54.065 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:30:55.087 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:32:48.099 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:32:50.240 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:32:59.832 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:33:22.876 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:33:22.888 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:33:22.889 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:33:27.629 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:33:28.628 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:37:10.926 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:43:08.565 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:43:24.925 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:43:36.049 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:43:54.706 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:43:54.721 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:43:54.722 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:43:58.292 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:43:59.390 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:45:30.192 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:45:32.878 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:45:41.339 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:45:55.248 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:45:55.252 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:45:55.253 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:45:57.269 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:45:57.889 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:50:52.336 [main.py] INFO    | 進入VG主頁
+2022-11-28 16:50:54.569 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:51:03.271 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:51:17.698 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:51:17.751 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:51:17.752 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:51:19.823 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:51:20.236 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 16:52:58.762 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 16:53:18.332 [wearing_backend_torch.py] INFO    | 穿戴:新增穿戴類別成功
+2022-11-28 16:53:18.333 [wearing_api.py] INFO    | 穿戴: 成功新增穿戴類別
+2022-11-28 16:53:18.406 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 16:53:20.013 [wearing_api.py] INFO    | 穿戴設定值變更成功
+2022-11-28 16:53:20.017 [wearing_api.py] INFO    | 穿戴: 收到[UPDATE_WEARINGVAR]的signal
+2022-11-28 16:53:20.019 [wearing_api.py] INFO    | 穿戴: 收到[UPDATE_EFF_MODEL_CONF]的signal
+2022-11-28 16:53:20.020 [wearing_detector_torch.py] INFO    | 穿戴:config更新成功
+2022-11-28 16:53:20.023 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor更新辨識門檻值成功
+2022-11-28 16:53:22.001 [wearing_api.py] INFO    | 進入模型訓練頁
+2022-11-28 16:53:23.241 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 16:53:27.178 [wearing_api.py] INFO    | 穿戴: 成功刪除資料
+2022-11-28 16:53:27.191 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 16:53:31.746 [wearing_api.py] INFO    | 穿戴: 開始使用攝影機收集訓練照片
+2022-11-28 16:53:31.748 [wearing_api.py] INFO    | 穿戴: 收到[START_COLLECT]的signal
+2022-11-28 16:53:50.907 [wearing_api.py] INFO    | 穿戴: 停止收集資料
+2022-11-28 16:53:50.908 [wearing_api.py] INFO    | 穿戴: 收到[END_COLLECT]的signal
+2022-11-28 16:53:50.909 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:53:50.936 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的收集資料
+2022-11-28 16:53:51.732 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:53:51.736 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:53:51.737 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:53:54.550 [wearing_api.py] INFO    | 穿戴: 前端要取 Total Train Data 的資料
+2022-11-28 16:54:11.644 [wearing_backend_torch.py] INFO    | 穿戴:新模型訓練開始...
+2022-11-28 16:54:21.636 [wearing_backend_torch.py] INFO    | 穿戴:新模型訓練開始...
+2022-11-28 16:54:34.621 [wearing_api.py] INFO    | 模型訓練執行緒 啟動
+2022-11-28 16:54:34.880 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:54:44.673 [wearing_api.py] INFO    | 進入模型訓練頁
+2022-11-28 16:54:45.992 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 16:54:46.181 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:54:50.470 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 16:55:00.181 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:55:00.183 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:55:00.183 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:55:01.716 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:55:01.719 [wearing_api.py] INFO    | 穿戴: 重新載入辨識 subprocess
+2022-11-28 16:55:02.146 [wearing_api.py] INFO    | 進入異常訊息頁
+2022-11-28 16:55:05.058 [wearing_api.py] INFO    | 穿戴: 進入模型優化頁
+2022-11-28 16:55:07.032 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備資料
+2022-11-28 16:55:10.861 [wearing_api.py] INFO    | 進入模型訓練頁
+2022-11-28 16:55:11.913 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 16:55:14.329 [wearing_api.py] INFO    | 穿戴: 成功刪除資料
+2022-11-28 16:55:14.330 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 16:55:23.093 [wearing_api.py] INFO    | 穿戴: 停止收集資料
+2022-11-28 16:55:23.098 [wearing_api.py] INFO    | 穿戴: 收到[END_COLLECT]的signal
+2022-11-28 16:55:23.098 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:55:24.300 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:55:24.304 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:55:24.306 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:55:27.740 [wearing_api.py] INFO    | 穿戴: 開始使用攝影機收集訓練照片
+2022-11-28 16:55:27.742 [wearing_api.py] INFO    | 穿戴: 收到[START_COLLECT]的signal
+2022-11-28 16:55:51.628 [wearing_api.py] INFO    | 穿戴: 停止收集資料
+2022-11-28 16:55:51.638 [wearing_api.py] INFO    | 穿戴: 收到[END_COLLECT]的signal
+2022-11-28 16:55:51.639 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:55:51.635 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的收集資料
+2022-11-28 16:55:52.419 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:55:52.424 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:55:52.425 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:55:57.254 [wearing_api.py] INFO    | 穿戴: 前端要取 Total Train Data 的資料
+2022-11-28 16:56:13.230 [wearing_backend_torch.py] INFO    | 穿戴:新模型訓練開始...
+2022-11-28 16:56:23.320 [wearing_backend_torch.py] INFO    | 穿戴:新模型訓練開始...
+2022-11-28 16:56:55.810 [wearing_backend_torch.py] INFO    | 穿戴:新模型訓練完成
+2022-11-28 16:56:55.823 [wearing_backend_torch.py] INFO    | 穿戴:儲存訓練結果及模型...
+2022-11-28 16:56:55.824 [wearing_backend_torch.py] INFO    | 穿戴:將原本的original_training_data移除...
+2022-11-28 16:56:55.824 [wearing_backend_torch.py] INFO    | 穿戴:將用來訓練的照片加到original_training_data中...
+2022-11-28 16:56:57.993 [wearing_backend_torch.py] INFO    | 新模型訓練流程結束
+2022-11-28 16:57:01.161 [wearing_api.py] INFO    | 模型訓練執行緒 啟動
+2022-11-28 16:57:01.331 [wearing_api.py] INFO    | 穿戴: subprocess啟動
+2022-11-28 16:57:12.030 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:57:26.092 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:57:26.094 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:57:26.094 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:57:27.745 [wearing_api.py] INFO    | 穿戴: yolo_detector初始化完成
+2022-11-28 16:57:27.749 [wearing_api.py] INFO    | 穿戴: 重新載入辨識 subprocess
+2022-11-28 16:57:28.256 [wearing_api.py] INFO    | 進入模型訓練頁
+2022-11-28 16:57:29.410 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 16:57:32.279 [wearing_api.py] INFO    | 穿戴: 進入模型優化頁
+2022-11-28 16:57:33.262 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備資料
+2022-11-28 16:57:35.266 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 16:57:39.690 [wearing_api.py] INFO    | 穿戴: 收到[UPDATE_WEARINGVAR]的signal
+2022-11-28 16:57:39.691 [wearing_api.py] INFO    | 穿戴: 收到[UPDATE_EFF_MODEL_CONF]的signal
+2022-11-28 16:57:39.693 [wearing_detector_torch.py] INFO    | 穿戴:config更新成功
+2022-11-28 16:57:39.693 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor更新辨識門檻值成功
+2022-11-28 16:57:39.695 [wearing_api.py] INFO    | 穿戴: 收到[CHANGE_SETTING]的signal
+2022-11-28 16:57:39.695 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:57:40.520 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:57:40.524 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:57:40.525 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:57:40.527 [wearing_api.py] INFO    | 穿戴設定值變更成功
+2022-11-28 16:57:42.485 [wearing_api.py] INFO    | 穿戴: 收到[UPDATE_WEARINGVAR]的signal
+2022-11-28 16:57:42.486 [wearing_api.py] INFO    | 穿戴: 收到[UPDATE_EFF_MODEL_CONF]的signal
+2022-11-28 16:57:42.488 [wearing_detector_torch.py] INFO    | 穿戴:config更新成功
+2022-11-28 16:57:42.489 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor更新辨識門檻值成功
+2022-11-28 16:57:42.490 [wearing_api.py] INFO    | 穿戴: 收到[CHANGE_SETTING]的signal
+2022-11-28 16:57:42.491 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 16:57:43.881 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 16:57:43.885 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 16:57:43.887 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 16:57:43.888 [wearing_api.py] INFO    | 穿戴設定值變更成功
+2022-11-28 16:57:45.578 [wearing_api.py] INFO    | 穿戴: 進入辨識頁
+2022-11-28 17:01:10.972 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 17:01:28.545 [wearing_api.py] INFO    | 進入模型訓練頁
+2022-11-28 17:01:29.677 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 17:01:31.946 [wearing_api.py] INFO    | 穿戴: 進入模型優化頁
+2022-11-28 17:01:32.951 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備資料
+2022-11-28 17:01:34.748 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 17:01:46.185 [wearing_backend_torch.py] INFO    | 穿戴:新增穿戴類別成功
+2022-11-28 17:01:46.185 [wearing_api.py] INFO    | 穿戴: 成功新增穿戴類別
+2022-11-28 17:01:46.243 [wearing_api.py] INFO    | 穿戴: 進入設定頁
+2022-11-28 17:01:47.853 [wearing_api.py] INFO    | 穿戴設定值變更成功
+2022-11-28 17:01:47.859 [wearing_api.py] INFO    | 穿戴: 收到[UPDATE_WEARINGVAR]的signal
+2022-11-28 17:01:47.864 [wearing_api.py] INFO    | 穿戴: 收到[UPDATE_EFF_MODEL_CONF]的signal
+2022-11-28 17:01:47.868 [wearing_detector_torch.py] INFO    | 穿戴:config更新成功
+2022-11-28 17:01:47.869 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor更新辨識門檻值成功
+2022-11-28 17:01:52.110 [wearing_api.py] INFO    | 穿戴: 收到[UPDATE_WEARINGVAR]的signal
+2022-11-28 17:01:52.112 [wearing_api.py] INFO    | 穿戴: 收到[UPDATE_EFF_MODEL_CONF]的signal
+2022-11-28 17:01:52.113 [wearing_detector_torch.py] INFO    | 穿戴:config更新成功
+2022-11-28 17:01:52.113 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor更新辨識門檻值成功
+2022-11-28 17:01:52.114 [wearing_api.py] INFO    | 穿戴: 收到[CHANGE_SETTING]的signal
+2022-11-28 17:01:52.115 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 17:01:53.972 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 17:01:53.981 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 17:01:53.983 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 17:01:53.984 [wearing_api.py] INFO    | 穿戴設定值變更成功
+2022-11-28 17:01:55.262 [wearing_api.py] INFO    | 進入異常訊息頁
+2022-11-28 17:01:57.995 [wearing_api.py] INFO    | 進入模型訓練頁
+2022-11-28 17:01:59.051 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 17:02:03.706 [wearing_api.py] INFO    | 穿戴: 成功刪除資料
+2022-11-28 17:02:03.707 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的照片張數
+2022-11-28 17:02:07.876 [wearing_api.py] INFO    | 穿戴: 開始使用攝影機收集訓練照片
+2022-11-28 17:02:07.879 [wearing_api.py] INFO    | 穿戴: 收到[START_COLLECT]的signal
+2022-11-28 17:02:47.570 [wearing_api.py] INFO    | 穿戴: 停止收集資料
+2022-11-28 17:02:47.597 [wearing_api.py] INFO    | 穿戴: 收到[END_COLLECT]的signal
+2022-11-28 17:02:47.598 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入中...
+2022-11-28 17:02:47.624 [wearing_api.py] INFO    | 穿戴: 前端要取有裝備、無裝備的收集資料
+2022-11-28 17:02:49.735 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化辨識完成
+2022-11-28 17:02:49.742 [wearing_detector_torch.py] INFO    | 穿戴:MergePredictor初始化成功
+2022-11-28 17:02:49.744 [wearing_detector_torch.py] INFO    | 穿戴:config初始載入成功
+2022-11-28 17:02:51.250 [wearing_api.py] INFO    | 穿戴: 前端要取 Total Train Data 的資料

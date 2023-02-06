@@ -1,0 +1,16 @@
+{
+    "admin_setting": {
+        "auo": {
+            "password": "auo",
+            "level": "admin"
+        }
+    },
+    "email_setting": {},
+    "line_setting": {
+        "token": "0Wf7pm2qsGzz9J890L0BYDdgkdc1ZJikQzJE3W612L5"
+    },
+    "link_setting": {
+        "systemCode": "396hLng7S4",
+        "subCateNo": "3241"
+    }
+}

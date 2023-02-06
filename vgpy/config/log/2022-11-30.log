@@ -1,0 +1,10 @@
+2022-11-30 17:56:05.604 [main.py] INFO    | 進入VG主頁
+2022-11-30 17:56:07.756 [vf_api.py] INFO    | 測距/物件: subprocess啟動
+2022-11-30 17:56:16.078 [vf_api.py] INFO    | 測距/物件:進入測距監控系統
+2022-11-30 17:56:29.731 [vf_backend.py] INFO    | 測距/物件:收到[CHANGE_DETECT_MODE]的signal
+2022-11-30 17:59:45.073 [main.py] INFO    | 有正在執行的子系統，嘗試關閉中...
+2022-11-30 17:59:45.075 [main.py] INFO    | 關閉成功
+2022-11-30 17:59:45.101 [main.py] INFO    | 進入VG主頁
+2022-11-30 17:59:45.722 [main.py] INFO    | 進入VG主頁
+2022-11-30 17:59:47.424 [face_backend.py] INFO    | 人臉: subprocess啟動
+2022-11-30 17:59:48.528 [face_api.py] INFO    | 進入人臉管制(UI)登入頁
